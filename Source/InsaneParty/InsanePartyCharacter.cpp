@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// 2024, Pseudo / Ageev Daniil. All rights reserved ©
 
 #include "InsanePartyCharacter.h"
 #include "Engine/LocalPlayer.h"
@@ -18,6 +18,10 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 AInsanePartyCharacter::AInsanePartyCharacter()
 {
+	bReplicates = true;
+
+	bAbilitiesInitialized = false;
+	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 		
@@ -52,6 +56,31 @@ AInsanePartyCharacter::AInsanePartyCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	
+	AbilitySystemComponent = CreateDefaultSubobject<UInsaneAbilityComponent>(TEXT("Ability System Component"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+
+	Attributes = CreateDefaultSubobject<UInsaneAttributeSet>(TEXT("Attributes"));
+
+	DeadTag = FGameplayTag::RequestGameplayTag("Gameplay.Status.IsDead");
+}
+
+float AInsanePartyCharacter::GetHealth() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetHealth();
+}
+
+float AInsanePartyCharacter::GetMaxHealth() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetMaxHealth();
 }
 
 void AInsanePartyCharacter::BeginPlay()
@@ -74,6 +103,8 @@ void AInsanePartyCharacter::BeginPlay()
 
 void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
@@ -90,6 +121,85 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	else
 	{
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
+	}
+
+	if (AbilitySystemComponent && InputComponent)
+	{
+		const FGameplayAbilityInputBinds Binds(
+			"Confirm",
+			"Cancel",
+			"EInsaneAbilityInputID",
+			static_cast<int32>(EInsaneAbilityInputID::Confirm),
+			static_cast<int32>(EInsaneAbilityInputID::Cancel));
+
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
+	}
+}
+
+void AInsanePartyCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+}
+
+void AInsanePartyCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+	// called in SetupPlayerInputComponent() for redundancy
+	if (AbilitySystemComponent && InputComponent)
+	{
+		const FGameplayAbilityInputBinds Binds(
+			"Confirm",
+			"Cancel",
+			"EInsaneAbilityInputID",
+			static_cast<int32>(EInsaneAbilityInputID::Confirm),
+			static_cast<int32>(EInsaneAbilityInputID::Cancel));
+
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
+	}
+}
+
+void AInsanePartyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+}
+
+UAbilitySystemComponent* AInsanePartyCharacter::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
+void AInsanePartyCharacter::AddStartupGameplayAbilities()
+{
+	check(AbilitySystemComponent);
+
+	if (GetLocalRole() == ROLE_Authority && !bAbilitiesInitialized)
+	{
+		// Grant abilities, but only on the server	
+		for (TSubclassOf<UInsaneGameplayAbility>& StartupAbility : GameplayAbilities)
+		{
+			AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(
+				StartupAbility, 1, static_cast<int32>(StartupAbility.GetDefaultObject()->AbilityInputID), this));
+		}
+
+		// Now apply passives
+		for (const TSubclassOf<UGameplayEffect>& GameplayEffect : PassiveGameplayEffects)
+		{
+			FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
+			EffectContext.AddSourceObject(this);
+
+			FGameplayEffectSpecHandle NewHandle = AbilitySystemComponent->MakeOutgoingSpec(
+				GameplayEffect, 1, EffectContext);
+			if (NewHandle.IsValid())
+			{
+				FActiveGameplayEffectHandle ActiveGEHandle = AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(
+					*NewHandle.Data.Get(), AbilitySystemComponent);
+			}
+		}
+
+		bAbilitiesInitialized = true;
 	}
 }
 
@@ -126,5 +236,18 @@ void AInsanePartyCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void AInsanePartyCharacter::HandleHealthChanged(float DeltaValue, const FGameplayTagContainer& EventTags)
+{
+	if (bAbilitiesInitialized)
+	{
+		OnHealthChanged(DeltaValue, EventTags);
+		if (GetHealth() <= 0)
+		{
+			UE_LOG(InsanePartyLog, Warning, TEXT("Adding DeadTag"))
+			AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
+		}
 	}
 }

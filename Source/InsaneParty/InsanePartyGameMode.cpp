@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 #include "InsanePartyGameMode.h"
 #include "InsanePartyCharacter.h"
 #include "UObject/ConstructorHelpers.h"
