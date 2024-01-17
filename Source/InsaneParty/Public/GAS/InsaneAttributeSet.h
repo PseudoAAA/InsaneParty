@@ -38,6 +38,14 @@ public:
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxHealth)
 
+	UPROPERTY(BlueprintReadOnly, Category = "Healing", ReplicatedUsing=OnRep_Healing)
+	FGameplayAttributeData Healing;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Healing)
+	
+	UPROPERTY(BlueprintReadOnly, Category = "Medals", ReplicatedUsing=OnRep_Medals)
+	FGameplayAttributeData Medals;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Medals)
+
 
 
 	void AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,
@@ -49,4 +57,10 @@ public:
 
 	UFUNCTION()
 	virtual void OnRep_MaxHealth(const FGameplayAttributeData& OldValue);
+	
+	UFUNCTION()
+	virtual void OnRep_Healing(const FGameplayAttributeData& OldValue);
+
+	UFUNCTION()
+	virtual void OnRep_Medals(const FGameplayAttributeData& OldValue);
 };

@@ -67,27 +67,14 @@ AInsanePartyCharacter::AInsanePartyCharacter()
 	DeadTag = FGameplayTag::RequestGameplayTag("Gameplay.Status.IsDead");
 }
 
-float AInsanePartyCharacter::GetHealth() const
-{
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetHealth();
-}
-
-float AInsanePartyCharacter::GetMaxHealth() const
-{
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetMaxHealth();
-}
 
 void AInsanePartyCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
-
+	
+	SetReplicateMovement(true);
+	
 	//Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
@@ -139,6 +126,13 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 void AInsanePartyCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
+
+	// Server GAS init
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+		AddStartupGameplayAbilities();
+	}
 }
 
 void AInsanePartyCharacter::OnRep_PlayerState()
@@ -250,4 +244,21 @@ void AInsanePartyCharacter::HandleHealthChanged(float DeltaValue, const FGamepla
 			AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
 		}
 	}
+}
+
+
+float AInsanePartyCharacter::GetHealth() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetHealth();
+}
+
+float AInsanePartyCharacter::GetMaxHealth() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetMaxHealth();
 }

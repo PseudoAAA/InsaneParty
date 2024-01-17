@@ -7,6 +7,9 @@
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()
+	:Health(1.f)
+	,MaxHealth(100.f)
+
 {
 }
 
@@ -16,6 +19,8 @@ void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Healing, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Medals, COND_None, REPNOTIFY_Always);
 }
 
 void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
@@ -26,12 +31,16 @@ void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute
 	{
 		AdjustAttributeForMaxChange(Health, MaxHealth, NewValue, GetHealthAttribute());
 	}
+
+	UE_LOG(InsanePartyLog, Warning, TEXT("Max health - %f"), GetMaxHealth())
 }
 
 void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
 
+	float MinimumHealth = 1.0f;
+	
 	FGameplayEffectContextHandle Context = Data.EffectSpec.GetContext();
 	UAbilitySystemComponent* Source = Context.GetOriginalInstigatorAbilitySystemComponent();
 	const FGameplayTagContainer& SourceTags = *Data.EffectSpec.CapturedSourceTags.GetAggregatedTags();
@@ -53,19 +62,17 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 		TargetCharacter = Cast<AInsanePartyCharacter>(TargetActor);
 	}
 	
-	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+	if (Data.EvaluatedData.Attribute == GetHealingAttribute())
 	{
-		// Handle other health changes such as from healing or direct modifiers
-		// First clamp it
-		SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
-
-		if (TargetCharacter)
-		{
-			// Call for all health changes
-			TargetCharacter->HandleHealthChanged(DeltaValue, SourceTags);
-		}
+		// Convert into +Health and then clamo
+		SetHealth(FMath::Clamp(GetHealth() + GetHealing(), MinimumHealth, GetMaxHealth()));
+		SetHealing(0.0f);
 	}
-
+	else if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+	{
+		// Clamp and fall into out of health handling below
+		SetHealth(FMath::Clamp(GetHealth(), MinimumHealth, GetMaxHealth()));
+	}
 }
 
 void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,
@@ -86,12 +93,26 @@ void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeDa
 	}
 }
 
+
+
 void UInsaneAttributeSet::OnRep_Health(const FGameplayAttributeData& OldValue)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Health, OldValue);
+
 }
 
 void UInsaneAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData& OldValue)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, MaxHealth, OldValue);
 }
+
+void UInsaneAttributeSet::OnRep_Healing(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Healing, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_Medals(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Medals, OldValue);
+}
+
