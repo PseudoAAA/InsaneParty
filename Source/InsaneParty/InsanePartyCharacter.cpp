@@ -115,7 +115,7 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		const FGameplayAbilityInputBinds Binds(
 			"Confirm",
 			"Cancel",
-			"EInsaneAbilityInputID",
+			FTopLevelAssetPath(GetPathNameSafe(UClass::TryFindTypeSlow<UEnum>("EInsaneAbilityInputID"))),
 			static_cast<int32>(EInsaneAbilityInputID::Confirm),
 			static_cast<int32>(EInsaneAbilityInputID::Cancel));
 
@@ -147,7 +147,7 @@ void AInsanePartyCharacter::OnRep_PlayerState()
 		const FGameplayAbilityInputBinds Binds(
 			"Confirm",
 			"Cancel",
-			"EInsaneAbilityInputID",
+			FTopLevelAssetPath(GetPathNameSafe(UClass::TryFindTypeSlow<UEnum>("EInsaneAbilityInputID"))),
 			static_cast<int32>(EInsaneAbilityInputID::Confirm),
 			static_cast<int32>(EInsaneAbilityInputID::Cancel));
 

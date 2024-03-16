@@ -3,7 +3,7 @@
 #include "InsaneParty/Public/GAS/InsaneAttributeSet.h"
 
 #include "GameplayEffectExtension.h"
-
+#include "InsaneParty/InsanePartyCharacter.h"
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()

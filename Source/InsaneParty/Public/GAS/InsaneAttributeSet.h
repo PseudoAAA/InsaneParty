@@ -6,7 +6,6 @@
 #include "AbilitySystemComponent.h"
 #include "AttributeSet.h"
 #include "InsaneParty/InsaneParty.h"
-#include "InsaneParty/InsanePartyCharacter.h"
 #include "InsaneAttributeSet.generated.h"
 
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
