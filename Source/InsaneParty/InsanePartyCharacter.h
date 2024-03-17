@@ -47,6 +47,10 @@ class AInsanePartyCharacter : public ACharacter, public IAbilitySystemInterface
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	/** Interact Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* InteractAction;
+
 public:
 	AInsanePartyCharacter();
 	
@@ -80,6 +84,9 @@ public:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 
+	void Interact(const FInputActionValue& Value);
+
+	
 	//Health
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnHealthChanged(float DeltaValue, const struct FGameplayTagContainer& EventTags);

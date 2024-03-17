@@ -7,9 +7,8 @@
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()
-	:Health(1.f)
+	:Health(100.f)
 	,MaxHealth(100.f)
-
 {
 }
 
@@ -31,15 +30,13 @@ void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute
 	{
 		AdjustAttributeForMaxChange(Health, MaxHealth, NewValue, GetHealthAttribute());
 	}
-
-	UE_LOG(InsanePartyLog, Warning, TEXT("Max health - %f"), GetMaxHealth())
 }
 
 void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
 
-	float MinimumHealth = 1.0f;
+	float MinimumHealth = 0.0f;
 	
 	FGameplayEffectContextHandle Context = Data.EffectSpec.GetContext();
 	UAbilitySystemComponent* Source = Context.GetOriginalInstigatorAbilitySystemComponent();
@@ -64,7 +61,7 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 	
 	if (Data.EvaluatedData.Attribute == GetHealingAttribute())
 	{
-		// Convert into +Health and then clamo
+		// Convert into +Health and then clamp
 		SetHealth(FMath::Clamp(GetHealth() + GetHealing(), MinimumHealth, GetMaxHealth()));
 		SetHealing(0.0f);
 	}

@@ -104,6 +104,7 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AInsanePartyCharacter::Look);
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::Interact);
 	}
 	else
 	{
@@ -232,6 +233,36 @@ void AInsanePartyCharacter::Look(const FInputActionValue& Value)
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
 }
+
+void AInsanePartyCharacter::Interact(const FInputActionValue& Value)
+{
+	if (Controller != nullptr)
+	{
+		FHitResult OutHit;
+		FVector Start = GetFollowCamera()->GetComponentLocation();
+
+		FVector ForwardVector = FollowCamera->GetForwardVector();
+		FVector End = ((ForwardVector * 1000.f) + Start);
+		FCollisionQueryParams CollisionParams;
+
+		DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
+
+		if(GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams)) 
+		{
+			if(OutHit.bBlockingHit)
+			{
+				if (GEngine) {
+
+					GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
+					GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Impact Point: %s"), *OutHit.ImpactPoint.ToString()));
+					GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Normal Point: %s"), *OutHit.ImpactNormal.ToString()));
+
+				}
+			}
+		}
+	}
+}
+
 
 void AInsanePartyCharacter::HandleHealthChanged(float DeltaValue, const FGameplayTagContainer& EventTags)
 {
