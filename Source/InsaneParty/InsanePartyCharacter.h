@@ -53,14 +53,19 @@ class AInsanePartyCharacter : public ACharacter, public IAbilitySystemInterface
 
 public:
 	AInsanePartyCharacter();
-	
-	UFUNCTION(BlueprintCallable)
-	virtual float GetHealth() const;
 
-	/** Returns maximum health, health will never be greater than this */
-	UFUNCTION(BlueprintCallable)
+	/*Returns attribute variables*/
+	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
+	virtual float GetHealth() const;
+	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
 	virtual float GetMaxHealth() const;
-	
+	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
+	virtual float GetMedals() const;
+	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
+	virtual float GetMaxMedals() const;
+	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
+	virtual float GetKeys() const;
+
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/

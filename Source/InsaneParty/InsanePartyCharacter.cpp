@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Interfaces/InteractInterface.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -247,16 +248,19 @@ void AInsanePartyCharacter::Interact(const FInputActionValue& Value)
 
 		DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
 
-		if(GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams)) 
+		if(GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams )) 
 		{
 			if(OutHit.bBlockingHit)
 			{
 				if (GEngine) {
 
-					GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
-					GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Impact Point: %s"), *OutHit.ImpactPoint.ToString()));
-					GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Normal Point: %s"), *OutHit.ImpactNormal.ToString()));
-
+					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
+					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Impact Point: %s"), *OutHit.ImpactPoint.ToString()));
+					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Normal Point: %s"), *OutHit.ImpactNormal.ToString()));
+					if (OutHit.GetActor()->Implements<UInteractInterface>())
+					{
+						IInteractInterface::Execute_Interact(OutHit.GetActor(), this);
+					}
 				}
 			}
 		}
@@ -292,4 +296,25 @@ float AInsanePartyCharacter::GetMaxHealth() const
 		return 1.f;
 	
 	return Attributes->GetMaxHealth();
+}
+float AInsanePartyCharacter::GetMedals() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetMedals();
+}
+float AInsanePartyCharacter::GetMaxMedals() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetMaxMedals();
+}
+float AInsanePartyCharacter::GetKeys() const
+{
+	if(!Attributes)
+		return 1.f;
+	
+	return Attributes->GetKeys();
 }

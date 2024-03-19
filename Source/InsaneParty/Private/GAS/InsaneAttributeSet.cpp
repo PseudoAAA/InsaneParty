@@ -9,8 +9,7 @@
 UInsaneAttributeSet::UInsaneAttributeSet()
 	:Health(100.f)
 	,MaxHealth(100.f)
-{
-}
+{}
 
 void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -19,7 +18,6 @@ void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Healing, COND_None, REPNOTIFY_Always);
-	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Medals, COND_None, REPNOTIFY_Always);
 }
 
 void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
@@ -36,7 +34,7 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 {
 	Super::PostGameplayEffectExecute(Data);
 
-	float MinimumHealth = 0.0f;
+	float MinimumValue = 0.0f;
 	
 	FGameplayEffectContextHandle Context = Data.EffectSpec.GetContext();
 	UAbilitySystemComponent* Source = Context.GetOriginalInstigatorAbilitySystemComponent();
@@ -62,13 +60,18 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 	if (Data.EvaluatedData.Attribute == GetHealingAttribute())
 	{
 		// Convert into +Health and then clamp
-		SetHealth(FMath::Clamp(GetHealth() + GetHealing(), MinimumHealth, GetMaxHealth()));
+		SetHealth(FMath::Clamp(GetHealth() + GetHealing(), MinimumValue, GetMaxHealth()));
 		SetHealing(0.0f);
 	}
 	else if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
 		// Clamp and fall into out of health handling below
-		SetHealth(FMath::Clamp(GetHealth(), MinimumHealth, GetMaxHealth()));
+		SetHealth(FMath::Clamp(GetHealth(), MinimumValue, GetMaxHealth()));
+	}
+
+	if (Data.EvaluatedData.Attribute == GetMedalsAttribute())
+	{
+		SetMedals(FMath::Clamp(GetMedals(), MinimumValue, GetMaxMedals()));
 	}
 }
 
@@ -90,12 +93,9 @@ void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeDa
 	}
 }
 
-
-
 void UInsaneAttributeSet::OnRep_Health(const FGameplayAttributeData& OldValue)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Health, OldValue);
-
 }
 
 void UInsaneAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData& OldValue)
@@ -108,8 +108,5 @@ void UInsaneAttributeSet::OnRep_Healing(const FGameplayAttributeData& OldValue)
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Healing, OldValue);
 }
 
-void UInsaneAttributeSet::OnRep_Medals(const FGameplayAttributeData& OldValue)
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Medals, OldValue);
-}
+
 

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
 #include "AttributeSet.h"
+#include "InsaneResourcesAttributeSet.h"
 #include "InsaneParty/InsaneParty.h"
 #include "InsaneAttributeSet.generated.h"
 
@@ -16,7 +17,7 @@
 
 
 UCLASS()
-class INSANEPARTY_API UInsaneAttributeSet : public UAttributeSet
+class INSANEPARTY_API UInsaneAttributeSet : public UInsaneResourcesAttributeSet
 {
 	GENERATED_BODY()
 
@@ -29,21 +30,17 @@ public:
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
 	
-	UPROPERTY(BlueprintReadOnly, Category = "Health" ,ReplicatedUsing = OnRep_Health)
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes|Health", ReplicatedUsing = OnRep_Health)
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Health);
 
-	UPROPERTY(BlueprintReadOnly, Category = "Health", ReplicatedUsing=OnRep_MaxHealth)
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes|MaxHealth", ReplicatedUsing=OnRep_MaxHealth)
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxHealth)
 
-	UPROPERTY(BlueprintReadOnly, Category = "Healing", ReplicatedUsing=OnRep_Healing)
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes|Healing", ReplicatedUsing=OnRep_Healing)
 	FGameplayAttributeData Healing;
 	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Healing)
-	
-	UPROPERTY(BlueprintReadOnly, Category = "Medals", ReplicatedUsing=OnRep_Medals)
-	FGameplayAttributeData Medals;
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Medals)
 
 
 
@@ -60,6 +57,4 @@ public:
 	UFUNCTION()
 	virtual void OnRep_Healing(const FGameplayAttributeData& OldValue);
 
-	UFUNCTION()
-	virtual void OnRep_Medals(const FGameplayAttributeData& OldValue);
 };
