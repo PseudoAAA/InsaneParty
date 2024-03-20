@@ -9,7 +9,7 @@
 
 
 #include "InsaneParty/InsaneData.h"
-#include "InsaneParty/Public/GAS/InsaneAbilityComponent.h"
+#include "Public\GAS\InsaneAbilitySystemComponent.h"
 #include "InsaneParty/Public/GAS/InsaneGameplayAbility.h"
 #include "InsaneParty/Public/GAS/InsaneAttributeSet.h"
 

@@ -13,7 +13,7 @@ class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
 class UInsaneGameplayAbility;
-class UInsaneAbilityComponent;
+class UInsaneAbilitySystemComponent;
 class UInsaneAttributeSet;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
@@ -67,11 +67,9 @@ public:
 	virtual float GetKeys() const;
 
 	/** Returns CameraBoom subobject **/
-	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
-	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-
-public:
+	class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 	// To add mapping context
 	virtual void BeginPlay() override;
@@ -99,7 +97,7 @@ public:
 	virtual void HandleHealthChanged(float DeltaValue, const struct FGameplayTagContainer& EventTags);
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<UInsaneAbilityComponent> AbilitySystemComponent;
+	TObjectPtr<UInsaneAbilitySystemComponent> AbilitySystemComponent;
 	
 	/** Passive gameplay effects applied on creation */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
