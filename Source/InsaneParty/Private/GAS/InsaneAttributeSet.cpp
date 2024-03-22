@@ -17,7 +17,6 @@ void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
-	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Healing, COND_None, REPNOTIFY_Always);
 }
 
 void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
@@ -73,6 +72,24 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 	{
 		SetMedals(FMath::Clamp(GetMedals(), MinimumValue, GetMaxMedals()));
 	}
+	
+	if (Data.EvaluatedData.Attribute == GetDamagingAttribute())
+	{
+		// Convert into Damage and then clamp
+		SetHealth(FMath::Clamp(GetHealth() + (GetDamaging() > 0 ? GetDamaging() * -1 : GetDamaging()), MinimumValue, GetMaxHealth()));
+		if (GetHealth() <= 0)
+		{
+			FGameplayTag DeadTag = FGameplayTag::RequestGameplayTag("Gameplay.Status.IsDead");
+			GetOwningAbilitySystemComponent()->AddLooseGameplayTags(DeadTag.GetSingleTagContainer(), 1);
+		}
+		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("%f"), GetHealth() + (GetDamaging()*-1)));
+		SetDamaging(0.0f);
+	}
+	else if(Data.EvaluatedData.Attribute == GetDamageAttribute())
+	{
+		SetHealth(FMath::Clamp(GetHealth() + (GetDamage() > 0 ? GetDamage() * -1 : GetDamage()), MinimumValue, GetMaxHealth()));
+	}
+	
 }
 
 void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,
@@ -103,10 +120,6 @@ void UInsaneAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData& OldValue
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, MaxHealth, OldValue);
 }
 
-void UInsaneAttributeSet::OnRep_Healing(const FGameplayAttributeData& OldValue)
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Healing, OldValue);
-}
 
 
 

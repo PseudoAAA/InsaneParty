@@ -54,6 +54,13 @@ class AInsanePartyCharacter : public ACharacter, public IAbilitySystemInterface
 public:
 	AInsanePartyCharacter();
 
+	/** Called for movement input */
+	void Move(const FInputActionValue& Value);
+	/** Called for looking input */
+	void Look(const FInputActionValue& Value);
+	/** Called for interacting input */
+	void Interact(const FInputActionValue& Value);
+	
 	/*Returns attribute variables*/
 	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
 	virtual float GetHealth() const;
@@ -65,7 +72,10 @@ public:
 	virtual float GetMaxMedals() const;
 	UFUNCTION(BlueprintCallable, Category = "InsaneAttributes")
 	virtual float GetKeys() const;
+	UFUNCTION()
+	void HandleDamage(AActor* DamageInstigator, FGameplayAttributeData Damage);
 
+	
 	/** Returns CameraBoom subobject **/
 	class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
@@ -82,20 +92,7 @@ public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	virtual void AddStartupGameplayAbilities();
 	
-	/** Called for movement input */
-	void Move(const FInputActionValue& Value);
-	/** Called for looking input */
-	void Look(const FInputActionValue& Value);
 
-	void Interact(const FInputActionValue& Value);
-
-	
-	//Health
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnHealthChanged(float DeltaValue, const struct FGameplayTagContainer& EventTags);
-
-	virtual void HandleHealthChanged(float DeltaValue, const struct FGameplayTagContainer& EventTags);
-	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UInsaneAbilitySystemComponent> AbilitySystemComponent;
 	

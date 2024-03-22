@@ -264,54 +264,30 @@ void AInsanePartyCharacter::Interact(const FInputActionValue& Value)
 	}
 }
 
-
-void AInsanePartyCharacter::HandleHealthChanged(float DeltaValue, const FGameplayTagContainer& EventTags)
+void AInsanePartyCharacter::HandleDamage(AActor* DamageInstigator, FGameplayAttributeData Damage)
 {
-	if (bAbilitiesInitialized)
-	{
-		OnHealthChanged(DeltaValue, EventTags);
-		if (GetHealth() <= 0)
-		{
-			UE_LOG(InsanePartyLog, Warning, TEXT("Adding DeadTag"))
-			AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
-		}
-	}
+	
 }
-
 
 float AInsanePartyCharacter::GetHealth() const
 {
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetHealth();
+	return Attributes? Attributes->GetHealth() : 1.f;
 }
-
 float AInsanePartyCharacter::GetMaxHealth() const
 {
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetMaxHealth();
+	return Attributes? Attributes->GetMaxHealth() : 1.f;
 }
 float AInsanePartyCharacter::GetMedals() const
 {
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetMedals();
+	return Attributes? Attributes->GetMedals() : 1.f;
 }
 float AInsanePartyCharacter::GetMaxMedals() const
 {
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetMaxMedals();
+	return Attributes? Attributes->GetMaxMedals() : 1.f;
 }
 float AInsanePartyCharacter::GetKeys() const
 {
-	if(!Attributes)
-		return 1.f;
-	
-	return Attributes->GetKeys();
+	return Attributes ? Attributes->GetKeys() : 1.f;
 }
+
+

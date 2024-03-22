@@ -25,25 +25,32 @@ class INSANEPARTY_API UInsaneAttributeSet : public UInsaneResourcesAttributeSet
 public:
 	UInsaneAttributeSet();
 	
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Health);
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxHealth)
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Healing)
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Damage)
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Damaging)
+	
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
 	
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes|Health", ReplicatedUsing = OnRep_Health)
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Health)
 	FGameplayAttributeData Health;
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Health);
-
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes|MaxHealth", ReplicatedUsing=OnRep_MaxHealth)
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing=OnRep_MaxHealth)
 	FGameplayAttributeData MaxHealth;
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxHealth)
 
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes|Healing", ReplicatedUsing=OnRep_Healing)
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes")
 	FGameplayAttributeData Healing;
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Healing)
 
-
-
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes")
+	FGameplayAttributeData Damage;
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes")
+	FGameplayAttributeData Damaging;
+	
 	void AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,
 		const FGameplayAttributeData& MaxAttribute, float NewMaxValue,
 		const FGameplayAttribute& AffectedAttributeProperty) const;
@@ -54,7 +61,4 @@ public:
 	UFUNCTION()
 	virtual void OnRep_MaxHealth(const FGameplayAttributeData& OldValue);
 	
-	UFUNCTION()
-	virtual void OnRep_Healing(const FGameplayAttributeData& OldValue);
-
 };
