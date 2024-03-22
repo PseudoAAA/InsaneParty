@@ -4,6 +4,8 @@
     <attachedFolders />
     <explicitIncludes>
       <Path>Config/DefaultGameplayTags.ini</Path>
+      <Path>Source/InsaneParty/Private/GAS/InsaneAbilitySystemComponent.cpp</Path>
+      <Path>Source/InsaneParty/Public/GAS/InsaneAbilitySystemComponent.h</Path>
     </explicitIncludes>
     <explicitExcludes />
   </component>
