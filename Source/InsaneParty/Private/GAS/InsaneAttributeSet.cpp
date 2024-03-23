@@ -3,12 +3,14 @@
 #include "InsaneParty/Public/GAS/InsaneAttributeSet.h"
 
 #include "GameplayEffectExtension.h"
-#include "InsaneParty/InsanePartyCharacter.h"
+#include "Player/InsanePartyCharacter.h"
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()
 	:Health(100.f)
 	,MaxHealth(100.f)
+	,Medals(0.f)
+	,MaxMedals(8.f)
 {}
 
 void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -17,6 +19,12 @@ void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Healing, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Damage, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Damaging, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Medals, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, MaxMedals, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UInsaneAttributeSet, Keys, COND_None, REPNOTIFY_Always);
 }
 
 void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
@@ -33,61 +41,53 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 {
 	Super::PostGameplayEffectExecute(Data);
 
-	float MinimumValue = 0.0f;
-	
 	FGameplayEffectContextHandle Context = Data.EffectSpec.GetContext();
 	UAbilitySystemComponent* Source = Context.GetOriginalInstigatorAbilitySystemComponent();
 	const FGameplayTagContainer& SourceTags = *Data.EffectSpec.CapturedSourceTags.GetAggregatedTags();
+	FGameplayTagContainer SpecAssetTags;
+	Data.EffectSpec.GetAllAssetTags(SpecAssetTags);
 
-	float DeltaValue = 0;
-	if (Data.EvaluatedData.ModifierOp == EGameplayModOp::Type::Additive)
-	{
-		// If this was additive, store the raw delta value to be passed along later
-		DeltaValue = Data.EvaluatedData.Magnitude;
-	}
-	
+	// Get the Target actor, which should be our owner
+	AActor* TargetActor = nullptr;
+	AController* TargetController = nullptr;
 	AInsanePartyCharacter* TargetCharacter = nullptr;
 	if (Data.Target.AbilityActorInfo.IsValid() && Data.Target.AbilityActorInfo->AvatarActor.IsValid())
 	{
-		// AController* TargetController = nullptr;
-		AActor* TargetActor = nullptr;
 		TargetActor = Data.Target.AbilityActorInfo->AvatarActor.Get();
-		// TargetController = Data.Target.AbilityActorInfo->PlayerController.Get();
+		TargetController = Data.Target.AbilityActorInfo->PlayerController.Get();
 		TargetCharacter = Cast<AInsanePartyCharacter>(TargetActor);
 	}
-	
-	if (Data.EvaluatedData.Attribute == GetHealingAttribute())
-	{
-		// Convert into +Health and then clamp
-		SetHealth(FMath::Clamp(GetHealth() + GetHealing(), MinimumValue, GetMaxHealth()));
-		SetHealing(0.0f);
-	}
-	else if (Data.EvaluatedData.Attribute == GetHealthAttribute())
-	{
-		// Clamp and fall into out of health handling below
-		SetHealth(FMath::Clamp(GetHealth(), MinimumValue, GetMaxHealth()));
-	}
 
-	if (Data.EvaluatedData.Attribute == GetMedalsAttribute())
+	// Get the Source actor
+	AActor* SourceActor = nullptr;
+	AController* SourceController = nullptr;
+	AInsanePartyCharacter* SourceCharacter = nullptr;
+	if (Source && Source->AbilityActorInfo.IsValid() && Source->AbilityActorInfo->AvatarActor.IsValid())
 	{
-		SetMedals(FMath::Clamp(GetMedals(), MinimumValue, GetMaxMedals()));
-	}
-	
-	if (Data.EvaluatedData.Attribute == GetDamagingAttribute())
-	{
-		// Convert into Damage and then clamp
-		SetHealth(FMath::Clamp(GetHealth() + (GetDamaging() > 0 ? GetDamaging() * -1 : GetDamaging()), MinimumValue, GetMaxHealth()));
-		if (GetHealth() <= 0)
+		SourceActor = Source->AbilityActorInfo->AvatarActor.Get();
+		SourceController = Source->AbilityActorInfo->PlayerController.Get();
+		if (SourceController == nullptr && SourceActor != nullptr)
 		{
-			FGameplayTag DeadTag = FGameplayTag::RequestGameplayTag("Gameplay.Status.IsDead");
-			GetOwningAbilitySystemComponent()->AddLooseGameplayTags(DeadTag.GetSingleTagContainer(), 1);
+			if (APawn* Pawn = Cast<APawn>(SourceActor))
+			{
+				SourceController = Pawn->GetController();
+			}
 		}
-		//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("%f"), GetHealth() + (GetDamaging()*-1)));
-		SetDamaging(0.0f);
-	}
-	else if(Data.EvaluatedData.Attribute == GetDamageAttribute())
-	{
-		SetHealth(FMath::Clamp(GetHealth() + (GetDamage() > 0 ? GetDamage() * -1 : GetDamage()), MinimumValue, GetMaxHealth()));
+		
+		// Use the controller to find the source pawn
+		if (SourceController)
+		{
+			SourceCharacter = Cast<AInsanePartyCharacter>(SourceController->GetPawn());
+		}
+		else
+		{
+			SourceCharacter = Cast<AInsanePartyCharacter>(SourceActor);
+		}
+		// Set the causer actor based on context if it's set
+		if (Context.GetEffectCauser())
+		{
+			SourceActor = Context.GetEffectCauser();
+		}
 	}
 	
 }
@@ -102,9 +102,7 @@ void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeDa
 	{
 		// Change current value to maintain the current Val / Max percent
 		const float CurrentValue = AffectedAttribute.GetCurrentValue();
-		const float NewDelta = (CurrentMaxValue > 0.f)
-								   ? (CurrentValue * NewMaxValue / CurrentMaxValue) - CurrentValue
-								   : NewMaxValue;
+		float NewDelta = (CurrentMaxValue > 0.f) ? (CurrentValue * NewMaxValue / CurrentMaxValue) - CurrentValue : NewMaxValue;
 
 		AbilityComp->ApplyModToAttributeUnsafe(AffectedAttributeProperty, EGameplayModOp::Additive, NewDelta);
 	}
@@ -118,6 +116,36 @@ void UInsaneAttributeSet::OnRep_Health(const FGameplayAttributeData& OldValue)
 void UInsaneAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData& OldValue)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, MaxHealth, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_Healing(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Healing, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_Damage(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Damage, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_Damaging(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Damaging, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_Medals(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Medals, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_MaxMedals(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, MaxMedals, OldValue);
+}
+
+void UInsaneAttributeSet::OnRep_Keys(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Keys, OldValue);
 }
 
 

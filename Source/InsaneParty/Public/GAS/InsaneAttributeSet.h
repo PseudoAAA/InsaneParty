@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
 #include "AttributeSet.h"
-#include "InsaneResourcesAttributeSet.h"
 #include "InsaneParty/InsaneParty.h"
 #include "InsaneAttributeSet.generated.h"
 
@@ -17,19 +16,13 @@
 
 
 UCLASS()
-class INSANEPARTY_API UInsaneAttributeSet : public UInsaneResourcesAttributeSet
+class INSANEPARTY_API UInsaneAttributeSet : public UAttributeSet
 {
 	GENERATED_BODY()
 
 
 public:
 	UInsaneAttributeSet();
-	
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Health);
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxHealth)
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Healing)
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Damage)
-	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Damaging)
 	
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
@@ -38,18 +31,35 @@ public:
 	
 	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Health)
 	FGameplayAttributeData Health;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Health);
 	
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing=OnRep_MaxHealth)
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_MaxHealth)
 	FGameplayAttributeData MaxHealth;
-
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes")
-	FGameplayAttributeData Healing;
-
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes")
-	FGameplayAttributeData Damage;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxHealth)
 	
-	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes")
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Healing)
+	FGameplayAttributeData Healing;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Healing)
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Damage)
+	FGameplayAttributeData Damage;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Damage)
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Damaging)
 	FGameplayAttributeData Damaging;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Damaging)
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Medals)
+	FGameplayAttributeData Medals;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Medals);
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_MaxMedals)
+	FGameplayAttributeData MaxMedals;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, MaxMedals);
+	
+	UPROPERTY(BlueprintReadOnly, Category = "InsaneAttributes", ReplicatedUsing = OnRep_Keys)
+	FGameplayAttributeData Keys;
+	ATTRIBUTE_ACCESSORS(UInsaneAttributeSet, Keys);
 	
 	void AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,
 		const FGameplayAttributeData& MaxAttribute, float NewMaxValue,
@@ -60,5 +70,23 @@ public:
 
 	UFUNCTION()
 	virtual void OnRep_MaxHealth(const FGameplayAttributeData& OldValue);
+
+	UFUNCTION()
+	virtual void OnRep_Healing(const FGameplayAttributeData& OldValue);
+
+	UFUNCTION()
+	virtual void OnRep_Damage(const FGameplayAttributeData& OldValue);
+
+	UFUNCTION()
+	virtual void OnRep_Damaging(const FGameplayAttributeData& OldValue);
+	
+	UFUNCTION()
+	virtual void OnRep_Medals(const FGameplayAttributeData& OldValue);
+
+	UFUNCTION()
+	virtual void OnRep_MaxMedals(const FGameplayAttributeData& OldValue);
+
+	UFUNCTION()
+	virtual void OnRep_Keys(const FGameplayAttributeData& OldValue);
 	
 };

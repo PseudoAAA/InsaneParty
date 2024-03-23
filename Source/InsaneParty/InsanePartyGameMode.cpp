@@ -1,5 +1,5 @@
 #include "InsanePartyGameMode.h"
-#include "InsanePartyCharacter.h"
+#include "InsanePartyCharacterBase.h"
 #include "UObject/ConstructorHelpers.h"
 
 AInsanePartyGameMode::AInsanePartyGameMode()
