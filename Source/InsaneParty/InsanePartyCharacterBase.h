@@ -5,12 +5,18 @@
 #include "AbilitySystemInterface.h"
 #include "InsaneParty.h"
 #include "GameFramework/Character.h"
+#include "Engine/LocalPlayer.h"
+#include "GameFramework/Controller.h"
+#include "Player/InsanePlayerState.h"
+
 #include "InsanePartyCharacterBase.generated.h"
 
 class UInputAction;
 struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCharacterDiedDelegate, AInsanePartyCharacterBase*, Character);
+
 
 UCLASS()
 class AInsanePartyCharacterBase : public ACharacter, public IAbilitySystemInterface
@@ -20,63 +26,68 @@ class AInsanePartyCharacterBase : public ACharacter, public IAbilitySystemInterf
 public:
 	AInsanePartyCharacterBase();
 
-	// To add mapping context
-	virtual void BeginPlay() override;
+	
+	
+	UPROPERTY(BlueprintAssignable, Category = "InsaneParty|InsanePartyCharacter")
+	FCharacterDiedDelegate OnCharacterDied;
 	
 	// Implement IAbilitySystemInterface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	
-	
-	UFUNCTION(BlueprintCallable, Category = "InsanePartyCharacter|Attributes")
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
 	float GetHealth() const;
 
-	UFUNCTION(BlueprintCallable, Category = "InsanePartyCharacter|Attributes")
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
 	float GetMaxHealth() const;
 
-	UFUNCTION(BlueprintCallable, Category = "InsanePartyCharacter|Attributes")
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
 	float GetMedals() const;
 
-	UFUNCTION(BlueprintCallable, Category = "InsanePartyCharacter|Attributes")
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
 	float GetMaxMedals() const;
 	
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 	
-	UFUNCTION(BlueprintCallable, Category = "GASDocumentation|GDCharacter")
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter")
 	virtual int32 GetAbilityLevel(EInsaneAbilityInputID AbilityID) const;
 	
 	// Removes all CharacterAbilities. Can only be called by the Server. Removing on the Server will remove from Client too.
 	virtual void RemoveCharacterAbilities();
 
-	UFUNCTION(BlueprintCallable, Category = "InsanePartyCharacter")
-	virtual void IsAlive();
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter")
+	virtual bool IsAlive();
 	virtual void Die();
 	
-	/*UFUNCTION(BlueprintCallable, Category = "InsanePartyCharacter")
-	virtual void FinishDying();*/
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter")
+	virtual void FinishDying();
 	
 protected:
+	
+	// To add mapping context
+	virtual void BeginPlay() override;
 	
 	TWeakObjectPtr<UInsaneAbilitySystemComponent> AbilitySystemComponent;
 	TWeakObjectPtr<UInsaneAttributeSet> AttributeSetBase;
 
-
-
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsanePartyCharacter")
+	FGameplayTag DeadTag;
+	FGameplayTag EffectRemoveOnDeathTag;
+	
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter")
 	FText CharacterName;
 
 	
 	// Default abilities for this Character. These will be removed on Character death and regiven if Character respawns.
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsanePartyCharacter|Abilities")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter|Abilities")
 	TArray<TSubclassOf<UInsaneGameplayAbility>> CharacterAbilities;
 
 	// Default attributes for a character for initializing on spawn/respawn.
 	// This is an instant GE that overrides the values for attributes that get reset on spawn/respawn.
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsanePartyCharacter|Abilities")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter|Abilities")
 	TSubclassOf<UGameplayEffect> DefaultAttributes;
 
 	// These effects are only applied one time on startup
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsanePartyCharacter|Abilities")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter|Abilities")
 	TArray<TSubclassOf<UGameplayEffect>> StartupEffects;
 
 	// Grant abilities on the Server. The Ability Specs will be replicated to the owning client.
@@ -95,7 +106,6 @@ protected:
 	*/
 	
 	virtual void SetHealth(float Health);
-	//virtual void SetMana(float Mana);
 	//virtual void SetStamina(float Stamina);
 };
 

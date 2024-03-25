@@ -3,9 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "InsaneParty/InsanePartyCharacterBase.h"
 #include "InsanePartyCharacter.generated.h"
+
 
 UCLASS()
 class INSANEPARTY_API AInsanePartyCharacter : public AInsanePartyCharacterBase
@@ -63,5 +66,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	
+	virtual void PostInitializeComponents() override;
+
+	// Client only
+	virtual void OnRep_PlayerState() override;
 };

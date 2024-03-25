@@ -4,13 +4,10 @@
 
 #include "GameplayEffectExtension.h"
 #include "Player/InsanePartyCharacter.h"
+#include "Player/InsanePlayerController.h"
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()
-	:Health(100.f)
-	,MaxHealth(100.f)
-	,Medals(0.f)
-	,MaxMedals(8.f)
 {}
 
 void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -35,33 +32,34 @@ void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute
 	{
 		AdjustAttributeForMaxChange(Health, MaxHealth, NewValue, GetHealthAttribute());
 	}
+	
 }
 
 void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
-
+	
 	FGameplayEffectContextHandle Context = Data.EffectSpec.GetContext();
 	UAbilitySystemComponent* Source = Context.GetOriginalInstigatorAbilitySystemComponent();
 	const FGameplayTagContainer& SourceTags = *Data.EffectSpec.CapturedSourceTags.GetAggregatedTags();
 	FGameplayTagContainer SpecAssetTags;
 	Data.EffectSpec.GetAllAssetTags(SpecAssetTags);
 
-	// Get the Target actor, which should be our owner
+	//Get the Target actor, which should be our owner
 	AActor* TargetActor = nullptr;
 	AController* TargetController = nullptr;
-	AInsanePartyCharacter* TargetCharacter = nullptr;
+	AInsanePartyCharacterBase* TargetCharacter = nullptr;
 	if (Data.Target.AbilityActorInfo.IsValid() && Data.Target.AbilityActorInfo->AvatarActor.IsValid())
 	{
 		TargetActor = Data.Target.AbilityActorInfo->AvatarActor.Get();
 		TargetController = Data.Target.AbilityActorInfo->PlayerController.Get();
-		TargetCharacter = Cast<AInsanePartyCharacter>(TargetActor);
+		TargetCharacter = Cast<AInsanePartyCharacterBase>(TargetActor);
 	}
 
 	// Get the Source actor
 	AActor* SourceActor = nullptr;
 	AController* SourceController = nullptr;
-	AInsanePartyCharacter* SourceCharacter = nullptr;
+	AInsanePartyCharacterBase* SourceCharacter = nullptr;
 	if (Source && Source->AbilityActorInfo.IsValid() && Source->AbilityActorInfo->AvatarActor.IsValid())
 	{
 		SourceActor = Source->AbilityActorInfo->AvatarActor.Get();
@@ -77,11 +75,11 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 		// Use the controller to find the source pawn
 		if (SourceController)
 		{
-			SourceCharacter = Cast<AInsanePartyCharacter>(SourceController->GetPawn());
+			SourceCharacter = Cast<AInsanePartyCharacterBase>(SourceController->GetPawn());
 		}
 		else
 		{
-			SourceCharacter = Cast<AInsanePartyCharacter>(SourceActor);
+			SourceCharacter = Cast<AInsanePartyCharacterBase>(SourceActor);
 		}
 		// Set the causer actor based on context if it's set
 		if (Context.GetEffectCauser())
@@ -89,6 +87,74 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 			SourceActor = Context.GetEffectCauser();
 		}
 	}
+	UE_LOG(LogTemp, Log, TEXT("Attribute is %s"), *Data.EvaluatedData.Attribute.GetName());
+	if (Data.EvaluatedData.Attribute == GetDamageAttribute())
+		{
+		SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
+			// Try to extract a hit result
+			FHitResult HitResult;
+			if (Context.GetHitResult())
+			{
+				HitResult = *Context.GetHitResult();
+			}
+	
+			// Store a local copy of the amount of damage done and clear the damage attribute
+			const float LocalDamageDone = GetDamage();
+			SetDamage(0.f);
+		
+			if (LocalDamageDone > 0.0f)
+			{
+				// If character was alive before damage is added, handle damage
+				// This prevents damage being added to dead things and replaying death animations
+				bool WasAlive = true;
+	
+				if (TargetCharacter)
+				{
+					WasAlive = TargetCharacter->IsAlive();
+				}
+	
+				if (!TargetCharacter->IsAlive())
+				{
+					UE_LOG(LogTemp, Warning, TEXT("%s() %s is NOT alive when receiving damage"), TEXT(__FUNCTION__), *TargetCharacter->GetName());
+				}
+	
+				// Apply the health change and then clamp it
+				const float NewHealth = GetHealth() - LocalDamageDone;
+				SetHealth(FMath::Clamp(NewHealth, 0.0f, GetMaxHealth()));
+	
+				if (TargetCharacter && WasAlive)
+				{
+					// This is the log statement for damage received. Turned off for live games.
+					//UE_LOG(LogTemp, Log, TEXT("%s() %s Damage Received: %f"), TEXT(__FUNCTION__), *GetOwningActor()->GetName(), LocalDamageDone);
+	
+					// Play HitReact animation and sound with a multicast RPC.
+					const FHitResult* Hit = Data.EffectSpec.GetContext().GetHitResult();
+	
+					// Show damage number for the Source player unless it was self damage
+					if (SourceActor != TargetActor)
+					{
+						AInsanePlayerController* PC = Cast<AInsanePlayerController>(SourceController);
+						if (PC)
+						{
+							
+							UE_LOG(LogTemp, Log, TEXT("%s() %s Damage Received: %f"), TEXT(__FUNCTION__), *GetOwningActor()->GetName(), LocalDamageDone);
+							//PC->ShowDamageNumber(LocalDamageDone, TargetCharacter);
+						}
+					}
+				}	
+			}
+		}// Damage
+		else if (Data.EvaluatedData.Attribute == GetHealingAttribute())
+		{
+			// Convert into +Health and then clamp
+			SetHealth(FMath::Clamp(GetHealth() + GetHealing(), 0.0f, GetMaxHealth()));
+			SetHealing(0.0f);
+		}
+		else if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+		{
+			// Clamp and fall into out of health handling below
+			SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
+		}
 	
 }
 
