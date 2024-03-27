@@ -4,7 +4,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
-DEFINE_LOG_CATEGORY(LogTemplateCharacter);
+DEFINE_LOG_CATEGORY(LogInsaneCharacter);
 
 /**
  * The base class of character.
@@ -37,8 +37,8 @@ AInsanePartyCharacterBase::AInsanePartyCharacterBase()
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
-	DeadTag = FGameplayTag::RequestGameplayTag("Gameplay.Status.IsDead");
-	EffectRemoveOnDeathTag = FGameplayTag::RequestGameplayTag(FName("Gameplay.Status.RemoveOnDeath"));
+	DeadTag = FGameplayTag::RequestGameplayTag("GameplayStatus.IsDead");
+	EffectRemoveOnDeathTag = FGameplayTag::RequestGameplayTag(FName("GameplayStatus.RemoveOnDeath"));
 	
 }
 
@@ -82,6 +82,16 @@ float AInsanePartyCharacterBase::GetMedals() const
 float AInsanePartyCharacterBase::GetMaxMedals() const
 {
 	return AttributeSetBase.IsValid() ? AttributeSetBase->GetMaxMedals() : 0.0f;
+}
+
+void AInsanePartyCharacterBase::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+}
+
+void AInsanePartyCharacterBase::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
 }
 
 int32 AInsanePartyCharacterBase::GetAbilityLevel(EInsaneAbilityInputID AbilityID) const

@@ -7,14 +7,14 @@
 #include "GameFramework/Character.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/Controller.h"
-#include "Player/InsanePlayerState.h"
+#include "InsanePlayerState.h"
 
 #include "InsanePartyCharacterBase.generated.h"
 
 class UInputAction;
 struct FInputActionValue;
 
-DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogInsaneCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCharacterDiedDelegate, AInsanePartyCharacterBase*, Character);
 
 

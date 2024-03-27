@@ -9,8 +9,8 @@
 
 
 #include "InsaneParty/InsaneData.h"
-#include "Public\GAS\InsaneAbilitySystemComponent.h"
-#include "InsaneParty/Public/GAS/InsaneGameplayAbility.h"
-#include "InsaneParty/Public/GAS/InsaneAttributeSet.h"
+#include "InsaneAbilitySystemComponent.h"
+#include "InsaneGameplayAbility.h"
+#include "InsaneAttributeSet.h"
 
 INSANEPARTY_API DECLARE_LOG_CATEGORY_EXTERN(InsanePartyLog, Log, All);

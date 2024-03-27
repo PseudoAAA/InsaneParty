@@ -6,7 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "InsaneParty/InsanePartyCharacterBase.h"
+#include "InsanePartyCharacterBase.h"
 #include "InsanePartyCharacter.generated.h"
 
 
@@ -47,6 +47,8 @@ public:
 	AInsanePartyCharacter();
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	virtual void PossessedBy(AController* NewController) override;
 	
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);

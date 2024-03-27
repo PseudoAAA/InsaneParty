@@ -1,10 +1,10 @@
 // 2024, Pseudo / Ageev Daniil. All rights reserved ©
 
-#include "InsaneParty/Public/GAS/InsaneAttributeSet.h"
+#include "InsaneAttributeSet.h"
 
 #include "GameplayEffectExtension.h"
-#include "Player/InsanePartyCharacter.h"
-#include "Player/InsanePlayerController.h"
+#include "InsanePartyCharacter.h"
+#include "InsanePlayerController.h"
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()
@@ -32,7 +32,10 @@ void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute
 	{
 		AdjustAttributeForMaxChange(Health, MaxHealth, NewValue, GetHealthAttribute());
 	}
-	
+	/*else if (Attribute == GetMaxMedalsAttribute())
+	{
+		AdjustAttributeForMaxChange(Medals, MaxMedals, NewValue, GetMedalsAttribute());
+	}*/
 }
 
 void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
@@ -125,11 +128,9 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 				if (TargetCharacter && WasAlive)
 				{
 					// This is the log statement for damage received. Turned off for live games.
-					//UE_LOG(LogTemp, Log, TEXT("%s() %s Damage Received: %f"), TEXT(__FUNCTION__), *GetOwningActor()->GetName(), LocalDamageDone);
-	
-					// Play HitReact animation and sound with a multicast RPC.
+					UE_LOG(LogTemp, Log, TEXT("%s() %s Damage Received: %f"), TEXT(__FUNCTION__), *GetOwningActor()->GetName(), LocalDamageDone);
 					const FHitResult* Hit = Data.EffectSpec.GetContext().GetHitResult();
-	
+					
 					// Show damage number for the Source player unless it was self damage
 					if (SourceActor != TargetActor)
 					{
@@ -143,17 +144,23 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 					}
 				}	
 			}
-		}// Damage
+		}
 		else if (Data.EvaluatedData.Attribute == GetHealingAttribute())
 		{
-			// Convert into +Health and then clamp
 			SetHealth(FMath::Clamp(GetHealth() + GetHealing(), 0.0f, GetMaxHealth()));
 			SetHealing(0.0f);
 		}
 		else if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 		{
-			// Clamp and fall into out of health handling below
 			SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
+		}
+		else if(Data.EvaluatedData.Attribute == GetMedalsAttribute())
+		{
+			SetMedals(FMath::Clamp(GetMedals(), 0.0f, GetMaxMedals()));
+		}
+		else if(Data.EvaluatedData.Attribute == GetKeysAttribute())
+		{
+			SetKeys(GetKeys());
 		}
 	
 }
