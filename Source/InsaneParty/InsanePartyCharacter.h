@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "InsaneInventorySystemComponent.h"
 #include "InsanePartyCharacterBase.h"
 #include "InsanePartyCharacter.generated.h"
 
@@ -42,7 +43,7 @@ class INSANEPARTY_API AInsanePartyCharacter : public AInsanePartyCharacterBase
 	/** Interact Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* InteractAction;
-	
+
 public:
 	AInsanePartyCharacter();
 
@@ -54,14 +55,16 @@ public:
 	void Move(const FInputActionValue& Value);
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-	/** Called for interacting input */
-	void Interact(const FInputActionValue& Value);
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerInteract(AActor* AnActor);
+
+	void Interact();
 	
 	/** Returns CameraBoom subobject **/
 	class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-
 
 	
 protected:

@@ -4,8 +4,6 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
-DEFINE_LOG_CATEGORY(LogInsaneCharacter);
-
 /**
  * The base class of character.
  * Everything with an AbilitySystemComponent in this game will inherit from this class.
@@ -53,6 +51,7 @@ UAbilitySystemComponent* AInsanePartyCharacterBase::GetAbilitySystemComponent() 
 {
 	return AbilitySystemComponent.Get();
 }
+
 
 float AInsanePartyCharacterBase::GetHealth() const
 {

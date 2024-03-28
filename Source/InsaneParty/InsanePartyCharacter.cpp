@@ -133,7 +133,7 @@ void AInsanePartyCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void AInsanePartyCharacter::Interact(const FInputActionValue& Value)
+void AInsanePartyCharacter::Interact()
 {
 	if (Controller != nullptr)
 	{
@@ -157,12 +157,22 @@ void AInsanePartyCharacter::Interact(const FInputActionValue& Value)
 					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Normal Point: %s"), *OutHit.ImpactNormal.ToString()));
 					if (OutHit.GetActor()->Implements<UInteractInterface>())
 					{
-						IInteractInterface::Execute_Interact(OutHit.GetActor(), this);
+						ServerInteract(OutHit.GetActor());
 					}
 				}
 			}
 		}
 	}
+}
+
+void AInsanePartyCharacter::ServerInteract_Implementation(AActor* AnActor)
+{
+	IInteractInterface::Execute_Interact(AnActor, this);
+}
+
+bool AInsanePartyCharacter::ServerInteract_Validate(AActor* AnActor)
+{
+	return true;
 }
 
 void AInsanePartyCharacter::OnRep_PlayerState()

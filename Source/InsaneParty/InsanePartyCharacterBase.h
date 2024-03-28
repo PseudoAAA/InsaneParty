@@ -14,7 +14,6 @@
 class UInputAction;
 struct FInputActionValue;
 
-DECLARE_LOG_CATEGORY_EXTERN(LogInsaneCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCharacterDiedDelegate, AInsanePartyCharacterBase*, Character);
 
 
@@ -30,9 +29,9 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, Category = "InsaneParty|InsanePartyCharacter")
 	FCharacterDiedDelegate OnCharacterDied;
-	
 	// Implement IAbilitySystemInterface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	//UInsaneInventorySystemComponent* GetInventorySystemComponent() const;
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
 	float GetHealth() const;

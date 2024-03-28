@@ -3,7 +3,10 @@
 #pragma once
 
 #include "Abilities/GameplayAbility.h"
+#include "Engine/StaticMesh.h"
 #include "InsaneData.generated.h"
+
+class AInsaneWeaponBase;
 
 UENUM(BlueprintType)
 enum class EInsaneAbilityInputID : uint8
@@ -16,14 +19,18 @@ enum class EInsaneAbilityInputID : uint8
 	Cancel			UMETA(DisplayName = "Cancel"),
 };
 
+
 USTRUCT(BlueprintType)
 struct FWeapon
 {
 	GENERATED_BODY()
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InsaneParty|WeaponStruct")
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName WeaponName;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InsaneParty|WeaponStruct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayAbility> Ability;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AInsaneWeaponBase> Weapon;
 };
+

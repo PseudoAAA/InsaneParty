@@ -14,3 +14,5 @@
 #include "InsaneAttributeSet.h"
 
 INSANEPARTY_API DECLARE_LOG_CATEGORY_EXTERN(InsanePartyLog, Log, All);
+INSANEPARTY_API DECLARE_LOG_CATEGORY_EXTERN(LogInsaneCharacter, Log, All);
+INSANEPARTY_API DECLARE_LOG_CATEGORY_EXTERN(LogInsaneInventory, Log, All);
