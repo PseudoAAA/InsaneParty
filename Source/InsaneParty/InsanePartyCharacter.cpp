@@ -11,7 +11,6 @@ AInsanePartyCharacter::AInsanePartyCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
@@ -61,7 +60,6 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	{
 		UE_LOG(LogInsaneCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
-
 }
 
 void AInsanePartyCharacter::PossessedBy(AController* NewController)
@@ -139,22 +137,34 @@ void AInsanePartyCharacter::Interact()
 	{
 		FHitResult OutHit;
 		FVector Start = GetFollowCamera()->GetComponentLocation();
-
 		FVector ForwardVector = FollowCamera->GetForwardVector();
-		FVector End = ((ForwardVector * 1000.f) + Start);
-		FCollisionQueryParams CollisionParams;
+		FVector End = ((ForwardVector * 700.f) + Start);
 
-		DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
+		TArray<AActor*> IgnoredActors;
+		IgnoredActors.Add(this);
+		
+		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldDynamic));
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldStatic));
 
-		if(GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams )) 
-		{
+
+#if UE_BUILD_DEBUG
+		EDrawDebugTrace::Type TraceVisibility = EDrawDebugTrace::ForDuration;
+#else
+		EDrawDebugTrace::Type TraceVisibility = EDrawDebugTrace::None;
+#endif
+		
+		if(UKismetSystemLibrary::SphereTraceSingleForObjects(
+			GetWorld(), Start, End, 5.0f,
+			ObjectTypes, false, IgnoredActors,
+			TraceVisibility,
+			OutHit,true,
+			FColor::FromHex("D49AFFFF"), FColor::FromHex("FFFFFFFF"))
+			){
 			if(OutHit.bBlockingHit)
 			{
 				if (GEngine) {
-
-					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
-					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Impact Point: %s"), *OutHit.ImpactPoint.ToString()));
-					//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Normal Point: %s"), *OutHit.ImpactNormal.ToString()));
 					if (OutHit.GetActor()->Implements<UInteractInterface>())
 					{
 						ServerInteract(OutHit.GetActor());

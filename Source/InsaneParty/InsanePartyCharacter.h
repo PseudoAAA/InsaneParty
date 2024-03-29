@@ -6,7 +6,6 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "InsaneInventorySystemComponent.h"
 #include "InsanePartyCharacterBase.h"
 #include "InsanePartyCharacter.generated.h"
 

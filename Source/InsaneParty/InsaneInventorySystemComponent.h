@@ -38,6 +38,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	bool AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd);
+
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	void ActivateWeaponInSlot();
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

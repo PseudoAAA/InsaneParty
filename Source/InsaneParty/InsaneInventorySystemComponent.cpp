@@ -64,6 +64,11 @@ bool UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryD
 	return false;
 }
 
+void UInsaneInventorySystemComponent::ActivateWeaponInSlot()
+{
+	
+}
+
 // Called when the game starts
 void UInsaneInventorySystemComponent::BeginPlay()
 {
