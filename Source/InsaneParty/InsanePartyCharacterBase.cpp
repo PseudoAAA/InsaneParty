@@ -8,7 +8,7 @@
  * The base class of character.
  * Everything with an AbilitySystemComponent in this game will inherit from this class.
 */
-AInsanePartyCharacterBase::AInsanePartyCharacterBase()
+AInsanePartyCharacterBase::AInsanePartyCharacterBase(const class FObjectInitializer& ObjectInitializer)
 {
 	PrimaryActorTick.bCanEverTick = false;
 	

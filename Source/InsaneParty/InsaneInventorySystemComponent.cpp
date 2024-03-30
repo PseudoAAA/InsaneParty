@@ -3,14 +3,17 @@
 
 #include "InsaneInventorySystemComponent.h"
 
-
-
 // Sets default values for this component's properties
 UInsaneInventorySystemComponent::UInsaneInventorySystemComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	
 	InventoryWeaponData.SetNum(InventorySize);
+}
+
+void UInsaneInventorySystemComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 }
 
 TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(const int32 SlotIndex)
@@ -22,6 +25,15 @@ TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(c
 		return nullptr;
 	}
 	return InventoryWeaponData[SlotIndex]->WeaponData.Weapon;
+}
+
+UInsaneWeaponPrimaryDataAsset* UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const int32 SlotIndex)
+{
+	if(IsValidWeaponDataInSlot(SlotIndex))
+	{
+		return InventoryWeaponData[SlotIndex];
+	}
+	return nullptr;
 }
 
 int32 UInsaneInventorySystemComponent::GetFirstEmptySlot()
@@ -40,6 +52,11 @@ int32 UInsaneInventorySystemComponent::GetFirstEmptySlot()
 	return IncorrectSlotIndex;
 }
 
+bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int32 SlotIndex)
+{
+	return InventoryWeaponData[SlotIndex] != nullptr;
+}
+
 int32 UInsaneInventorySystemComponent::GetInventorySize() const	
 {
 	return this->InventoryWeaponData.Max();
@@ -51,17 +68,15 @@ bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAss
 	return WeaponToCheck == nullptr ? false : !InventoryWeaponData.Contains(WeaponToCheck);
 }
 
-bool UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd)
+void UInsaneInventorySystemComponent::AddWeaponToInventory_Implementation(UInsaneWeaponPrimaryDataAsset* WeaponToAdd)
 {
 	int32 EmptySlot = GetFirstEmptySlot();
 	if(EmptySlot != IncorrectSlotIndex && IsUniqueWeapon(WeaponToAdd) && InventoryWeaponData[EmptySlot] == nullptr)
 	{
 		InventoryWeaponData[EmptySlot] = WeaponToAdd;
 		UE_LOG(LogInsaneInventory, Warning, TEXT("Weapon was added to inventory. Weapon name: %s"), *InventoryWeaponData[EmptySlot]->WeaponData.WeaponName.ToString());
-		return true;
 	}
 	UE_LOG(LogInsaneInventory, Warning, TEXT("Can't add weapon to inventory. Incorrect slot index"));
-	return false;
 }
 
 void UInsaneInventorySystemComponent::ActivateWeaponInSlot()

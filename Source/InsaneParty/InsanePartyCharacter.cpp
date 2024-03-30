@@ -7,7 +7,7 @@
 
 
 // Sets default values
-AInsanePartyCharacter::AInsanePartyCharacter()
+AInsanePartyCharacter::AInsanePartyCharacter(const class FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -168,6 +168,7 @@ void AInsanePartyCharacter::Interact()
 					if (OutHit.GetActor()->Implements<UInteractInterface>())
 					{
 						ServerInteract(OutHit.GetActor());
+						//IInteractInterface::Execute_Interact(OutHit.GetActor(), this);
 					}
 				}
 			}

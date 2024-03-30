@@ -23,12 +23,13 @@ class AInsanePartyCharacterBase : public ACharacter, public IAbilitySystemInterf
 	GENERATED_BODY()
 
 public:
-	AInsanePartyCharacterBase();
+	AInsanePartyCharacterBase(const class FObjectInitializer& ObjectInitializer);
 
 	
 	
 	UPROPERTY(BlueprintAssignable, Category = "InsaneParty|InsanePartyCharacter")
 	FCharacterDiedDelegate OnCharacterDied;
+	
 	// Implement IAbilitySystemInterface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	//UInsaneInventorySystemComponent* GetInventorySystemComponent() const;

@@ -32,5 +32,7 @@ public:
 	TSubclassOf<UGameplayAbility> Ability;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AInsaneWeaponBase> Weapon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D* Thumbnail;
 };
 

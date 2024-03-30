@@ -44,7 +44,7 @@ class INSANEPARTY_API AInsanePartyCharacter : public AInsanePartyCharacterBase
 	UInputAction* InteractAction;
 
 public:
-	AInsanePartyCharacter();
+	AInsanePartyCharacter(const class FObjectInitializer& ObjectInitializer);
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -57,7 +57,8 @@ public:
 
 	UFUNCTION(Server, Reliable, WithValidation)
 	void ServerInteract(AActor* AnActor);
-
+	
+	UFUNCTION(BlueprintCallable)
 	void Interact();
 	
 	/** Returns CameraBoom subobject **/
