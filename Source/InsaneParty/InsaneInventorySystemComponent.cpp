@@ -24,12 +24,14 @@ void UInsaneInventorySystemComponent::BeginPlay()
 void UInsaneInventorySystemComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	
 }
 
 
 void UInsaneInventorySystemComponent::SetActiveSlotIndex(const int SlotIndex)
 {
-	this->ActiveSlotIndex = SlotIndex;
+	ActiveSlotIndex = SlotIndex;
+	OnActiveSlotIndexChanged.Broadcast(ActiveSlotIndex);
 }
 
 void UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd)
@@ -53,7 +55,7 @@ void UInsaneInventorySystemComponent::ActivateWeaponInSlot()
 
 bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int SlotIndex)
 {
-	return this->InventoryWeaponData[SlotIndex] != nullptr;
+	return SlotIndex != IncorrectSlotIndex; 
 }
 
 bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAsset* WeaponToCheck)
@@ -81,12 +83,12 @@ int UInsaneInventorySystemComponent::GetFirstEmptySlot()
 
 int UInsaneInventorySystemComponent::GetActiveSlotIndex()
 {
-	return this->ActiveSlotIndex;
+	return ActiveSlotIndex;
 }
 
 int UInsaneInventorySystemComponent::GetInventorySize() const	
 {
-	return this->InventoryWeaponData.Max();
+	return InventoryWeaponData.Max();
 }
 
 TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(const int SlotIndex)
@@ -97,16 +99,19 @@ TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(c
 		UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), SlotIndex);
 		return nullptr;
 	}
-	return this->InventoryWeaponData[SlotIndex]->WeaponData.Weapon;
+	return InventoryWeaponData[SlotIndex]->WeaponData.Weapon;
 }
 
 UInsaneWeaponPrimaryDataAsset* UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const int SlotIndex)
 {
 	if(IsValidWeaponDataInSlot(SlotIndex))
 	{
-		return this->InventoryWeaponData[SlotIndex];
+		return InventoryWeaponData[SlotIndex];
 	}
-	return nullptr;
+	else
+	{
+		return nullptr;
+	}
 }
 
 

@@ -28,10 +28,16 @@ struct FWeapon
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName WeaponName;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayAbility> Ability;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AInsaneWeaponBase> Weapon;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bCanAutoFire = false;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Thumbnail;
 };
