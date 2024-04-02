@@ -7,5 +7,5 @@ IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, InsaneParty, "InsaneParty
 
 /** Logging definitions */
 DEFINE_LOG_CATEGORY(InsanePartyLog);
-DEFINE_LOG_CATEGORY(LogInsaneCharacter);
-DEFINE_LOG_CATEGORY(LogInsaneInventory);
+DEFINE_LOG_CATEGORY(InsaneCharacterLog);
+DEFINE_LOG_CATEGORY(InsaneInventoryLog);

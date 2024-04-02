@@ -183,7 +183,7 @@ void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeDa
 
 void UInsaneAttributeSet::OnRep_Health(const FGameplayAttributeData& OldValue)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Health has changed to: %f"), Health.GetCurrentValue());
+	//UE_LOG(LogTemp, Warning, TEXT("Health has changed to: %f"), Health.GetCurrentValue());
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Health, OldValue);
 }
 
@@ -219,7 +219,7 @@ void UInsaneAttributeSet::OnRep_MaxMedals(const FGameplayAttributeData& OldValue
 
 void UInsaneAttributeSet::OnRep_Keys(const FGameplayAttributeData& OldValue)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Keys has changed to: %f"), Keys.GetCurrentValue());
+	//UE_LOG(LogTemp, Warning, TEXT("Keys has changed to: %f"), Keys.GetCurrentValue());
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UInsaneAttributeSet, Keys, OldValue);
 }
 

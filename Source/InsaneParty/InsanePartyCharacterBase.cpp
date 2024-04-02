@@ -131,7 +131,10 @@ bool AInsanePartyCharacterBase::IsAlive()
 
 void AInsanePartyCharacterBase::Die()
 {
-	// Only runs on Server
+	AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
+	OnCharacterDied.Broadcast(this);
+	
+	/*// Only runs on Server
 	RemoveCharacterAbilities();
 
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -157,7 +160,7 @@ void AInsanePartyCharacterBase::Die()
 	else
 	{
 		FinishDying();
-	}*/
+	}#1#*/
 }
 
 void AInsanePartyCharacterBase::FinishDying()
