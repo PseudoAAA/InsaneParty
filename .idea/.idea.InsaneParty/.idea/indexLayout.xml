@@ -4,8 +4,37 @@
     <attachedFolders />
     <explicitIncludes>
       <Path>Config/DefaultGameplayTags.ini</Path>
+      <Path>Source/InsaneParty/InsaneAbilitySystemComponent.cpp</Path>
+      <Path>Source/InsaneParty/InsaneAbilitySystemComponent.h</Path>
+      <Path>Source/InsaneParty/InsaneAssetManager.cpp</Path>
+      <Path>Source/InsaneParty/InsaneAssetManager.h</Path>
+      <Path>Source/InsaneParty/InsaneAttributeSet.cpp</Path>
+      <Path>Source/InsaneParty/InsaneAttributeSet.h</Path>
+      <Path>Source/InsaneParty/InsaneData.h</Path>
+      <Path>Source/InsaneParty/InsaneGameplayAbility.cpp</Path>
+      <Path>Source/InsaneParty/InsaneGameplayAbility.h</Path>
+      <Path>Source/InsaneParty/InsaneGameplayTags.cpp</Path>
+      <Path>Source/InsaneParty/InsaneGameplayTags.h</Path>
+      <Path>Source/InsaneParty/InsaneInventorySystemComponent.cpp</Path>
+      <Path>Source/InsaneParty/InsaneInventorySystemComponent.h</Path>
+      <Path>Source/InsaneParty/InsaneParty.cpp</Path>
+      <Path>Source/InsaneParty/InsaneParty.h</Path>
       <Path>Source/InsaneParty/InsanePartyCharacter.cpp</Path>
       <Path>Source/InsaneParty/InsanePartyCharacter.h</Path>
+      <Path>Source/InsaneParty/InsanePartyCharacterBase.cpp</Path>
+      <Path>Source/InsaneParty/InsanePartyCharacterBase.h</Path>
+      <Path>Source/InsaneParty/InsanePartyGameMode.cpp</Path>
+      <Path>Source/InsaneParty/InsanePartyGameMode.h</Path>
+      <Path>Source/InsaneParty/InsanePlayerController.cpp</Path>
+      <Path>Source/InsaneParty/InsanePlayerController.h</Path>
+      <Path>Source/InsaneParty/InsanePlayerState.cpp</Path>
+      <Path>Source/InsaneParty/InsanePlayerState.h</Path>
+      <Path>Source/InsaneParty/InsaneWeaponBase.cpp</Path>
+      <Path>Source/InsaneParty/InsaneWeaponBase.h</Path>
+      <Path>Source/InsaneParty/InsaneWeaponPrimaryDataAsset.cpp</Path>
+      <Path>Source/InsaneParty/InsaneWeaponPrimaryDataAsset.h</Path>
+      <Path>Source/InsaneParty/InteractInterface.cpp</Path>
+      <Path>Source/InsaneParty/InteractInterface.h</Path>
       <Path>Source/InsaneParty/Private/GAS/InsaneAbilitySystemComponent.cpp</Path>
       <Path>Source/InsaneParty/Public/GAS/InsaneAbilitySystemComponent.h</Path>
     </explicitIncludes>
