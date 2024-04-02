@@ -7,9 +7,6 @@
 #include "Components/ActorComponent.h"
 #include "InsaneInventorySystemComponent.generated.h"
 
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FActiveSlotIndexChanged, int, ActiveSlotIndex);
-
 UCLASS()
 class INSANEPARTY_API UInsaneInventorySystemComponent : public UActorComponent
 {
@@ -25,12 +22,10 @@ public:
 
 	const uint8 InventorySize = 3;
 	const int IncorrectSlotIndex = -1;
+	UPROPERTY(Replicated)
 	int ActiveSlotIndex = -1;
-
-	UPROPERTY(BlueprintAssignable, Category = "GASDocumentation|GDCharacter")
-	FActiveSlotIndexChanged OnActiveSlotIndexChanged;
 	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	TArray<UInsaneWeaponPrimaryDataAsset*> InventoryWeaponData;
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
@@ -63,5 +58,4 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	UInsaneWeaponPrimaryDataAsset* GetWeaponDataFromInventory(const int SlotIndex);
 
-	
 };

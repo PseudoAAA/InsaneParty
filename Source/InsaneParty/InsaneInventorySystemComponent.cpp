@@ -25,13 +25,14 @@ void UInsaneInventorySystemComponent::GetLifetimeReplicatedProps(TArray<FLifetim
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	
+	DOREPLIFETIME(UInsaneInventorySystemComponent, ActiveSlotIndex);
+	DOREPLIFETIME(UInsaneInventorySystemComponent, InventoryWeaponData);
 }
 
 
 void UInsaneInventorySystemComponent::SetActiveSlotIndex(const int SlotIndex)
 {
 	ActiveSlotIndex = SlotIndex;
-	OnActiveSlotIndexChanged.Broadcast(ActiveSlotIndex);
 }
 
 void UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd)
@@ -55,7 +56,18 @@ void UInsaneInventorySystemComponent::ActivateWeaponInSlot()
 
 bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int SlotIndex)
 {
-	return SlotIndex != IncorrectSlotIndex; 
+	if(SlotIndex == IncorrectSlotIndex)
+	{
+		return false;
+	}
+	if(InventoryWeaponData[SlotIndex] == nullptr)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 
 bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAsset* WeaponToCheck)
@@ -113,5 +125,6 @@ UInsaneWeaponPrimaryDataAsset* UInsaneInventorySystemComponent::GetWeaponDataFro
 		return nullptr;
 	}
 }
+
 
 
