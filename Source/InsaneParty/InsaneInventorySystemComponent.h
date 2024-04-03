@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "InsaneWeaponPrimaryDataAsset.h"
+#include "InsaneWeaponBase.h"
 #include "Components/ActorComponent.h"
 #include "InsaneInventorySystemComponent.generated.h"
 
@@ -51,6 +52,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	int GetInventorySize() const;
+
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	void DespawnAttachedActor(AActor* Actor, int ActiveSlotIndexToCheckWeapon);
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	TSubclassOf<AInsaneWeaponBase> GetWeaponClass(const int SlotIndex);
@@ -58,4 +62,5 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	UInsaneWeaponPrimaryDataAsset* GetWeaponDataFromInventory(const int SlotIndex);
 
+	
 };

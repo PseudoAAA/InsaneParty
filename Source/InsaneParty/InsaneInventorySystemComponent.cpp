@@ -38,6 +38,7 @@ void UInsaneInventorySystemComponent::SetActiveSlotIndex(const int SlotIndex)
 void UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd)
 {
 	int EmptySlot = GetFirstEmptySlot();
+	UE_LOG(InsaneInventoryLog, Warning, TEXT("First empty slot %d"), EmptySlot);
 	if(EmptySlot != IncorrectSlotIndex && IsUniqueWeapon(WeaponToAdd) && InventoryWeaponData[EmptySlot] == nullptr)
 	{
 		InventoryWeaponData[EmptySlot] = WeaponToAdd;
@@ -72,8 +73,17 @@ bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int SlotInde
 
 bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAsset* WeaponToCheck)
 {
-	UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
-	return WeaponToCheck == nullptr ? false : !InventoryWeaponData.Contains(WeaponToCheck);
+	if(InventoryWeaponData.Contains(WeaponToCheck))
+	{
+		UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
+		return false;
+	}
+	else
+	{
+		UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
+		return true;
+	}
+	//return WeaponToCheck == nullptr ? false : InventoryWeaponData.Contains(WeaponToCheck);
 }
 
 
@@ -103,6 +113,26 @@ int UInsaneInventorySystemComponent::GetInventorySize() const
 	return InventoryWeaponData.Max();
 }
 
+void UInsaneInventorySystemComponent::DespawnAttachedActor(AActor* Actor, int ActiveSlotIndexToCheckWeapon)
+{
+	TArray<AActor*> AttachedActors;
+	Actor->GetAttachedActors(AttachedActors);
+	TSubclassOf<AInsaneWeaponBase> Weapon = GetWeaponClass(ActiveSlotIndexToCheckWeapon);
+
+	if(Weapon != nullptr)
+	{
+		for(auto ActorA : AttachedActors)
+		{
+			if (UKismetMathLibrary::ClassIsChildOf(Weapon,ActorA->GetClass()) )
+			{
+				ActiveSlotIndex = IncorrectSlotIndex;
+				ActorA->SetLifeSpan(0.01f);
+				break;
+			}
+		}
+	}
+}
+
 TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(const int SlotIndex)
 { 
 	//UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), InventoryWeaponData[SlotIndex] == nullptr);
@@ -125,6 +155,8 @@ UInsaneWeaponPrimaryDataAsset* UInsaneInventorySystemComponent::GetWeaponDataFro
 		return nullptr;
 	}
 }
+
+
 
 
 

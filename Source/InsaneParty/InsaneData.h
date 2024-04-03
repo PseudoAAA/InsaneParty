@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "InsaneGameplayTags.h"
 #include "Abilities/GameplayAbility.h"
 #include "Engine/StaticMesh.h"
 #include "InsaneData.generated.h"
@@ -37,6 +38,12 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bCanAutoFire = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayEffect> SingleFireModeEffect;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayEffect> FullAutoFireModeEffect;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Thumbnail;

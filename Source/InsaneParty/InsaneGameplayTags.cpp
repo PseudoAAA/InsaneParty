@@ -22,5 +22,9 @@ namespace InsaneGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_Slot1, "Inventory.Slot1", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_Slot2, "Inventory.Slot2", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_Slot3, "Inventory.Slot3", "")
+
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_None, "Weapon.FireMode.None", "")
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_Single, "Weapon.FireMode.Single", "")
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_FullAuto, "Weapon.FireMode.FullAuto", "")
 }
 
