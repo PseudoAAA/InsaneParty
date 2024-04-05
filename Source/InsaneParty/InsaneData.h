@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "InsaneGameplayTags.h"
 #include "Abilities/GameplayAbility.h"
 #include "Engine/StaticMesh.h"
 #include "InsaneData.generated.h"
@@ -35,6 +34,19 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AInsaneWeaponBase> Weapon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Damage = 0.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Range = 15000.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BulletSpeed = 5000.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BulletGravityScale = 1.f;
+	
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bCanAutoFire = false;
