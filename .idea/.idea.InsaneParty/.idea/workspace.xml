@@ -11,80 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/AdvancedSessions.uplugin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Config/FilterPlugin.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Resources/Icon128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/AdvancedSessions.Build.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedExternalUILibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedFriendsGameInstance.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedFriendsInterface.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedFriendsLibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedGameSession.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedIdentityLibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedSessions.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedSessionsLibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AdvancedVoiceLibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/AutoLoginUserCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/BlueprintDataDefinitions.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/CancelFindSessionsCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/CreateSessionCallbackProxyAdvanced.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/EndSessionCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/FindFriendSessionCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/FindSessionsCallbackProxyAdvanced.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/GetFriendsCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/GetRecentPlayersCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/GetUserPrivilegeCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/LoginUserCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/LogoutUserCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/OnlineSubSystemHeader.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/SendFriendInviteCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/StartSessionCallbackProxyAdvanced.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Classes/UpdateSessionCallbackProxyAdvanced.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedExternalUILibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedFriendsGameInstance.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedFriendsInterface.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedFriendsLibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedIdentityLibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedSessions.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedSessionsLibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AdvancedVoiceLibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/AutoLoginUserCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/CancelFindSessionsCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/CreateSessionCallbackProxyAdvanced.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/EndSessionCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/FindFriendSessionCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/FindSessionsCallbackProxyAdvanced.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/GetFriendsCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/GetRecentPlayersCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/GetUserPrivilegeCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/LoginUserCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/LogoutUserCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/SendFriendInviteCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/StartSessionCallbackProxyAdvanced.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/Private/UpdateSessionCallbackProxyAdvanced.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/AdvancedSteamSessions.uplugin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Config/FilterPlugin.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Resources/Icon128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/AdvancedSteamSessions.Build.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Classes/AdvancedSteamFriendsLibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Classes/AdvancedSteamSessions.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Classes/AdvancedSteamWorkshopLibrary.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Classes/SteamRequestGroupOfficersCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Classes/SteamWSRequestUGCDetailsCallbackProxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Private/AdvancedSteamFriendsLibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Private/AdvancedSteamSessions.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Private/AdvancedSteamWorkshopLibrary.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Private/SteamRequestGroupOfficersCallbackProxy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/AdvancedSteamSessions/Source/AdvancedSteamSessions/Private/SteamWSRequestUGCDetailsCallbackProxy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyInsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyInsanePartyCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyInsanePartyGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyInsanePartyGameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyInsanePlayerState.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyInsanePlayerState.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InsaneParty.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/InsaneParty.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneParty.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneParty.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,26 +31,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C++ Project.InsaneParty.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C++ Project.InsaneParty.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Pseudo\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Pseudo\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Pseudo\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Pseudo\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Pseudo\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Pseudo\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C++ Project.InsaneParty">
     <configuration name="InsaneParty" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -247,6 +175,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712364484348</updated>
       <workItem from="1712364488593" duration="611000" />
+      <workItem from="1712365197544" duration="702000" />
     </task>
     <servers />
   </component>
