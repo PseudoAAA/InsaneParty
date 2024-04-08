@@ -28,12 +28,16 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	TArray<UInsaneWeaponPrimaryDataAsset*> InventoryWeaponData;
-	
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	TArray<FWeaponData> InventoryWeapon;
+
+		
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void SetActiveSlotIndex(int SlotIndex);
 
 	UFUNCTION(BlueprintCallable, BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
-	void AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd);
+	void AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd, FWeaponData WeaponMagazineInfo);
 
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void ActivateWeaponInSlot();
@@ -54,13 +58,16 @@ public:
 	int GetInventorySize() const;
 
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	AInsaneWeaponBase* GetAttachedWeapon(AActor* Actor, int ActiveSlotIndexToCheckWeapon);
+	
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void DespawnAttachedActor(AActor* Actor, int ActiveSlotIndexToCheckWeapon);
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	TSubclassOf<AInsaneWeaponBase> GetWeaponClass(const int SlotIndex);
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
-	UInsaneWeaponPrimaryDataAsset* GetWeaponDataFromInventory(const int SlotIndex);
+	FWeaponData GetWeaponDataFromInventory(const int SlotIndex);
 
 	
 };

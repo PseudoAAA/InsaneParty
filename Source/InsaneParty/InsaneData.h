@@ -61,3 +61,47 @@ public:
 	UTexture2D* Thumbnail;
 };
 
+USTRUCT(BlueprintType)
+struct FWeaponDefaultMagazine
+{
+	GENERATED_BODY()
+
+public:
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MagazineAmmoCount = 0;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MaxAmmoCount = 0;
+	
+};
+
+USTRUCT(BlueprintType)
+struct FWeaponMagazineInfo
+{
+	GENERATED_BODY()
+
+public:
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int CurrentAmmoCount = 0;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int AllAmmoCount = 0;
+	
+};
+
+USTRUCT(BlueprintType)
+struct FWeaponData
+{
+	GENERATED_BODY()
+
+public:
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UInsaneWeaponPrimaryDataAsset* WeaponDataAsset = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FWeaponMagazineInfo WeaponMagazineInfo;
+};
+

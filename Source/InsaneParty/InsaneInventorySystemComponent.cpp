@@ -10,6 +10,7 @@ UInsaneInventorySystemComponent::UInsaneInventorySystemComponent()
 	PrimaryComponentTick.bCanEverTick = false;
 	
 	InventoryWeaponData.SetNum(InventorySize);
+	InventoryWeapon.SetNum(InventorySize);
 }
 
 void UInsaneInventorySystemComponent::BeginPlay()
@@ -35,14 +36,15 @@ void UInsaneInventorySystemComponent::SetActiveSlotIndex(const int SlotIndex)
 	ActiveSlotIndex = SlotIndex;
 }
 
-void UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd)
+void UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd, FWeaponData WeaponMagazineInfo)
 {
 	int EmptySlot = GetFirstEmptySlot();
 	UE_LOG(InsaneInventoryLog, Warning, TEXT("First empty slot %d"), EmptySlot);
 	if(EmptySlot != IncorrectSlotIndex && IsUniqueWeapon(WeaponToAdd) && InventoryWeaponData[EmptySlot] == nullptr)
 	{
 		InventoryWeaponData[EmptySlot] = WeaponToAdd;
-		UE_LOG(InsaneInventoryLog, Warning, TEXT("Weapon was added to inventory. Weapon name: %s"), *InventoryWeaponData[EmptySlot]->WeaponData.WeaponName.ToString());
+		InventoryWeapon[EmptySlot] = WeaponMagazineInfo;
+		//UE_LOG(InsaneInventoryLog, Warning, TEXT("Weapon was added to inventory. Weapon name: %s"), *InventoryWeaponData[EmptySlot]->WeaponData.WeaponName.ToString());
 	}
 	else
 	{
@@ -61,7 +63,7 @@ bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int SlotInde
 	{
 		return false;
 	}
-	if(InventoryWeaponData[SlotIndex] == nullptr)
+	if(InventoryWeapon[SlotIndex].WeaponDataAsset == nullptr)
 	{
 		return false;
 	}
@@ -73,7 +75,17 @@ bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int SlotInde
 
 bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAsset* WeaponToCheck)
 {
-	if(InventoryWeaponData.Contains(WeaponToCheck))
+	for(auto &Item : InventoryWeapon)
+	{
+		if (Item.WeaponDataAsset == WeaponToCheck)
+		{
+			return false;
+		}
+	}
+
+	return true;
+	
+	/*if(InventoryWeapon.Contains(WeaponToCheck))
 	{
 		UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
 		return false;
@@ -82,7 +94,7 @@ bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAss
 	{
 		UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
 		return true;
-	}
+	}*/
 	//return WeaponToCheck == nullptr ? false : InventoryWeaponData.Contains(WeaponToCheck);
 }
 
@@ -90,9 +102,9 @@ bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAss
 int UInsaneInventorySystemComponent::GetFirstEmptySlot()
 {
 	int SlotNum = 0;
-	for(auto& Slot : InventoryWeaponData)
+	for(auto& Slot : InventoryWeapon)
 	{
-		if(Slot == nullptr)
+		if(Slot.WeaponDataAsset == nullptr)
 		{
 			//UE_LOG(InsaneInventoryLog, Warning, TEXT("Slot is empty. SlotIndex: %d"), SlotNum);
 			return SlotNum;
@@ -111,6 +123,29 @@ int UInsaneInventorySystemComponent::GetActiveSlotIndex()
 int UInsaneInventorySystemComponent::GetInventorySize() const	
 {
 	return InventoryWeaponData.Max();
+}
+
+AInsaneWeaponBase* UInsaneInventorySystemComponent::GetAttachedWeapon(AActor* Actor, int ActiveSlotIndexToCheckWeapon)
+{
+	
+	TArray<AActor*> AttachedActors;
+	Actor->GetAttachedActors(AttachedActors);
+	TSubclassOf<AInsaneWeaponBase> Weapon = GetWeaponClass(ActiveSlotIndexToCheckWeapon);
+
+	if(Weapon != nullptr)
+	{
+		for(auto ActorA : AttachedActors)
+		{
+			if (UKismetMathLibrary::ClassIsChildOf(Weapon,ActorA->GetClass()))
+			{
+				AInsaneWeaponBase* WeaponActor = Cast<AInsaneWeaponBase>(ActorA);
+				//UE_LOG(LogTemp, Warning, TEXT("%s"), *WeaponActor->GetFName().ToString());
+				return WeaponActor;
+			}
+		}
+	}
+
+	return nullptr;
 }
 
 void UInsaneInventorySystemComponent::DespawnAttachedActor(AActor* Actor, int ActiveSlotIndexToCheckWeapon)
@@ -136,23 +171,23 @@ void UInsaneInventorySystemComponent::DespawnAttachedActor(AActor* Actor, int Ac
 TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(const int SlotIndex)
 { 
 	//UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), InventoryWeaponData[SlotIndex] == nullptr);
-	if(SlotIndex == IncorrectSlotIndex ? true : InventoryWeaponData[SlotIndex] == nullptr)
+	if(SlotIndex == IncorrectSlotIndex ? true : InventoryWeapon[SlotIndex].WeaponDataAsset->WeaponData.Weapon == nullptr)
 	{
 		UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), SlotIndex);
 		return nullptr;
 	}
-	return InventoryWeaponData[SlotIndex]->WeaponData.Weapon;
+	return InventoryWeapon[SlotIndex].WeaponDataAsset->WeaponData.Weapon;
 }
 
-UInsaneWeaponPrimaryDataAsset* UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const int SlotIndex)
+FWeaponData UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const int SlotIndex)
 {
 	if(IsValidWeaponDataInSlot(SlotIndex))
 	{
-		return InventoryWeaponData[SlotIndex];
+		return InventoryWeapon[SlotIndex];
 	}
 	else
 	{
-		return nullptr;
+		return *new FWeaponData;
 	}
 }
 
