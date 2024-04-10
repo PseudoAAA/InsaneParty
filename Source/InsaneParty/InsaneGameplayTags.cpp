@@ -7,6 +7,9 @@ namespace InsaneGameplayTags
 {
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayStatus_IsDead, "GameplayStatus.IsDead", "");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayStatus_RemoveOnDeath, "GameplayStatus.RemoveOnDeath", "");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayStatus_Aiming, "GameplayStatus.Aiming", "");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayStatus_Aiming_Removal, "GameplayStatus.Aiming.Removal", "");
+	
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayEffect_Damage, "GameplayEffect.Damage", "");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayEffect_Heal, "GameplayEffect.Heal", "");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(GameplayEffect_ShootDelay, "GameplayEffect.ShootDelay", "");
@@ -31,5 +34,6 @@ namespace InsaneGameplayTags
 
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(PlayerActions_Shoot, "PlayerActions.Shoot", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(PlayerActions_Aiming, "PlayerActions.Aiming", "")
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(PlayerActions_Reload, "PlayerActions.Reload", "")
 }
 

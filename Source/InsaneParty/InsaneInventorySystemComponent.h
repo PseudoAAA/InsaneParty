@@ -36,7 +36,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void SetActiveSlotIndex(int SlotIndex);
 
-	UFUNCTION(BlueprintCallable, BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	UFUNCTION(BlueprintCallable,  Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd, FWeaponData WeaponMagazineInfo);
 
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
@@ -69,5 +69,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	FWeaponData GetWeaponDataFromInventory(const int SlotIndex);
 
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	void SetAttachedWeaponInfoInInventory(AInsaneWeaponBase* Weapon, const int SlotIndex);
 	
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	bool DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon);
 };

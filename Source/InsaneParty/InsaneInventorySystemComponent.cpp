@@ -18,6 +18,7 @@ void UInsaneInventorySystemComponent::BeginPlay()
 	Super::BeginPlay();
 	
 	InventoryWeaponData.SetNum(InventorySize);
+	InventoryWeapon.SetNum(InventorySize);
 	//UE_LOG(InsaneInventoryLog, Warning, TEXT("Inventory max size is %d"), InventoryWeaponData.Max());
 	//UE_LOG(InsaneInventoryLog, Warning, TEXT("Inventory data empty? bool: %d"), InventoryWeaponData[0] == nullptr);
 }
@@ -28,6 +29,7 @@ void UInsaneInventorySystemComponent::GetLifetimeReplicatedProps(TArray<FLifetim
 	
 	DOREPLIFETIME(UInsaneInventorySystemComponent, ActiveSlotIndex);
 	DOREPLIFETIME(UInsaneInventorySystemComponent, InventoryWeaponData);
+	DOREPLIFETIME(UInsaneInventorySystemComponent, InventoryWeapon);
 }
 
 
@@ -171,9 +173,9 @@ void UInsaneInventorySystemComponent::DespawnAttachedActor(AActor* Actor, int Ac
 TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(const int SlotIndex)
 { 
 	//UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), InventoryWeaponData[SlotIndex] == nullptr);
-	if(SlotIndex == IncorrectSlotIndex ? true : InventoryWeapon[SlotIndex].WeaponDataAsset->WeaponData.Weapon == nullptr)
+	if(SlotIndex == IncorrectSlotIndex ? true : InventoryWeapon[SlotIndex].WeaponDataAsset == nullptr)
 	{
-		UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), SlotIndex);
+		if(!SlotIndex == IncorrectSlotIndex) UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), SlotIndex);
 		return nullptr;
 	}
 	return InventoryWeapon[SlotIndex].WeaponDataAsset->WeaponData.Weapon;
@@ -189,6 +191,33 @@ FWeaponData UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const in
 	{
 		return *new FWeaponData;
 	}
+}
+
+void UInsaneInventorySystemComponent::SetAttachedWeaponInfoInInventory(AInsaneWeaponBase* Weapon, const int SlotIndex)
+{
+	if(IsValid(Weapon) && SlotIndex != IncorrectSlotIndex)
+	{
+		InventoryWeapon[SlotIndex].WeaponMagazineInfo = Weapon->MagazineInfo;
+	}
+	else
+	{
+		if(IsValid(Weapon)) UE_LOG(InsaneInventoryLog, Warning, TEXT("Setting attached weapon info was failed"));
+	}
+}
+
+
+bool UInsaneInventorySystemComponent::DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon)
+{
+	if(IsValid(Weapon))
+	{
+		if(FMath::Clamp(Weapon->MagazineInfo.CurrentAmmoCount - 1.f, -1.f, Weapon->WeaponData->WeaponMagazineData.MagazineAmmoCount) > -1.f)
+		{
+			Weapon->MagazineInfo.CurrentAmmoCount = FMath::Clamp(Weapon->MagazineInfo.CurrentAmmoCount - 1.f, -1.f, Weapon->WeaponData->WeaponMagazineData.MagazineAmmoCount);
+			return true;
+		}
+		return false;
+	}
+	return false;
 }
 
 

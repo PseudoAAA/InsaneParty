@@ -4,6 +4,7 @@
 #include "InsanePartyCharacter.h"
 #include "EnhancedInputComponent.h"
 #include "InteractInterface.h"
+#include "InterchangeResult.h"
 
 
 // Sets default values
@@ -54,13 +55,145 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AInsanePartyCharacter::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AInsanePartyCharacter::Look);
-		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::Interact);
+		
+
+		if(ShootAction)
+		{
+			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &AInsanePartyCharacter::HandleShootActionPressed);
+			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleShootActionReleased);
+		}
+		
+		if(AimingAction)
+		{
+			EnhancedInputComponent->BindAction(AimingAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleAimingActionPressed);
+			EnhancedInputComponent->BindAction(AimingAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleAimingActionReleased);
+		}
+		
+		if(InteractAction)
+		{
+			EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleInteractActionPressed);
+			EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleInteractActionReleased);
+		}
+
+		if(SwitchFireModeAction)
+		{
+			EnhancedInputComponent->BindAction(SwitchFireModeAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleSwitchFireModeActionPressed);
+			EnhancedInputComponent->BindAction(SwitchFireModeAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleSwitchFireModeActionReleased);
+		}
+
+		if(SelectFirstSlotAction)
+		{
+			EnhancedInputComponent->BindAction(SelectFirstSlotAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleSelectFirstSlotActionPressed);
+			EnhancedInputComponent->BindAction(SelectFirstSlotAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleSelectFirstSlotActionReleased);
+		}
+
+		if(SelectSecondSlotAction)
+		{
+			EnhancedInputComponent->BindAction(SelectSecondSlotAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleSelectSecondSlotActionPressed);
+			EnhancedInputComponent->BindAction(SelectSecondSlotAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleSelectSecondSlotActionReleased);
+		}
+
+		if(SelectThirdSlotAction)
+		{
+			EnhancedInputComponent->BindAction(SelectThirdSlotAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleSelectThirdSlotActionPressed);
+			EnhancedInputComponent->BindAction(SelectThirdSlotAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleSelectThirdSlotActionReleased);
+		}
+
+		if(ReloadAction)
+		{
+			EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleReloadActionPressed);
+			EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleReloadActionReleased);
+		}
+		
+
+		
 	}
 	else
 	{
 		UE_LOG(InsaneCharacterLog, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
 }
+
+void AInsanePartyCharacter::HandleShootActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::Shoot);
+}
+
+void AInsanePartyCharacter::HandleShootActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::Shoot);
+}
+
+void AInsanePartyCharacter::HandleAimingActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::Aiming);
+}
+
+void AInsanePartyCharacter::HandleAimingActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::Aiming);
+}
+
+void AInsanePartyCharacter::HandleInteractActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::Interact);
+}
+
+void AInsanePartyCharacter::HandleInteractActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::Interact);
+}
+
+void AInsanePartyCharacter::HandleSwitchFireModeActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::SwitchFireMode);
+}
+
+void AInsanePartyCharacter::HandleSwitchFireModeActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::SwitchFireMode);
+}
+
+void AInsanePartyCharacter::HandleSelectFirstSlotActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::SelectFirstSlot);
+}
+
+void AInsanePartyCharacter::HandleSelectFirstSlotActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::SelectFirstSlot);
+}
+
+void AInsanePartyCharacter::HandleSelectSecondSlotActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::SelectSecondSlot);
+}
+
+void AInsanePartyCharacter::HandleSelectSecondSlotActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::SelectSecondSlot);
+}
+
+void AInsanePartyCharacter::HandleSelectThirdSlotActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::SelectThirdSlot);
+}
+
+void AInsanePartyCharacter::HandleSelectThirdSlotActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::SelectThirdSlot);
+}
+
+void AInsanePartyCharacter::HandleReloadActionPressed()
+{
+	SendServerInputToASC(true, EInsaneAbilityInputID::Reload);
+}
+
+void AInsanePartyCharacter::HandleReloadActionReleased()
+{
+	SendServerInputToASC(false, EInsaneAbilityInputID::Reload);
+}
+
 
 void AInsanePartyCharacter::PossessedBy(AController* NewController)
 {
@@ -167,8 +300,7 @@ void AInsanePartyCharacter::Interact()
 				if (GEngine) {
 					if (OutHit.GetActor()->Implements<UInteractInterface>())
 					{
-						ServerInteract(OutHit.GetActor());
-						//IInteractInterface::Execute_Interact(OutHit.GetActor(), this);
+						IInteractInterface::Execute_Interact(OutHit.GetActor(), this);
 					}
 				}
 			}
@@ -176,14 +308,25 @@ void AInsanePartyCharacter::Interact()
 	}
 }
 
-void AInsanePartyCharacter::ServerInteract_Implementation(AActor* AnActor)
+void AInsanePartyCharacter::SendServerInputToASC_Implementation(bool bIsPressed,
+	const EInsaneAbilityInputID AbilityInputID)
 {
-	IInteractInterface::Execute_Interact(AnActor, this);
+	SendInputToASC(bIsPressed, AbilityInputID);
 }
 
-bool AInsanePartyCharacter::ServerInteract_Validate(AActor* AnActor)
+void AInsanePartyCharacter::SendInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID)
 {
-	return true;
+	if(!GetAbilitySystemComponent()) {UKismetSystemLibrary::PrintString(this, "ASC is not valid"); return;}
+
+	if(bIsPressed)
+	{
+		AbilitySystemComponent->AbilityLocalInputPressed(static_cast<int32>(AbilityInputID));
+	}
+	else
+	{
+		AbilitySystemComponent->AbilityLocalInputReleased(static_cast<int32>(AbilityInputID));
+	}
+	
 }
 
 void AInsanePartyCharacter::OnRep_PlayerState()

@@ -151,7 +151,7 @@ void AInsanePartyCharacterBase::Die()
 		int32 NumEffectsRemoved = AbilitySystemComponent->RemoveActiveEffectsWithTags(EffectTagsToRemove);
 
 		AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
-	}
+	}*/
 
 	/*if (DeathMontage)
 	{
@@ -160,7 +160,7 @@ void AInsanePartyCharacterBase::Die()
 	else
 	{
 		FinishDying();
-	}#1#*/
+	}*/
 }
 
 void AInsanePartyCharacterBase::FinishDying()

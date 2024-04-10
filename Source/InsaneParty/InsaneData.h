@@ -17,6 +17,22 @@ enum class EInsaneAbilityInputID : uint8
 	Confirm			UMETA(DisplayName = "Confirm"),
 	// 2 Cancel
 	Cancel			UMETA(DisplayName = "Cancel"),
+	// 3 LMB
+	Shoot 			UMETA(DisplayName = "Shoot"),
+	// 4 RMB
+	Aiming			UMETA(DisplayName = "Aiming"),
+	// 5 E
+	Interact		UMETA(DisplayName = "Interact"),
+	// 6 B
+	SwitchFireMode	UMETA(DisplayName = "SwitchFireMode"),
+	// 7 1
+	SelectFirstSlot	UMETA(DisplayName = "SelectFirstSlot"),
+	// 8 2
+	SelectSecondSlot UMETA(DisplayName = "SelectSecondSlot"),
+	// 9 3
+	SelectThirdSlot	UMETA(DisplayName = "SelectThirdSlot"),
+	//10 R
+	Reload			UMETA(Displayname = "Reload")
 };
 
 
@@ -36,6 +52,9 @@ public:
 	TSubclassOf<AInsaneWeaponBase> Weapon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> Projectile;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Damage = 0.f;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -46,7 +65,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float BulletGravityScale = 1.f;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float ShootDelay = 0.2f;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bCanAutoFire = false;
@@ -56,6 +77,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayEffect> FullAutoFireModeEffect;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayEffect> ShootDelayEffect;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Thumbnail;
@@ -88,6 +112,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int AllAmmoCount = 0;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayEffect> CurrentFireMode = nullptr;
 	
 };
 
