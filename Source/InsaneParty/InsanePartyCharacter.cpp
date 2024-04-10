@@ -186,12 +186,12 @@ void AInsanePartyCharacter::HandleSelectThirdSlotActionReleased()
 
 void AInsanePartyCharacter::HandleReloadActionPressed()
 {
-	SendServerInputToASC(true, EInsaneAbilityInputID::Reload);
+	SendInputToASC(true, EInsaneAbilityInputID::Reload);
 }
 
 void AInsanePartyCharacter::HandleReloadActionReleased()
 {
-	SendServerInputToASC(false, EInsaneAbilityInputID::Reload);
+	SendInputToASC(false, EInsaneAbilityInputID::Reload);
 }
 
 
@@ -306,12 +306,6 @@ void AInsanePartyCharacter::Interact()
 			}
 		}
 	}
-}
-
-void AInsanePartyCharacter::SendServerInputToASC_Implementation(bool bIsPressed,
-	const EInsaneAbilityInputID AbilityInputID)
-{
-	SendInputToASC(bIsPressed, AbilityInputID);
 }
 
 void AInsanePartyCharacter::SendInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID)

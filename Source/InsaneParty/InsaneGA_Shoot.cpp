@@ -8,7 +8,9 @@
 #include "InsaneProjectileBase.h"
 #include "NativeGameplayTags.h"
 #include "Abilities/Tasks/AbilityTask_WaitInputRelease.h"
-#include "Interfaces/NetworkPredictionInterface.h"
+
+
+
 
 UInsaneGA_Shoot::UInsaneGA_Shoot()
 {
@@ -19,21 +21,10 @@ UInsaneGA_Shoot::UInsaneGA_Shoot()
 	ActivationOwnedTags.AddTag(AbilityShootTag);
 	
 	ActivationBlockedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("GameplayStatus.IsDead")));
-	ActivationBlockedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("GameplayEffect.ShootDelay")));
 }
 
-void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)
-{
-	UE_LOG(LogTemp, Warning, TEXT("Release"));
-	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
-}
 
-void UInsaneGA_Shoot::SR_SpawnSound_Implementation()
-{
-	UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, GetAvatarActorFromActorInfo()->GetActorLocation());
-}
-
-void UInsaneGA_Shoot::Client_Features_Implementation(AActor* Target)
+void UInsaneGA_Shoot::Features(AActor* Target)
 {
 	AInsanePartyCharacter* Player = Cast<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
 	if(IsValid(Player))
@@ -45,27 +36,42 @@ void UInsaneGA_Shoot::Client_Features_Implementation(AActor* Target)
 
 		if(IsValid(PartyCharacterInventory), IsValid(AttachedWeapon))
 		{
-			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
+			if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
 			{
-				UE_LOG(LogTemp, Warning, TEXT("1"));
-				//add recoil in weapon data
-				Player->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
-				UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
-				SR_SpawnSound();
+				if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
+				{
+					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
+					UE_LOG(LogTemp, Warning, TEXT("1"));
+					//add recoil in weapon data
+					Player->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
+					UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
+				}
+				else
+				{
+					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
+					UE_LOG(LogTemp, Warning, TEXT("0"));
+					//add recoil in weapon data
+					Player->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
+					UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
+				}
 			}
 			else
 			{
-				UE_LOG(LogTemp, Warning, TEXT("0"));
-				//add recoil in weapon data
-				Player->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
-				UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
-				SR_SpawnSound();
+				EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 			}
 		}
+		else
+		{
+			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
+		}
+	}
+	else
+	{
+		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
 }
 
-void UInsaneGA_Shoot::SR_SpawnProjectile_Implementation(AInsanePartyCharacter* PartyCharacter)
+void UInsaneGA_Shoot::SR_Features_Implementation(AInsanePartyCharacter* PartyCharacter)
 {
 	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 500.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
 	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
@@ -83,6 +89,7 @@ void UInsaneGA_Shoot::SR_SpawnProjectile_Implementation(AInsanePartyCharacter* P
 	Projectile->FinishSpawning(Transform);
 }
 
+
 void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
                                       const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo,
                                       const FGameplayEventData* TriggerEventData)
@@ -92,44 +99,33 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	{
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
+
+	Features(GetAvatarActorFromActorInfo());
+	
+	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
+	if(!PartyCharacter)
+	{
+		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
+	}
+
+	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
+	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
+	PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
+	
+	if(IsValid(AttachedWeapon) && IsValid(AttachedWeapon->WeaponData))
+	{
+		if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
+		{
+			GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
+			SR_Features(PartyCharacter);
+		}
+		else
+		{
+			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
+		}
+	}
 	else
 	{
-		if (GetOwningActorFromActorInfo()->GetLocalRole() == ROLE_Authority && ProjectileClass != nullptr)
-		{
-			AInsanePartyCharacter* PartyCharacter = Cast<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
-			if(!PartyCharacter)
-			{
-				EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
-			}
-
-			UInsaneInventorySystemComponent* PartyCharacterInventory = Cast<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
-			AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
-
-			if(IsValid(AttachedWeapon) && IsValid(AttachedWeapon->WeaponData))
-			{
-				if(AttachedWeapon->MagazineInfo.CurrentFireMode == AttachedWeapon->WeaponData->WeaponData.SingleFireModeEffect
-					&& PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon))
-				{
-					Client_Features(GetAvatarActorFromActorInfo());
-					Shoot(AttachedWeapon, GetAbilitySystemComponentFromActorInfo()->MakeEffectContext());
-					UAbilityTask_WaitInputRelease* Task = UAbilityTask_WaitInputRelease::WaitInputRelease(this, true);
-					Task->OnRelease.AddDynamic(this, &UInsaneGA_Shoot::SingleFireRelease);
-					Task->ReadyForActivation();
-				}
-				else if(AttachedWeapon->MagazineInfo.CurrentFireMode == AttachedWeapon->WeaponData->WeaponData.FullAutoFireModeEffect
-					&& PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon))
-				{
-					Client_Features(GetAvatarActorFromActorInfo());
-					Shoot(AttachedWeapon, GetAbilitySystemComponentFromActorInfo()->MakeEffectContext());
-					EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
-				}
-				else
-				{
-					EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
-				}
-			}
-		}
-
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
 }
@@ -144,22 +140,9 @@ void UInsaneGA_Shoot::OnCompleted(FGameplayTag EventTag, FGameplayEventData Even
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 }
 
-
-
-void UInsaneGA_Shoot::Shoot(AInsaneWeaponBase* WeaponData, FGameplayEffectContextHandle Context)
+void UInsaneGA_Shoot::OnDelayEnd()
 {
-	AInsanePartyCharacter* PartyCharacter = Cast<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
-	if (!PartyCharacter)
-	{
-		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
-	}
-
-	TSubclassOf<UGameplayEffect> ShootDelayEffect = WeaponData->WeaponData->WeaponData.ShootDelayEffect;
-	FGameplayEffectSpecHandle EffectSpec = MakeOutgoingGameplayEffectSpec(ShootDelayEffect, GetAbilityLevel());
-	EffectSpec.Data.Get()->SetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(FName("GameplayEffect.ShootDelay")), WeaponData->WeaponData->WeaponData.ShootDelay);
-	//UE_LOG(LogTemp, Warning, TEXT("%f"), EffectSpec.Data.Get()->GetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(FName("GameplayEffect.ShootDelay")), false, 0.f));
-	GetAbilitySystemComponentFromActorInfo()->ApplyGameplayEffectSpecToSelf(*EffectSpec.Data.Get());
-	
-	SR_SpawnProjectile(PartyCharacter);
+	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 }
+
 

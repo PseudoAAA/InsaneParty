@@ -103,8 +103,6 @@ public:
 	void Interact();
 
 	//Used for wait input release abilities, cuz idk how work prediction on server
-	UFUNCTION(Server, Reliable)
-	void SendServerInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID);
 	void SendInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID);
 
 	UFUNCTION(BlueprintImplementableEvent)
