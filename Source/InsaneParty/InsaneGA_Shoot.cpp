@@ -40,16 +40,16 @@ void UInsaneGA_Shoot::Features(AActor* Target)
 			{
 				if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
 				{
-					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
 					UE_LOG(LogTemp, Warning, TEXT("1"));
+					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
 					//add recoil in weapon data
 					Player->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
 					UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
 				}
 				else
 				{
-					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
 					UE_LOG(LogTemp, Warning, TEXT("0"));
+					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
 					//add recoil in weapon data
 					Player->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
 					UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
@@ -140,9 +140,28 @@ void UInsaneGA_Shoot::OnCompleted(FGameplayTag EventTag, FGameplayEventData Even
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 }
 
-void UInsaneGA_Shoot::OnDelayEnd()
+void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)
 {
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
+}
+
+void UInsaneGA_Shoot::OnDelayEnd()
+{
+	UAbilityTask_WaitInputRelease* Task = UAbilityTask_WaitInputRelease::WaitInputRelease(this, true);
+
+	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
+	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
+	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
+
+	if(AttachedWeapon->MagazineInfo.CurrentFireMode == AttachedWeapon->WeaponData->WeaponData.SingleFireModeEffect)
+	{
+		Task->OnRelease.AddDynamic(this, &UInsaneGA_Shoot::SingleFireRelease);
+		Task->ReadyForActivation();
+	}
+	else
+	{
+		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
+	}
 }
 
 

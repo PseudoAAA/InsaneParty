@@ -11,14 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Characters/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Characters/Input/IMC_Default.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_ProjectileBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_ProjectileBase.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +249,7 @@
       <workItem from="1712583636379" duration="1192000" />
       <workItem from="1712592747379" duration="6651000" />
       <workItem from="1712648987523" duration="40975000" />
-      <workItem from="1712737525630" duration="32772000" />
+      <workItem from="1712737525630" duration="34068000" />
     </task>
     <servers />
   </component>

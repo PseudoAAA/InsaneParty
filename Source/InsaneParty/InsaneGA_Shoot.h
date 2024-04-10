@@ -34,6 +34,9 @@ public:
 	
 	UFUNCTION(Server, Unreliable)
 	void SR_Features(AInsanePartyCharacter* PartyCharacter);
+
+	UFUNCTION()
+	void SingleFireRelease(float TimeHeld);
 	
 	UFUNCTION()
 	void OnDelayEnd();
