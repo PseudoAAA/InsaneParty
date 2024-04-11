@@ -104,8 +104,6 @@ protected:
 	* Setters for Attributes. Only use these in special cases like Respawning, otherwise use a GE to change Attributes.
 	* These change the Attribute's Base Value.
 	*/
-	
 	virtual void SetHealth(float Health);
-	//virtual void SetStamina(float Stamina);
 };
 

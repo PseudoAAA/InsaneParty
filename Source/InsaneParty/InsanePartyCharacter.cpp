@@ -48,6 +48,7 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
+	
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
@@ -55,7 +56,18 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AInsanePartyCharacter::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AInsanePartyCharacter::Look);
-		
+
+		if(ConfirmAction)
+		{
+			EnhancedInputComponent->BindAction(ConfirmAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleConfirmActionPressed);
+			EnhancedInputComponent->BindAction(ConfirmAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleConfirmActionReleased);
+		}
+
+		if(CancelAction)
+		{
+			EnhancedInputComponent->BindAction(CancelAction, ETriggerEvent::Started, this, &AInsanePartyCharacter::HandleCancelActionPressed);
+			EnhancedInputComponent->BindAction(CancelAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleCancelActionReleased);
+		}
 
 		if(ShootAction)
 		{
@@ -105,13 +117,33 @@ void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 			EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Completed, this, &AInsanePartyCharacter::HandleReloadActionReleased);
 		}
 		
-
-		
 	}
 	else
 	{
 		UE_LOG(InsaneCharacterLog, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
+}
+
+void AInsanePartyCharacter::HandleConfirmActionPressed()
+{
+	SendInputToASC(true, EInsaneAbilityInputID::Confirm);
+	AbilitySystemComponent->LocalInputConfirm();
+}
+
+void AInsanePartyCharacter::HandleConfirmActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::Confirm);
+}
+
+void AInsanePartyCharacter::HandleCancelActionPressed()
+{
+	AbilitySystemComponent->LocalInputCancel();
+	SendInputToASC(true, EInsaneAbilityInputID::Cancel);
+}
+
+void AInsanePartyCharacter::HandleCancelActionReleased()
+{
+	SendInputToASC(false, EInsaneAbilityInputID::Cancel);
 }
 
 void AInsanePartyCharacter::HandleShootActionPressed()
@@ -126,6 +158,7 @@ void AInsanePartyCharacter::HandleShootActionReleased()
 
 void AInsanePartyCharacter::HandleAimingActionPressed()
 {
+	
 	SendInputToASC(true, EInsaneAbilityInputID::Aiming);
 }
 
@@ -193,6 +226,7 @@ void AInsanePartyCharacter::HandleReloadActionReleased()
 {
 	SendInputToASC(false, EInsaneAbilityInputID::Reload);
 }
+
 
 
 void AInsanePartyCharacter::PossessedBy(AController* NewController)
@@ -264,6 +298,8 @@ void AInsanePartyCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+
+
 void AInsanePartyCharacter::Interact()
 {
 	if (Controller != nullptr)
@@ -314,6 +350,7 @@ void AInsanePartyCharacter::SendInputToASC(bool bIsPressed, const EInsaneAbility
 
 	if(bIsPressed)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("Ability input ID: %d"), AbilityInputID);
 		AbilitySystemComponent->AbilityLocalInputPressed(static_cast<int32>(AbilityInputID));
 	}
 	else
@@ -322,6 +359,7 @@ void AInsanePartyCharacter::SendInputToASC(bool bIsPressed, const EInsaneAbility
 	}
 	
 }
+
 
 void AInsanePartyCharacter::OnRep_PlayerState()
 {

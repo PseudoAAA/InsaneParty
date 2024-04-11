@@ -45,6 +45,12 @@ public:
 	UInputAction* JumpAction;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Input)
+	UInputAction* ConfirmAction;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Input)
+	UInputAction* CancelAction;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Input)
 	UInputAction* ShootAction;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Input)
@@ -67,13 +73,20 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Input)
 	UInputAction* ReloadAction;
-
+	
+	
 	
 	
 	void Move(const FInputActionValue& Value);
 	
 	void Look(const FInputActionValue& Value);
 
+	void HandleConfirmActionPressed();
+	void HandleConfirmActionReleased();
+	
+	void HandleCancelActionPressed();
+	void HandleCancelActionReleased();
+	
 	void HandleShootActionPressed();
 	void HandleShootActionReleased();
 	
@@ -81,7 +94,6 @@ public:
 	void HandleAimingActionReleased();
 	
 	void HandleInteractActionPressed();
-	
 	void HandleInteractActionReleased();
 	
 	void HandleSwitchFireModeActionPressed();
@@ -102,12 +114,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Interact();
 
-	//Used for wait input release abilities, cuz idk how work prediction on server
+	//Send input actions to ASC
 	void SendInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID);
 
+	//Add recoil for player
 	UFUNCTION(BlueprintImplementableEvent)
 	void IMP_Recoil(float RecoilAmplitude, float SidewaysRecoilAmplitude, float Min, float Max);
-	
+
 	
 	/** Returns CameraBoom subobject **/
 	class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
