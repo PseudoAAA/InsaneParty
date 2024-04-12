@@ -206,18 +206,12 @@ void UInsaneInventorySystemComponent::SetAttachedWeaponInfoInInventory(AInsaneWe
 }
 
 
-bool UInsaneInventorySystemComponent::DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon)
+void UInsaneInventorySystemComponent::DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon)
 {
 	if(IsValid(Weapon))
 	{
-		if(FMath::Clamp(Weapon->MagazineInfo.CurrentAmmoCount - 1.f, -1.f, Weapon->WeaponData->WeaponMagazineData.MagazineAmmoCount) > -1.f)
-		{
-			Weapon->MagazineInfo.CurrentAmmoCount = FMath::Clamp(Weapon->MagazineInfo.CurrentAmmoCount - 1.f, -1.f, Weapon->WeaponData->WeaponMagazineData.MagazineAmmoCount);
-			return true;
-		}
-		return false;
+		Weapon->MagazineInfo.CurrentAmmoCount -= 1.f;
 	}
-	return false;
 }
 
 

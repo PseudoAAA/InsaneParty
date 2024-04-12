@@ -36,24 +36,15 @@ enum class EInsaneAbilityInputID : uint8
 };
 
 
+
+
 USTRUCT(BlueprintType)
-struct FWeapon
+struct FWeaponProperties 
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName WeaponName;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UGameplayAbility> Ability;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AInsaneWeaponBase> Weapon;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> Projectile;
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Damage = 0.f;
 	
@@ -71,6 +62,28 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bCanAutoFire = false;
+};
+
+USTRUCT(BlueprintType)
+struct FWeapon
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName WeaponName;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayAbility> Ability;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TSubclassOf<UGameplayEffect> AbilityEffect;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AInsaneWeaponBase> Weapon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> Projectile;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayEffect> SingleFireModeEffect;
@@ -79,7 +92,7 @@ public:
 	TSubclassOf<UGameplayEffect> FullAutoFireModeEffect;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UGameplayEffect> ShootDelayEffect;
+	FWeaponProperties Properties;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Thumbnail;
@@ -131,4 +144,5 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWeaponMagazineInfo WeaponMagazineInfo;
 };
+
 

@@ -33,31 +33,22 @@ void UInsaneGA_Shoot::Features(AActor* Target)
 		AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(Player, PartyCharacterInventory->GetActiveSlotIndex());
 		FGameplayTagContainer Tags;
 		GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
-
-		if(IsValid(PartyCharacterInventory), IsValid(AttachedWeapon))
+	
+		if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
 		{
-			if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
+			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
 			{
-				if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
-				{
-					UE_LOG(LogTemp, Warning, TEXT("1"));
-					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
-					//add recoil in weapon data
-					Player->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
-					UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
-				}
-				else
-				{
-					UE_LOG(LogTemp, Warning, TEXT("0"));
-					GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
-					//add recoil in weapon data
-					Player->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
-					UGameplayStatics::PlaySoundAtLocation(GetWorld(), WeaponFireSound, Player->GetActorLocation());
-				}
+				UE_LOG(LogTemp, Warning, TEXT("1"));
+				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
+				//add recoil in weapon data
+				Player->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
 			}
 			else
 			{
-				EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
+				UE_LOG(LogTemp, Warning, TEXT("0"));
+				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
+				//add recoil in weapon data
+				Player->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
 			}
 		}
 		else
@@ -94,50 +85,41 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
                                       const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo,
                                       const FGameplayEventData* TriggerEventData)
 {
-
-	if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
-	{
-		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
-	}
-
-	Features(GetAvatarActorFromActorInfo());
-	
 	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
-	if(!PartyCharacter)
-	{
-		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
-	}
-
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
-	PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
-	
-	if(IsValid(AttachedWeapon) && IsValid(AttachedWeapon->WeaponData))
+	if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
 	{
-		if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
+		PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
+		if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
 		{
-			GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.ShootDelay, false);
-			SR_Features(PartyCharacter);
+			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 		}
 		else
 		{
-			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
+			//SR_Features(PartyCharacter);
+			FGameplayTagContainer Tags;
+			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
+			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("1"));
+				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
+				//add recoil in weapon data
+				PartyCharacter->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("0"));
+				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
+				//add recoil in weapon data
+				PartyCharacter->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
+			}
 		}
 	}
 	else
 	{
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
-}
-
-void UInsaneGA_Shoot::OnCancelled(FGameplayTag EventTag, FGameplayEventData EventData)
-{
-	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
-}
-
-void UInsaneGA_Shoot::OnCompleted(FGameplayTag EventTag, FGameplayEventData EventData)
-{
-	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 }
 
 void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)
@@ -148,7 +130,6 @@ void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)
 void UInsaneGA_Shoot::OnDelayEnd()
 {
 	UAbilityTask_WaitInputRelease* Task = UAbilityTask_WaitInputRelease::WaitInputRelease(this, true);
-
 	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
@@ -164,4 +145,14 @@ void UInsaneGA_Shoot::OnDelayEnd()
 	}
 }
 
+
+void UInsaneGA_Shoot::OnCancelled(FGameplayTag EventTag, FGameplayEventData EventData)
+{
+	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
+}
+
+void UInsaneGA_Shoot::OnCompleted(FGameplayTag EventTag, FGameplayEventData EventData)
+{
+	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
+}
 

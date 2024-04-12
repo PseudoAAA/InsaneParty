@@ -30,11 +30,11 @@ class INSANEPARTY_API AInsanePartyCharacter : public AInsanePartyCharacterBase
 
 public:
 	AInsanePartyCharacter(const class FObjectInitializer& ObjectInitializer);
-
+	
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	virtual void PossessedBy(AController* NewController) override;
-	
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Input)
 	UInputAction* MoveAction;
 
@@ -75,8 +75,6 @@ public:
 	UInputAction* ReloadAction;
 	
 	
-	
-	
 	void Move(const FInputActionValue& Value);
 	
 	void Look(const FInputActionValue& Value);
@@ -113,7 +111,7 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void Interact();
-
+	
 	//Send input actions to ASC
 	void SendInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID);
 

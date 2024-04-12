@@ -73,5 +73,5 @@ public:
 	void SetAttachedWeaponInfoInInventory(AInsaneWeaponBase* Weapon, const int SlotIndex);
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
-	bool DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon);
+	void DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon);
 };

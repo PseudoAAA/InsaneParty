@@ -7,6 +7,7 @@
 #include "InsaneGA_Shoot.generated.h"
 
 
+class AInsanePartyCharacter;
 class AInsaneProjectileBase;
 /**
  * 
@@ -29,11 +30,11 @@ public:
 	USoundWave* WeaponFireSound;
 
 	
-	
 	void Features(AActor* Target);
 	
-	UFUNCTION(Server, Unreliable)
+	UFUNCTION(Server, Reliable) 
 	void SR_Features(AInsanePartyCharacter* PartyCharacter);
+
 
 	UFUNCTION()
 	void SingleFireRelease(float TimeHeld);
@@ -45,6 +46,7 @@ public:
 	/** Actually activate ability, do not call this directly. We'll call it from APAHeroCharacter::ActivateAbilitiesWithTags(). */
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
 
+	
 protected:
 	
 	UFUNCTION()

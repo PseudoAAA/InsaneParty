@@ -22,8 +22,8 @@ AInsanePartyCharacter::AInsanePartyCharacter(const class FObjectInitializer& Obj
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
-
 }
+
 
 void AInsanePartyCharacter::BeginPlay()
 {
@@ -47,6 +47,7 @@ void AInsanePartyCharacter::PostInitializeComponents()
 void AInsanePartyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
 	
 	
 	// Set up action bindings
@@ -128,6 +129,7 @@ void AInsanePartyCharacter::HandleConfirmActionPressed()
 {
 	SendInputToASC(true, EInsaneAbilityInputID::Confirm);
 	AbilitySystemComponent->LocalInputConfirm();
+
 }
 
 void AInsanePartyCharacter::HandleConfirmActionReleased()
@@ -137,13 +139,14 @@ void AInsanePartyCharacter::HandleConfirmActionReleased()
 
 void AInsanePartyCharacter::HandleCancelActionPressed()
 {
-	AbilitySystemComponent->LocalInputCancel();
+	
 	SendInputToASC(true, EInsaneAbilityInputID::Cancel);
 }
 
 void AInsanePartyCharacter::HandleCancelActionReleased()
 {
 	SendInputToASC(false, EInsaneAbilityInputID::Cancel);
+	AbilitySystemComponent->LocalInputCancel();
 }
 
 void AInsanePartyCharacter::HandleShootActionPressed()
@@ -261,6 +264,7 @@ void AInsanePartyCharacter::PossessedBy(AController* NewController)
 		AddCharacterAbilities();
 	}
 }
+
 
 void AInsanePartyCharacter::Move(const FInputActionValue& Value)
 {
