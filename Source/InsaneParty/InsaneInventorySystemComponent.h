@@ -8,6 +8,7 @@
 #include "Components/ActorComponent.h"
 #include "InsaneInventorySystemComponent.generated.h"
 
+
 UCLASS()
 class INSANEPARTY_API UInsaneInventorySystemComponent : public UActorComponent
 {
@@ -32,7 +33,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	TArray<FWeaponData> InventoryWeapon;
 
-		
+	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void SetActiveSlotIndex(int SlotIndex);
 
@@ -73,5 +74,5 @@ public:
 	void SetAttachedWeaponInfoInInventory(AInsaneWeaponBase* Weapon, const int SlotIndex);
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
-	void DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon);
+	bool DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon);
 };

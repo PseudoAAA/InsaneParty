@@ -24,45 +24,7 @@ UInsaneGA_Shoot::UInsaneGA_Shoot()
 }
 
 
-void UInsaneGA_Shoot::Features(AActor* Target)
-{
-	AInsanePartyCharacter* Player = Cast<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
-	if(IsValid(Player))
-	{
-		UInsaneInventorySystemComponent* PartyCharacterInventory = Cast<AInsanePlayerState>(Player->GetPlayerState())->GetInventorySystemComponent();
-		AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(Player, PartyCharacterInventory->GetActiveSlotIndex());
-		FGameplayTagContainer Tags;
-		GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
-	
-		if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
-		{
-			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
-			{
-				UE_LOG(LogTemp, Warning, TEXT("1"));
-				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
-				//add recoil in weapon data
-				Player->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
-			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("0"));
-				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
-				//add recoil in weapon data
-				Player->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
-			}
-		}
-		else
-		{
-			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
-		}
-	}
-	else
-	{
-		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
-	}
-}
-
-void UInsaneGA_Shoot::SR_Features_Implementation(AInsanePartyCharacter* PartyCharacter)
+void UInsaneGA_Shoot::SR_ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter)
 {
 	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 500.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
 	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
@@ -88,9 +50,9 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
-	if(AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
+	if(PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon))
 	{
-		PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
+		SR_ProjectileSpawn_Implementation(PartyCharacter);
 		if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
 		{
 			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
@@ -114,6 +76,8 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
 			}
+			
+			
 		}
 	}
 	else

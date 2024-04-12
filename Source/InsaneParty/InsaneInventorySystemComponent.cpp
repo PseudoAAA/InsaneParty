@@ -11,6 +11,7 @@ UInsaneInventorySystemComponent::UInsaneInventorySystemComponent()
 	
 	InventoryWeaponData.SetNum(InventorySize);
 	InventoryWeapon.SetNum(InventorySize);
+
 }
 
 void UInsaneInventorySystemComponent::BeginPlay()
@@ -206,11 +207,16 @@ void UInsaneInventorySystemComponent::SetAttachedWeaponInfoInInventory(AInsaneWe
 }
 
 
-void UInsaneInventorySystemComponent::DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon)
+bool UInsaneInventorySystemComponent::DecreaseAmmoInMagazine(AInsaneWeaponBase* Weapon)
 {
-	if(IsValid(Weapon))
+	if(IsValid(Weapon) && Weapon->MagazineInfo.CurrentAmmoCount > 0)
 	{
 		Weapon->MagazineInfo.CurrentAmmoCount -= 1.f;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
