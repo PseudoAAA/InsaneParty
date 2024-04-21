@@ -50,16 +50,18 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
-	if(PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon))
+	
+	if(AttachedWeapon && AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
 	{
-		SR_ProjectileSpawn_Implementation(PartyCharacter);
+		PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
 		if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
 		{
 			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 		}
 		else
 		{
-			//SR_Features(PartyCharacter);
+			
+			SR_ProjectileSpawn_Implementation(PartyCharacter);
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
@@ -76,8 +78,6 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
 			}
-			
-			
 		}
 	}
 	else

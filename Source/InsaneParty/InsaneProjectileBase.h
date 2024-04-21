@@ -60,7 +60,7 @@ public:
 								bool bFromSweep, 
 								const FHitResult &SweepResult );
 	//Add hit result message*/
-	
+
 protected:
 	virtual void BeginPlay() override;
 

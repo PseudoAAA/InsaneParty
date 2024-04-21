@@ -179,7 +179,7 @@ TSubclassOf<AInsaneWeaponBase> UInsaneInventorySystemComponent::GetWeaponClass(c
 		if(!SlotIndex == IncorrectSlotIndex) UE_LOG(InsaneInventoryLog, Warning, TEXT("Can't get weapon class in slot %d"), SlotIndex);
 		return nullptr;
 	}
-	return InventoryWeapon[SlotIndex].WeaponDataAsset->WeaponData.Weapon;
+	return InventoryWeapon[SlotIndex].WeaponDataAsset->WeaponData.WeaponClass;
 }
 
 FWeaponData UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const int SlotIndex)

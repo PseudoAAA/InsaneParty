@@ -2,10 +2,11 @@
 
 #pragma once
 
-#include "Abilities/GameplayAbility.h"
 #include "Engine/StaticMesh.h"
 #include "InsaneData.generated.h"
 
+class UGameplayEffect;
+class UGameplayAbility;
 class AInsaneWeaponBase;
 
 UENUM(BlueprintType)
@@ -43,8 +44,6 @@ struct FWeaponProperties
 {
 	GENERATED_BODY()
 
-public:
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Damage = 0.f;
 	
@@ -69,7 +68,6 @@ struct FWeapon
 {
 	GENERATED_BODY()
 
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName WeaponName;
 	
@@ -80,7 +78,7 @@ public:
     TSubclassOf<UGameplayEffect> AbilityEffect;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AInsaneWeaponBase> Weapon;
+	TSubclassOf<AInsaneWeaponBase> WeaponClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> Projectile;
@@ -103,8 +101,6 @@ struct FWeaponDefaultMagazine
 {
 	GENERATED_BODY()
 
-public:
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int MagazineAmmoCount = 0;
 	
@@ -118,8 +114,6 @@ struct FWeaponMagazineInfo
 {
 	GENERATED_BODY()
 
-public:
-	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int CurrentAmmoCount = 0;
 	
@@ -135,8 +129,6 @@ USTRUCT(BlueprintType)
 struct FWeaponData
 {
 	GENERATED_BODY()
-
-public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UInsaneWeaponPrimaryDataAsset* WeaponDataAsset = nullptr;
@@ -145,4 +137,39 @@ public:
 	FWeaponMagazineInfo WeaponMagazineInfo;
 };
 
+USTRUCT(BlueprintType)
+struct FWeaponSoundData
+{
+	GENERATED_BODY()
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USoundBase* ShootSound;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USoundBase* ReloadingSound;
+
+};
+
+USTRUCT(BlueprintType)
+struct FThrowable
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName ThrowableName;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayAbility> Ability;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UGameplayEffect> AbilityEffect;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AInsaneWeaponBase> ThrowableClass;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> Projectile;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D* Thumbnail;
+};

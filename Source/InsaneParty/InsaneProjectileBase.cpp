@@ -88,6 +88,7 @@ AInsaneProjectileBase::AInsaneProjectileBase()
 	}
 }*/
 
+
 void AInsaneProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
