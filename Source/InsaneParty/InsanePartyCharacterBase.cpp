@@ -81,6 +81,11 @@ float AInsanePartyCharacterBase::GetMaxMedals() const
 	return AttributeSetBase.IsValid() ? AttributeSetBase->GetMaxMedals() : 0.0f;
 }
 
+float AInsanePartyCharacterBase::GetKeys() const
+{
+	return AttributeSetBase.IsValid() ? AttributeSetBase->GetKeys() : 0.0f;
+}
+
 void AInsanePartyCharacterBase::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);

@@ -24,7 +24,7 @@ UInsaneGA_Shoot::UInsaneGA_Shoot()
 }
 
 
-void UInsaneGA_Shoot::SR_ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter)
+void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter)
 {
 	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 500.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
 	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
@@ -51,7 +51,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
 	
-	if(AttachedWeapon && AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0)
+	if(AttachedWeapon && AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0 && AttachedWeapon->WeaponData->WeaponData.WeaponType == EWeaponType::Gun)
 	{
 		PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
 		if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
@@ -60,8 +60,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		}
 		else
 		{
-			
-			SR_ProjectileSpawn_Implementation(PartyCharacter);
+			ProjectileSpawn(PartyCharacter);
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))

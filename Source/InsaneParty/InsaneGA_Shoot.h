@@ -29,8 +29,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	USoundWave* WeaponFireSound;
 
-	UFUNCTION()
-	void SR_ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter);
+	UFUNCTION(Server, Reliable)
+	void ProjectileSpawn(AInsanePartyCharacter* PartyCharacter);
 
 
 	UFUNCTION()

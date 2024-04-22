@@ -63,6 +63,17 @@ struct FWeaponProperties
 	bool bCanAutoFire = false;
 };
 
+UENUM(BlueprintType)
+enum class EWeaponType : uint8
+{
+	//0
+	Gun,
+
+	//1
+	Throwable
+};
+
+
 USTRUCT(BlueprintType)
 struct FWeapon
 {
@@ -80,6 +91,9 @@ struct FWeapon
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AInsaneWeaponBase> WeaponClass;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EWeaponType WeaponType;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> Projectile;
 
@@ -150,26 +164,4 @@ struct FWeaponSoundData
 
 };
 
-USTRUCT(BlueprintType)
-struct FThrowable
-{
-	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName ThrowableName;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UGameplayAbility> Ability;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UGameplayEffect> AbilityEffect;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AInsaneWeaponBase> ThrowableClass;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> Projectile;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D* Thumbnail;
-};

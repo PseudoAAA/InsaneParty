@@ -45,7 +45,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
 	float GetMaxMedals() const;
-	
+
+	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Attributes")
+	float GetKeys() const;
+
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 	
