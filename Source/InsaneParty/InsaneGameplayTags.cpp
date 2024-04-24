@@ -35,6 +35,9 @@ namespace InsaneGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_None, "Weapon.FireMode.None", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_Single, "Weapon.FireMode.Single", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_FullAuto, "Weapon.FireMode.FullAuto", "")
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_InHands_Rifle, "Weapon.InHands.Rifle", "")
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_InHands_Pistol, "Weapon.InHands.Pistol", "")
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_InHands_Grenade, "Weapon.InHands.Grenade", "")
 
 	//PLAYER ACTIONS TAGS
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(PlayerActions_Shoot, "PlayerActions.Shoot", "")

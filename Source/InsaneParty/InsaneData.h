@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include "Engine/StaticMesh.h"
 #include "InsaneData.generated.h"
 
 class UGameplayEffect;
 class UGameplayAbility;
 class AInsaneWeaponBase;
+class AInsaneProjectileBase;
 
 UENUM(BlueprintType)
 enum class EInsaneAbilityInputID : uint8
@@ -51,10 +51,10 @@ struct FWeaponProperties
 	float Range = 15000.f;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float BulletSpeed = 5000.f;
+	float ProjectileSpeed = 5000.f;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float BulletGravityScale = 1.f;
+	float ProjectileGravityScale = 1.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float ShootDelay = 0.2f;
@@ -67,10 +67,23 @@ UENUM(BlueprintType)
 enum class EWeaponType : uint8
 {
 	//0
-	Gun,
-
+	None,
 	//1
+	Gun,
+	//2
 	Throwable
+};
+
+//TODO ENUM OF FIRE MODE TYPE
+UENUM(BlueprintType)
+enum class EFireMode : uint8
+{
+	//0
+	None,
+	//1
+	Single,
+	//2
+	FullAuto
 };
 
 
@@ -92,10 +105,10 @@ struct FWeapon
 	TSubclassOf<AInsaneWeaponBase> WeaponClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EWeaponType WeaponType;
+	EWeaponType WeaponType = EWeaponType::None;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> Projectile;
+	TSubclassOf<AInsaneProjectileBase> Projectile;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayEffect> SingleFireModeEffect;
@@ -111,7 +124,7 @@ struct FWeapon
 };
 
 USTRUCT(BlueprintType)
-struct FWeaponDefaultMagazine
+struct FWeaponMagazineData
 {
 	GENERATED_BODY()
 
@@ -119,12 +132,12 @@ struct FWeaponDefaultMagazine
 	int MagazineAmmoCount = 0;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int MaxAmmoCount = 0;
+	int MagazineMaxAmmoCount = 0;
 	
 };
 
 USTRUCT(BlueprintType)
-struct FWeaponMagazineInfo
+struct FWeaponCurrentMagazineInfo
 {
 	GENERATED_BODY()
 
@@ -132,10 +145,13 @@ struct FWeaponMagazineInfo
 	int CurrentAmmoCount = 0;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int AllAmmoCount = 0;
+	int CurrentAllAmmoCount = 0;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UGameplayEffect> CurrentFireMode = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EFireMode FireMode = EFireMode::None;
 	
 };
 
@@ -148,7 +164,8 @@ struct FWeaponData
 	class UInsaneWeaponPrimaryDataAsset* WeaponDataAsset = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FWeaponMagazineInfo WeaponMagazineInfo;
+	FWeaponCurrentMagazineInfo CurrentMagazineInfo;
+
 };
 
 USTRUCT(BlueprintType)
@@ -157,7 +174,7 @@ struct FWeaponSoundData
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USoundBase* ShootSound;
+	USoundBase* FireSound;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USoundBase* ReloadingSound;

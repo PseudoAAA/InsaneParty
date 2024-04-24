@@ -23,26 +23,6 @@ UInsaneGA_Shoot::UInsaneGA_Shoot()
 	ActivationBlockedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("GameplayStatus.IsDead")));
 }
 
-
-void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter)
-{
-	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 500.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
-	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
-	FTransform Transform;
-	Transform.SetLocation(Location);
-	Transform.SetRotation(Rotation.Quaternion());
-	Transform.SetScale3D(FVector(1.f));
-		
-	FActorSpawnParameters SpawnParameters;
-	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-
-		
-	AInsaneProjectileBase* Projectile = GetWorld()->SpawnActorDeferred<AInsaneProjectileBase>(ProjectileClass, Transform, PartyCharacter,
-		GetAvatarActorFromActorInfo()->GetInstigator(), ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
-	Projectile->FinishSpawning(Transform);
-}
-
-
 void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
                                       const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo,
                                       const FGameplayEventData* TriggerEventData)
@@ -60,7 +40,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		}
 		else
 		{
-			ProjectileSpawn(PartyCharacter);
+			ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, GetAvatarActorFromActorInfo()->GetInstigator());
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
@@ -83,6 +63,24 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	{
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
+}
+
+void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, APawn* PartyInstigator)
+{
+	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 200.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
+	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
+	FTransform Transform;
+	Transform.SetLocation(Location);
+	Transform.SetRotation(Rotation.Quaternion());
+	Transform.SetScale3D(FVector(1.f));
+		
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		
+	AInsaneProjectileBase* ProjectileToSpawn = GetWorld()->SpawnActorDeferred<AInsaneProjectileBase>(Projectile, Transform, PartyCharacter,
+		PartyInstigator, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+	ProjectileToSpawn->FinishSpawning(Transform);
 }
 
 void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)

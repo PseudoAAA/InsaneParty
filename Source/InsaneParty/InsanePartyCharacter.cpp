@@ -4,7 +4,6 @@
 #include "InsanePartyCharacter.h"
 #include "EnhancedInputComponent.h"
 #include "InteractInterface.h"
-#include "InterchangeResult.h"
 
 
 // Sets default values
@@ -354,7 +353,9 @@ void AInsanePartyCharacter::SendInputToASC(bool bIsPressed, const EInsaneAbility
 
 	if(bIsPressed)
 	{
+#if UE_BUILD_DEBUG
 		UE_LOG(LogTemp, Warning, TEXT("Ability input ID: %d"), AbilityInputID);
+#endif
 		AbilitySystemComponent->AbilityLocalInputPressed(static_cast<int32>(AbilityInputID));
 	}
 	else

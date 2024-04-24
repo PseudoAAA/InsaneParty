@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "InsaneGameplayAbility.h"
+#include "InsaneProjectileBase.h"
 #include "InsaneGA_Shoot.generated.h"
 
 
@@ -19,20 +20,16 @@ class INSANEPARTY_API UInsaneGA_Shoot : public UInsaneGameplayAbility
 
 public:
 	UInsaneGA_Shoot();
-	
-	UPROPERTY(BlueprintReadOnly, EditAnywhere)
-	TSubclassOf<AInsaneProjectileBase> ProjectileClass;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	TSubclassOf<UGameplayEffect> DamageGameplayEffect;
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	USoundWave* WeaponFireSound;
-
+	
 	UFUNCTION(Server, Reliable)
-	void ProjectileSpawn(AInsanePartyCharacter* PartyCharacter);
-
-
+	void ProjectileSpawn(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, APawn* PartyInstigator);
+	
 	UFUNCTION()
 	void SingleFireRelease(float TimeHeld);
 	

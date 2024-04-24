@@ -198,7 +198,7 @@ void UInsaneInventorySystemComponent::SetAttachedWeaponInfoInInventory(AInsaneWe
 {
 	if(IsValid(Weapon) && SlotIndex != IncorrectSlotIndex)
 	{
-		InventoryWeapon[SlotIndex].WeaponMagazineInfo = Weapon->MagazineInfo;
+		InventoryWeapon[SlotIndex].CurrentMagazineInfo = Weapon->MagazineInfo;
 	}
 	else
 	{

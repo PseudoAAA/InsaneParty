@@ -83,7 +83,7 @@ float AInsanePartyCharacterBase::GetMaxMedals() const
 
 float AInsanePartyCharacterBase::GetKeys() const
 {
-	UE_LOG(LogTemp, Warning, TEXT("%f"), AttributeSetBase->GetKeys());
+	//UE_LOG(LogTemp, Warning, TEXT("%f"), AttributeSetBase->GetKeys());
 	return AttributeSetBase.IsValid() ? AttributeSetBase->GetKeys() : 0.0f;
 }
 
