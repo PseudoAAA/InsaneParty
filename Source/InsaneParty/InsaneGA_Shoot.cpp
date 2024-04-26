@@ -8,8 +8,7 @@
 #include "InsaneProjectileBase.h"
 #include "NativeGameplayTags.h"
 #include "Abilities/Tasks/AbilityTask_WaitInputRelease.h"
-
-
+#include "GameFramework/ProjectileMovementComponent.h"
 
 
 UInsaneGA_Shoot::UInsaneGA_Shoot()
@@ -40,7 +39,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		}
 		else
 		{
-			ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, GetAvatarActorFromActorInfo()->GetInstigator());
+			ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, AttachedWeapon->WeaponData, GetAvatarActorFromActorInfo()->GetInstigator());
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
@@ -65,7 +64,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	}
 }
 
-void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, APawn* PartyInstigator)
+void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, UInsaneWeaponPrimaryDataAsset* WeaponData, APawn* PartyInstigator)
 {
 	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 200.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
 	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
@@ -80,6 +79,9 @@ void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* Part
 		
 	AInsaneProjectileBase* ProjectileToSpawn = GetWorld()->SpawnActorDeferred<AInsaneProjectileBase>(Projectile, Transform, PartyCharacter,
 		PartyInstigator, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+	ProjectileToSpawn->ProjectileMovementComponent->InitialSpeed = WeaponData->WeaponData.Properties.ProjectileSpeed;
+	ProjectileToSpawn->ProjectileMovementComponent->ProjectileGravityScale = WeaponData->WeaponData.Properties.ProjectileGravityScale;
+	ProjectileToSpawn->Range = WeaponData->WeaponData.Properties.Range;
 	ProjectileToSpawn->FinishSpawning(Transform);
 }
 

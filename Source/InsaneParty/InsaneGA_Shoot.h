@@ -28,7 +28,7 @@ public:
 	USoundWave* WeaponFireSound;
 	
 	UFUNCTION(Server, Reliable)
-	void ProjectileSpawn(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, APawn* PartyInstigator);
+	void ProjectileSpawn(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, UInsaneWeaponPrimaryDataAsset* WeaponData, APawn* PartyInstigator);
 	
 	UFUNCTION()
 	void SingleFireRelease(float TimeHeld);

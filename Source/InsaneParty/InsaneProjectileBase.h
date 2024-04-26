@@ -28,16 +28,16 @@ public:
 	UProjectileMovementComponent* ProjectileMovementComponent;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float Damage = 0.f;
+	float Damage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float Range = 0.f;
+	float Range;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float InitialSpeed = 0.f;
+	float InitialSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float ProjectileGravityScale = 0.f;
+	float ProjectileGravityScale;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FHitResult HitResult;

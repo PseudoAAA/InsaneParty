@@ -12,21 +12,18 @@
 AInsaneProjectileBase::AInsaneProjectileBase()
 {
 
-	/*this->bReplicates = true;
+	this->bReplicates = true;
 	this->ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	this->CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
 	this->ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	
 	SetRootComponent(ProjectileMesh);
 	this->CapsuleComponent->SetupAttachment(ProjectileMesh);
-	
-	this->CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &AInsaneProjectileBase::BeginOverlap);
-	this->CapsuleComponent->SetHiddenInGame(false);
-	this->ProjectileMovementComponent->InitialSpeed = this->InitialSpeed;
-	this->ProjectileMovementComponent->ProjectileGravityScale = this->ProjectileGravityScale;
-	UE_LOG(LogTemp, Warning, TEXT("%f"), this->ProjectileMovementComponent->InitialSpeed);*/
-	
+
+	UE_LOG(LogTemp, Warning, TEXT("%f"), this->ProjectileMovementComponent->InitialSpeed);
 }
+
+
 
 /*void AInsaneProjectileBase::BeginOverlap(UPrimitiveComponent* OverlappedComponent, 
 								AActor* OtherActor, 
@@ -92,7 +89,6 @@ AInsaneProjectileBase::AInsaneProjectileBase()
 void AInsaneProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 
