@@ -19,7 +19,6 @@ AInsaneProjectileBase::AInsaneProjectileBase()
 	
 	SetRootComponent(ProjectileMesh);
 	this->CapsuleComponent->SetupAttachment(ProjectileMesh);
-
 	UE_LOG(LogTemp, Warning, TEXT("%f"), this->ProjectileMovementComponent->InitialSpeed);
 }
 

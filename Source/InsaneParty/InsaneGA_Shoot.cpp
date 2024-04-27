@@ -72,7 +72,8 @@ void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* Part
 	Transform.SetLocation(Location);
 	Transform.SetRotation(Rotation.Quaternion());
 	Transform.SetScale3D(FVector(1.f));
-		
+
+	
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
@@ -82,6 +83,7 @@ void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* Part
 	ProjectileToSpawn->ProjectileMovementComponent->InitialSpeed = WeaponData->WeaponData.Properties.ProjectileSpeed;
 	ProjectileToSpawn->ProjectileMovementComponent->ProjectileGravityScale = WeaponData->WeaponData.Properties.ProjectileGravityScale;
 	ProjectileToSpawn->Range = WeaponData->WeaponData.Properties.Range;
+	ProjectileToSpawn->Damage = WeaponData->WeaponData.Properties.Damage;
 	ProjectileToSpawn->FinishSpawning(Transform);
 }
 
