@@ -99,7 +99,7 @@ void UInsaneGA_Shoot::OnDelayEnd()
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
 
-	if(AttachedWeapon->MagazineInfo.CurrentFireMode == AttachedWeapon->WeaponData->WeaponData.SingleFireModeEffect)
+	if(AttachedWeapon && AttachedWeapon->MagazineInfo.CurrentFireMode == AttachedWeapon->WeaponData->WeaponData.SingleFireModeEffect)
 	{
 		Task->OnRelease.AddDynamic(this, &UInsaneGA_Shoot::SingleFireRelease);
 		Task->ReadyForActivation();

@@ -17,8 +17,8 @@ AInsaneProjectileBase::AInsaneProjectileBase()
 	this->CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
 	this->ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	
-	SetRootComponent(ProjectileMesh);
-	this->CapsuleComponent->SetupAttachment(ProjectileMesh);
+	SetRootComponent(CapsuleComponent);
+	this->ProjectileMesh->SetupAttachment(CapsuleComponent);
 	UE_LOG(LogTemp, Warning, TEXT("%f"), this->ProjectileMovementComponent->InitialSpeed);
 }
 
