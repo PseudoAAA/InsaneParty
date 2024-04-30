@@ -20,9 +20,8 @@ AInsaneProjectileBase::AInsaneProjectileBase()
 	SetRootComponent(CapsuleComponent);
 	this->ProjectileMesh->SetupAttachment(CapsuleComponent);
 	UE_LOG(LogTemp, Warning, TEXT("%f"), this->ProjectileMovementComponent->InitialSpeed);
+	
 }
-
-
 
 /*void AInsaneProjectileBase::BeginOverlap(UPrimitiveComponent* OverlappedComponent, 
 								AActor* OtherActor, 

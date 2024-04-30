@@ -11,18 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/ThirdPersonMap/8/X1/M40ROWX7SX0M22L2DKETP6.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GC_Shoot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GC_Shoot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/BP_Pistol.uasset" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Grenade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Aiming.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Aiming.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Throwable_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Throwable_Base.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/BP_Rifle.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/Features/DA_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/Features/DA_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/ThirdPersonMap/8/4R/P844ZPBZSJKGR7S4S5SEQO.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/ThirdPersonMap/B/AQ/OJTR8YOVX54WHU7BX19EA2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/ThirdPersonMap/B/AQ/OJTR8YOVX54WHU7BX19EA2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/ThirdPersonMap/D/VY/RSXANJEVJDNKW83NLSURPT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/ThirdPersonMap/D/VY/RSXANJEVJDNKW83NLSURPT.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/BP_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/BP_Grenade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/DA_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/DA_Grenade.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneProjectileBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneProjectileBase.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -291,6 +285,7 @@
       <workItem from="1714377852660" duration="669000" />
       <workItem from="1714395996347" duration="1199000" />
       <workItem from="1714405186618" duration="644000" />
+      <workItem from="1714416174803" duration="1075000" />
     </task>
     <servers />
   </component>
