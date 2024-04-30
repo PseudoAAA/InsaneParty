@@ -82,8 +82,7 @@ void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* Part
 		PartyInstigator, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
 	ProjectileToSpawn->ProjectileMovementComponent->InitialSpeed = WeaponData->WeaponData.Properties.ProjectileSpeed;
 	ProjectileToSpawn->ProjectileMovementComponent->ProjectileGravityScale = WeaponData->WeaponData.Properties.ProjectileGravityScale;
-	ProjectileToSpawn->Range = WeaponData->WeaponData.Properties.Range;
-	ProjectileToSpawn->Damage = WeaponData->WeaponData.Properties.Damage;
+	ProjectileToSpawn->ProjectileData = WeaponData;
 	ProjectileToSpawn->FinishSpawning(Transform);
 }
 

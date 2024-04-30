@@ -11,13 +11,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Grenade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Aiming.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Aiming.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Grenade.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Throwable_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Throwable_Base.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/BP_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/BP_Grenade.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/DA_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/DA_Grenade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/GA_Throw.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/GA_Throw.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneProjectileBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneProjectileBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneProjectileBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneProjectileBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +288,9 @@
       <workItem from="1714377852660" duration="669000" />
       <workItem from="1714395996347" duration="1199000" />
       <workItem from="1714405186618" duration="644000" />
-      <workItem from="1714416174803" duration="1075000" />
+      <workItem from="1714416174803" duration="2299000" />
+      <workItem from="1714464296729" duration="3843000" />
+      <workItem from="1714491664834" duration="2222000" />
     </task>
     <servers />
   </component>

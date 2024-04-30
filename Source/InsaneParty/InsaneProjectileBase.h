@@ -3,9 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InsaneData.h"
 #include "GameFramework/Actor.h"
 #include "InsaneProjectileBase.generated.h"
 
+struct FWeaponSoundData;
+class UInsaneWeaponPrimaryDataAsset;
 class UGameplayEffect;
 class UProjectileMovementComponent;
 class UCapsuleComponent;
@@ -18,27 +21,23 @@ class INSANEPARTY_API AInsaneProjectileBase : public AActor
 public:
 	AInsaneProjectileBase();
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* ProjectileMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UCapsuleComponent* CapsuleComponent;
+	UCapsuleComponent* ProjectileCollision;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UProjectileMovementComponent* ProjectileMovementComponent;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float Damage;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float Range;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated,  meta = (ExposeOnSpawn = true))
+	UInsaneWeaponPrimaryDataAsset* ProjectileData;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float InitialSpeed;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-	float ProjectileGravityScale;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, meta = (ExposeOnSpawn = true))
+	FWeaponSoundData ProjectileSoundData;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FHitResult HitResult;
 	

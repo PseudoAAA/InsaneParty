@@ -14,13 +14,21 @@ AInsaneProjectileBase::AInsaneProjectileBase()
 
 	this->bReplicates = true;
 	this->ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
-	this->CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
+	this->ProjectileCollision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("ProjectileCollision"));
 	this->ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	
-	SetRootComponent(CapsuleComponent);
-	this->ProjectileMesh->SetupAttachment(CapsuleComponent);
+	SetRootComponent(ProjectileCollision);
+	this->ProjectileMesh->SetupAttachment(ProjectileCollision);
 	UE_LOG(LogTemp, Warning, TEXT("%f"), this->ProjectileMovementComponent->InitialSpeed);
 	
+}
+
+void AInsaneProjectileBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AInsaneProjectileBase, ProjectileData)
+	DOREPLIFETIME(AInsaneProjectileBase, ProjectileSoundData)
 }
 
 /*void AInsaneProjectileBase::BeginOverlap(UPrimitiveComponent* OverlappedComponent, 
