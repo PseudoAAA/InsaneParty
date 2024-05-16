@@ -39,6 +39,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		}
 		else
 		{
+			K2_ActivateAbility();
 			ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, AttachedWeapon->WeaponData, GetAvatarActorFromActorInfo()->GetInstigator());
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);

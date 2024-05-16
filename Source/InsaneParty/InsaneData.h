@@ -120,6 +120,9 @@ struct FWeapon
 	FWeaponProperties Properties;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UAnimInstance> AnimInstance;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Thumbnail;
 };
 
@@ -165,7 +168,6 @@ struct FWeaponData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWeaponCurrentMagazineInfo CurrentMagazineInfo;
-
 };
 
 USTRUCT(BlueprintType)

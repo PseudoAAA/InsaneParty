@@ -125,6 +125,8 @@ public:
 	/** Returns FollowCamera subobject **/
 	class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter")
+	TSubclassOf<UAnimInstance> DefaultAnimInstance;
 	
 protected:
 	// Called when the game starts or when spawned
