@@ -11,50 +11,339 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Physics.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Skeleton.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo_sharedassets/auto_LayerInfo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo_sharedassets/layer_01_LayerInfo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo_sharedassets/layer_02_LayerInfo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo_sharedassets/layer_03_LayerInfo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_block_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_concrete_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_wood_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_wood_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_wood_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_wood_04_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_wood_05_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_building_wood_06_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_part_ornament_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/MI_pyramid_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/M_block.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/M_building_concrete.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/M_building_wood.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/M_part_ornament.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/M_pyramid.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_base_concrete_WPO_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_brick_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_brick_01_WPO_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_paint_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_paint_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_paint_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_paint_04_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_paint_05_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_paint_Planar_WPO_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_concrete_slab_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_floor_tile_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_floor_tile_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_metal_A_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_metal_B_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wood_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wood_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wooden_board_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wooden_board_02_A_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wooden_board_02_B_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wooden_board_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wooden_board_04_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/MI_wooden_board_Planar_WPO_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/M_base_concrete_WPO.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/M_brick_WPO.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/M_concrete_paint.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/building_materials/base_materials/M_metal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_04_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_05_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_06_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_07_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_damage_08_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_dirt_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_dirt_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_dirt_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_hieroglyphs_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_ornament_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_ornament_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_ornament_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_ornament_04_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_pattern_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_pattern_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_pattern_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_pattern_04_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/MI_decal_pattern_05_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/M_decal_damage.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/M_decal_dirt.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/M_decal_hieroglyphs.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/decals_materials/M_decal_ornament.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/MI_landscape_material_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/M_landscape_material.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/functions/MF_triplanar_basecolor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/functions/MF_triplanar_normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/layers/MF_auto.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/layers/MF_layer_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/layers/MF_layer_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/landscape_materials/layers/MF_layer_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/plants_materials/MI_plants_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/plants_materials/MI_plants_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/plants_materials/MI_tree_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/plants_materials/MI_vine_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/plants_materials/M_plants.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/plants_materials/M_tree.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/props_materials/MI_egyptian_statue_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/props_materials/MI_jug_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/props_materials/MI_wood_box_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/props_materials/M_egyptian_statue.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/props_materials/M_props.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/stones_materials/MI_stones_01_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/stones_materials/MI_stones_02_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/stones_materials/MI_stones_03_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Materials/stones_materials/M_stones.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_09.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_block_10.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_border_09.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_column_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_column_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_building_part_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_door_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_door_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_door_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_entry_pyramid_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_entry_pyramid_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_floor_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_floor_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_floor_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_09.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_part_ornament_10.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_pyramid_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_pyramid_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_pyramid_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_roof_dome_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_roof_dome_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_stairs_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_stairs_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_stairs_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_09.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_10.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_11.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_12.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_13.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_14.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_corner_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_fence_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wall_fence_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_beam_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_beam_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_beam_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_beam_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_beam_08.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_boards_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_boards_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_boards_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_boards_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_canopy_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_grid_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_grid_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_panel_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_window_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_window_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_window_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/building/SM_wooden_window_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_bush_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_bush_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_bush_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_grass.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_tree_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_vine_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_vine_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_vine_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_vine_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/plants/SM_vine_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_egyptian_statue_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_broken_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_broken_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_broken_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_jug_broken_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_wood_box_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/props/SM_wood_box_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_06.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Meshes/stones/SM_stone_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/T_part_ornament_MaskRGB.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/brick_01/T_brick_01_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/brick_01/T_brick_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/brick_02/T_brick_02_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/brick_02/T_brick_02_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/concrete/T_concrete_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/concrete/T_concrete_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/concrete_paint/T_concrete_paint_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/concrete_paint/T_concrete_paint_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/concrete_slab/T_concrete_slab_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/concrete_slab/T_concrete_slab_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/floor_tile/T_floor_tile_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/floor_tile/T_floor_tile_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/metal/T_metal_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/metal/T_metal_Roughness.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/plaster/T_plaster_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/plaster/T_plaster_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wood_01/T_wood_01_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wood_01/T_wood_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wood_02/T_wood_02_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wood_02/T_wood_02_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wooden_board_01/T_wooden_board_01_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wooden_board_01/T_wooden_board_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wooden_board_02/T_wooden_board_02_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wooden_board_02/T_wooden_board_02_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wooden_board_03/T_wooden_board_03_basecolor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/base_textures/wooden_board_03/T_wooden_board_03_normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/building_normal_maps/T_block_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/building_normal_maps/T_building_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/building_normal_maps/T_building_02_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/building_normal_maps/T_part_ornament_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/building_normal_maps/T_wooden_part_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/building_normal_maps/T_wooden_part_02_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/pyramid_textures/T_noise_pyramid_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/pyramid_textures/T_pyramid_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/building_textures/pyramid_textures/T_pyramid_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_01_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_02_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_02_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_03_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_03_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_04_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_04_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_05_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_damage_05_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_dirt_01_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_dirt_02_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_dirt_03_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_dirt_04_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_hieroglyphs_01_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_hieroglyphs_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_01_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_02_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_03_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_04_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_05_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_06_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/decals_textures/T_decal_pattern_07_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/cliff/T_cliff_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/cliff/T_cliff_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/sand/T_sand_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/sand/T_sand_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/tile/T_tile_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/tile/T_tile_Height.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/landscape_textures/tile/T_tile_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_plants_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_plants_Mask.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_plants_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_tree_01_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_tree_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_vine_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/plants_textures/T_vine_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/egyptian_statue/T_egyptian_statue_01_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/egyptian_statue/T_egyptian_statue_01_MaskRGB.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/egyptian_statue/T_egyptian_statue_01_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/jug/T_jug_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/jug/T_jug_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/wood_box/T_wood_box_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/props_textures/wood_box/T_wood_box_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/stones_textures/T_moss_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/stones_textures/T_moss_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/stones_textures/T_stones_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Textures/stones_textures/T_stones_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Running.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Running_Backward.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walking_Backward.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walking_Backward_Left.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walking_Backward_Right.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walking_Forward.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walking_Forward_Left.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walking_Forward_Right.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/ABP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/ABP_InsanePartyCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/BS_MM_WalkRun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/BS_MM_WalkRun.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Jumping_Down__1_.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Jumping_Down__1_.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Backward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Backward.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Jumping_Down__1_.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Backward.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Falling_Loop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Falling_Loop.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Idle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_IdleNew.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_IdleNew.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_IdleNew.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Jump.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Jump.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Landing.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Landing.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Run.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Run.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Backward_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Backward_Left.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Backward_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Backward_Right.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Run.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Backward_Left.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Backward_Right.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Left.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Strafe_Right.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walk.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_WalkBackward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_WalkBackward.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Walk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_WalkBackward.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/ABP_InsanePartyCharacter_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/ABP_InsanePartyCharacter_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_AimDown.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_AimDown.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_AimIdle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_AimIdle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_AimUp.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_AimUp.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_Aim_Rifle_AimOffset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/AO_Aim_Rifle_AimOffset.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_Rifle_WalkRun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_Rifle_WalkRun.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_Rifle_WalkRun_Aiming.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_Rifle_WalkRun_Aiming.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Hit_Reaction_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Hit_Reaction_Idle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Hit_Reaction_Run.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Hit_Reaction_Run.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Idle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk_Backward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk_Backward.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk_Left.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Aiming_Walk_Right.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Idle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Backward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Backward.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Left.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Right.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Walking_Hit_Reaction.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Walking_Hit_Reaction.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v18.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v18_PhysicsAsset.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v18_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InsaneParty.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/InsaneParty.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,11 +633,36 @@
       <workItem from="1715855934410" duration="6423000" />
       <workItem from="1715903969864" duration="309000" />
       <workItem from="1715936159583" duration="5540000" />
+      <workItem from="1716029269261" duration="813000" />
+      <workItem from="1716114328316" duration="811000" />
+      <workItem from="1716157746317" duration="1070000" />
+      <workItem from="1716215694470" duration="1701000" />
+      <workItem from="1716298050695" duration="541000" />
+      <workItem from="1716298612479" duration="1517000" />
+      <workItem from="1716360504746" duration="489000" />
+      <workItem from="1716361009627" duration="134000" />
+      <workItem from="1716361157695" duration="603000" />
+      <workItem from="1716362277125" duration="819000" />
+      <workItem from="1716365232607" duration="4212000" />
+      <workItem from="1716450445685" duration="1278000" />
+      <workItem from="1716500238406" duration="912000" />
+      <workItem from="1716556420817" duration="2526000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
