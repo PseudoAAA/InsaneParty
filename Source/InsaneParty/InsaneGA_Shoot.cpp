@@ -49,6 +49,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
 				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
+				//NO RECOIL   PartyCharacter->IMP_Recoil(0.0f, 0.f, 0.0f, 0.0f);
 			}
 			else
 			{
@@ -56,6 +57,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
 				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
+				//NO RECOIL    PartyCharacter->IMP_Recoil(0.0f, 0.f, 0.0f, 0.0f);
 			}
 		}
 	}
@@ -67,13 +69,29 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 
 void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, UInsaneWeaponPrimaryDataAsset* WeaponData, APawn* PartyInstigator)
 {
-	FVector Location = PartyCharacter->GetFollowCamera()->GetForwardVector() * 200.f + PartyCharacter->GetFollowCamera()->GetComponentLocation();
-	FRotator Rotation = PartyCharacter->GetFollowCamera()->GetComponentRotation();
+	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
+	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
 	FTransform Transform;
-	Transform.SetLocation(Location);
-	Transform.SetRotation(Rotation.Quaternion());
-	Transform.SetScale3D(FVector(1.f));
+	if(AttachedWeapon)
+	{
+		/*FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetBoneLocation("muzzle_end", EBoneSpaces::WorldSpace);
+		APlayerCameraManager* CameraManager = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+		FVector CameraManagerStartLocation = CameraManager->GetTargetLocation();
+		FVector CameraManagerEndLocation = CameraManagerStartLocation + CameraManager->GetActorForwardVector() * 1500.f;
+		FRotator MuzzleRotationToViewPoint = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, CameraManagerEndLocation);
+		Transform.SetLocation(MuzzleLocation);
+		Transform.SetRotation(MuzzleRotationToViewPoint.Quaternion());
+		Transform.SetScale3D(FVector(1.f));*/
 
+		FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetSocketLocation("muzzle_end");
+		FVector CameraManagerStartLocation = PartyCharacter->GetFollowCamera()->GetComponentLocation();
+		FVector CameraManagerEndLocation = CameraManagerStartLocation + PartyCharacter->GetFollowCamera()->GetForwardVector() * 1500.f;
+		FRotator MuzzleRotationToViewPoint = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, CameraManagerEndLocation);
+		Transform.SetLocation(MuzzleLocation);
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *MuzzleLocation.ToString());
+		Transform.SetRotation(MuzzleRotationToViewPoint.Quaternion());
+		Transform.SetScale3D(FVector(1.f));
+	}	
 	
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
@@ -98,7 +116,6 @@ void UInsaneGA_Shoot::OnDelayEnd()
 	AInsanePartyCharacter* PartyCharacter = CastChecked<AInsanePartyCharacter>(GetAvatarActorFromActorInfo());
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
-
 	if(AttachedWeapon && AttachedWeapon->MagazineInfo.CurrentFireMode == AttachedWeapon->WeaponData->WeaponData.SingleFireModeEffect)
 	{
 		Task->OnRelease.AddDynamic(this, &UInsaneGA_Shoot::SingleFireRelease);
