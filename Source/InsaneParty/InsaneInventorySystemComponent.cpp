@@ -11,7 +11,6 @@ UInsaneInventorySystemComponent::UInsaneInventorySystemComponent()
 	
 	InventoryWeaponData.SetNum(InventorySize);
 	InventoryWeapon.SetNum(InventorySize);
-
 }
 
 void UInsaneInventorySystemComponent::BeginPlay()
@@ -37,6 +36,7 @@ void UInsaneInventorySystemComponent::GetLifetimeReplicatedProps(TArray<FLifetim
 void UInsaneInventorySystemComponent::SetActiveSlotIndex(const int SlotIndex)
 {
 	ActiveSlotIndex = SlotIndex;
+	
 }
 
 void UInsaneInventorySystemComponent::AddWeaponToInventory(UInsaneWeaponPrimaryDataAsset* WeaponToAdd, FWeaponData WeaponMagazineInfo)

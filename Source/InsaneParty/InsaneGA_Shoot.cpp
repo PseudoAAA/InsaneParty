@@ -45,7 +45,9 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("1"));
+				UE_LOG(LogTemp, Warning, TEXT("Active Slot: %d"), PartyCharacterInventory->GetActiveSlotIndex());
+				UE_LOG(LogTemp, Warning, TEXT("Weapon name: %s"), *AttachedWeapon->GetName());
+				
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
 				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
