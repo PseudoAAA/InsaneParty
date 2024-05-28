@@ -12,12 +12,13 @@
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectSecondSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectSecondSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectThirdSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectThirdSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GC_SelectFirstSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GC_SelectFirstSlot.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Grenade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +182,17 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
       </configuration_5>
+      <configuration_6>
+        <option name="CONFIGURATION" value="Development Server" />
+        <option name="PLATFORM" value="Win64" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/InsaneParty.vcxproj" />
+        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
+        <option name="EXE_PATH" value="$(TargetPath)" />
+        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="WORKING_DIRECTORY" value="$(ProjectDir)" />
+        <option name="PASS_PARENT_ENVS" value="1" />
+        <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      </configuration_6>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/InsaneParty.vcxproj" />
       <method v="2">
         <option name="Build" />
@@ -324,6 +336,8 @@
       <workItem from="1716633582560" duration="11055000" />
       <workItem from="1716750554415" duration="5236000" />
       <workItem from="1716796095350" duration="4322000" />
+      <workItem from="1716822801482" duration="8684000" />
+      <workItem from="1716856181840" duration="610000" />
     </task>
     <servers />
   </component>

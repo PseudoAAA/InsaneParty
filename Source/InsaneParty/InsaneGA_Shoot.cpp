@@ -86,9 +86,20 @@ void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* Part
 		Transform.SetScale3D(FVector(1.f));*/
 
 		FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetSocketLocation("muzzle_end");
-		FVector CameraManagerStartLocation = PartyCharacter->GetFollowCamera()->GetComponentLocation();
-		FVector CameraManagerEndLocation = CameraManagerStartLocation + PartyCharacter->GetFollowCamera()->GetForwardVector() * 1500.f;
-		FRotator MuzzleRotationToViewPoint = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, CameraManagerEndLocation);
+		FVector Start = PartyCharacter->GetFollowCamera()->GetComponentLocation();
+		FVector End = Start + PartyCharacter->GetFollowCamera()->GetForwardVector() * 99999.f;
+		TArray<AActor*> ActorsToIgnore;
+		ActorsToIgnore.Add(PartyCharacter);
+		FHitResult HitResult;
+		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldDynamic));
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_PhysicsBody));
+		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldStatic));
+		
+		UKismetSystemLibrary::LineTraceSingleForObjects(GetWorld(), Start, End, ObjectTypes, false, ActorsToIgnore, EDrawDebugTrace::None, HitResult, true);
+		//DrawDebugLine(GetWorld(), PartyCharacter->GetFollowCamera()->GetComponentLocation(), PartyCharacter->GetFollowCamera()->GetForwardVector()* 1500.f, FColor::Red, false, 5.f, 0.f, 1.f);
+		FRotator MuzzleRotationToViewPoint = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, HitResult.Location);
 		Transform.SetLocation(MuzzleLocation);
 		UE_LOG(LogTemp, Warning, TEXT("%s"), *MuzzleLocation.ToString());
 		Transform.SetRotation(MuzzleRotationToViewPoint.Quaternion());
