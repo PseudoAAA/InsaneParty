@@ -13,11 +13,11 @@
 
 UInsaneGA_Shoot::UInsaneGA_Shoot()
 {
-	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
 	
 	FGameplayTag AbilityShootTag = FGameplayTag::RequestGameplayTag(FName("PlayerActions.Shoot"));
 	AbilityTags.AddTag(AbilityShootTag);
 	ActivationOwnedTags.AddTag(AbilityShootTag);
+	this->ReplicationPolicy = EGameplayAbilityReplicationPolicy::ReplicateYes;
 	
 	ActivationBlockedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("GameplayStatus.IsDead")));
 }
@@ -39,8 +39,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		}
 		else
 		{
-			K2_ActivateAbility();
-			ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, AttachedWeapon->WeaponData, GetAvatarActorFromActorInfo()->GetInstigator());
+			//ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, AttachedWeapon->WeaponData, GetAvatarActorFromActorInfo()->GetInstigator());
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
@@ -68,24 +67,16 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
 }
-
-void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, UInsaneWeaponPrimaryDataAsset* WeaponData, APawn* PartyInstigator)
+//_Implementation
+/*void UInsaneGA_Shoot::ProjectileSpawn(AInsanePartyCharacter* PartyCharacter, TSubclassOf<AInsaneProjectileBase> Projectile, UInsaneWeaponPrimaryDataAsset* WeaponData, APawn* PartyInstigator)
 {
 	UInsaneInventorySystemComponent* PartyCharacterInventory = CastChecked<AInsanePlayerState>(PartyCharacter->GetPlayerState())->GetInventorySystemComponent();
 	AInsaneWeaponBase* AttachedWeapon = PartyCharacterInventory->GetAttachedWeapon(PartyCharacter, PartyCharacterInventory->GetActiveSlotIndex());
+	FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetBoneLocation("muzzle_end", EBoneSpaces::WorldSpace);
 	FTransform Transform;
 	if(AttachedWeapon)
 	{
-		/*FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetBoneLocation("muzzle_end", EBoneSpaces::WorldSpace);
-		APlayerCameraManager* CameraManager = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
-		FVector CameraManagerStartLocation = CameraManager->GetTargetLocation();
-		FVector CameraManagerEndLocation = CameraManagerStartLocation + CameraManager->GetActorForwardVector() * 1500.f;
-		FRotator MuzzleRotationToViewPoint = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, CameraManagerEndLocation);
-		Transform.SetLocation(MuzzleLocation);
-		Transform.SetRotation(MuzzleRotationToViewPoint.Quaternion());
-		Transform.SetScale3D(FVector(1.f));*/
-
-		FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetSocketLocation("muzzle_end");
+		//FVector MuzzleLocation = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetSocketLocation("muzzle_end");
 		FVector Start = PartyCharacter->GetFollowCamera()->GetComponentLocation();
 		FVector End = Start + PartyCharacter->GetFollowCamera()->GetForwardVector() * 99999.f;
 		TArray<AActor*> ActorsToIgnore;
@@ -97,26 +88,32 @@ void UInsaneGA_Shoot::ProjectileSpawn_Implementation(AInsanePartyCharacter* Part
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_PhysicsBody));
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldStatic));
 		
-		UKismetSystemLibrary::LineTraceSingleForObjects(GetWorld(), Start, End, ObjectTypes, false, ActorsToIgnore, EDrawDebugTrace::None, HitResult, true);
+		UKismetSystemLibrary::LineTraceSingleForObjects(GetWorld(), Start, End, ObjectTypes, false, ActorsToIgnore, EDrawDebugTrace::ForDuration, HitResult, true);
 		//DrawDebugLine(GetWorld(), PartyCharacter->GetFollowCamera()->GetComponentLocation(), PartyCharacter->GetFollowCamera()->GetForwardVector()* 1500.f, FColor::Red, false, 5.f, 0.f, 1.f);
 		FRotator MuzzleRotationToViewPoint = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, HitResult.Location);
-		Transform.SetLocation(MuzzleLocation);
+		FVector TransformVector = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetBoneLocation("muzzle_end", EBoneSpaces::WorldSpace);
+		TransformVector.Z = Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetBoneLocation("muzzle_end", EBoneSpaces::WorldSpace).Z + Cast<APawn>(GetAvatarActorFromActorInfo())->GetBaseAimRotation().Pitch;
+		Transform.SetLocation(TransformVector + Cast<APawn>(GetAvatarActorFromActorInfo())->GetBaseAimRotation().Vector());
+		
 		UE_LOG(LogTemp, Warning, TEXT("%s"), *MuzzleLocation.ToString());
 		Transform.SetRotation(MuzzleRotationToViewPoint.Quaternion());
 		Transform.SetScale3D(FVector(1.f));
-	}	
-	
-	FActorSpawnParameters SpawnParameters;
-	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		FActorSpawnParameters SpawnParameters;
+		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		
-	AInsaneProjectileBase* ProjectileToSpawn = GetWorld()->SpawnActorDeferred<AInsaneProjectileBase>(Projectile, Transform, PartyCharacter,
-		PartyInstigator, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
-	ProjectileToSpawn->ProjectileMovementComponent->InitialSpeed = WeaponData->WeaponData.Properties.ProjectileSpeed;
-	ProjectileToSpawn->ProjectileMovementComponent->ProjectileGravityScale = WeaponData->WeaponData.Properties.ProjectileGravityScale;
-	ProjectileToSpawn->ProjectileData = WeaponData;
-	ProjectileToSpawn->FinishSpawning(Transform);
-}
+		if(K2_HasAuthority())
+		{
+			UKismetSystemLibrary::LineTraceSingleForObjects(GetWorld(), Cast<AInsaneWeaponBase>(AttachedWeapon)->SkeletalMeshWeapon->GetBoneLocation("muzzle_end", EBoneSpaces::WorldSpace) + Cast<APawn>(GetAvatarActorFromActorInfo())->GetBaseAimRotation().Vector(), End, ObjectTypes, false, ActorsToIgnore, EDrawDebugTrace::ForDuration, HitResult, true, FLinearColor::Black);
+			
+			AInsaneProjectileBase* ProjectileToSpawn = GetWorld()->SpawnActorDeferred<AInsaneProjectileBase>(Projectile, Transform, PartyCharacter,
+				PartyInstigator, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
+			ProjectileToSpawn->ProjectileMovementComponent->InitialSpeed = WeaponData->WeaponData.Properties.ProjectileSpeed;
+			ProjectileToSpawn->ProjectileMovementComponent->ProjectileGravityScale = WeaponData->WeaponData.Properties.ProjectileGravityScale;
+			ProjectileToSpawn->ProjectileData = WeaponData;
+			ProjectileToSpawn->FinishSpawning(Transform);
+		}
+	}	
+}*/
 
 void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)
 {

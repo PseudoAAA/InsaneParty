@@ -85,20 +85,7 @@ bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAss
 			return false;
 		}
 	}
-
 	return true;
-	
-	/*if(InventoryWeapon.Contains(WeaponToCheck))
-	{
-		UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
-		return false;
-	}
-	else
-	{
-		UE_LOG(InsaneInventoryLog, Warning, TEXT("Is unique weapon in inventory? bool: %d"), !InventoryWeaponData.Contains(WeaponToCheck));
-		return true;
-	}*/
-	//return WeaponToCheck == nullptr ? false : InventoryWeaponData.Contains(WeaponToCheck);
 }
 
 
