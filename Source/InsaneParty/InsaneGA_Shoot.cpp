@@ -8,7 +8,6 @@
 #include "InsaneProjectileBase.h"
 #include "NativeGameplayTags.h"
 #include "Abilities/Tasks/AbilityTask_WaitInputRelease.h"
-#include "GameFramework/ProjectileMovementComponent.h"
 
 
 UInsaneGA_Shoot::UInsaneGA_Shoot()
@@ -33,6 +32,8 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	if(AttachedWeapon && AttachedWeapon->MagazineInfo.CurrentAmmoCount > 0 && AttachedWeapon->WeaponData->WeaponData.WeaponType == EWeaponType::Gun)
 	{
 		PartyCharacterInventory->DecreaseAmmoInMagazine(AttachedWeapon);
+		K2_ActivateAbility();
+		
 		if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
 		{
 			EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);

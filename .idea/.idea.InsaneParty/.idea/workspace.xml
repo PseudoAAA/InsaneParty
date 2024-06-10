@@ -11,34 +11,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Fall_Loop.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Jump.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Land.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/Rifle_Jump.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/UI/WBP_Player_Inventory.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_Rifle_WalkRun.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_WalkRun_HitReact.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Idle_HitReact.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Idle_TEST.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Running_HitReact.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walking_HitReact.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectSecondSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectSecondSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectThirdSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectThirdSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Aiming.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Aiming.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Reloading.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_Reloading.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GC_Shoot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GC_Shoot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/GE_Damaging.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/GE_Damaging.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/Test/GE_Pistol_GiveAbility.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/Test/GE_Pistol_GiveAbility.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/Test/GE_Rifle_GiveAbility.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/Test/GE_Rifle_GiveAbility.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/WBP_PlayerUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/WBP_PlayerUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/BP_Pistol_Weapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/BP_Pistol_Weapon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/DA_Pistol.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/DA_Pistol.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/MSS_PistolShoot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Pistol/MSS_PistolShoot.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Projectiles/BP_Projectile_Weapon_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyInsaneGA_Shoot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyInsaneGA_Shoot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyInsaneProjectileBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyInsaneProjectileBase.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/ABP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/ABP_InsanePartyCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Landing.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Landing.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/BP_Rifle_Weapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/BP_Rifle_Weapon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/Features/DA_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Rifle/Features/DA_Rifle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/Grenade/BP_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/Throwable/Grenade/BP_Grenade.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyInsaneGA_Shoot.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyInsaneProjectileBase.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/NewAnimMontage.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/NewSoundAttenuation.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Stylized_Egypt/Maps/Stylized_Egypt_Demo.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Rifle_Walk_Backward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Rifle_Walk_Backward.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Rifle_Walk_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/MM_Rifle_Walk_Left.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/ABP_InsanePartyCharacter_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/ABP_InsanePartyCharacter_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Physics.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Physics.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/MainCharacter_v19_Skeleton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/Weapons/Rifle/Rifle_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/Weapons/Rifle/Rifle_Skeleton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/Weapons/Rifle/SM_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/Weapons/Rifle/SM_Rifle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_WalkRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Jump.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Jump.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Backward_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Backward_Left.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Backward_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Backward_Right.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Forward.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Forward.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Forward_Left.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Forward_Left.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Forward_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Forward_Right.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Right.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walk_Right.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/Rifle_Jump.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGA_Shoot.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,6 +379,12 @@
       <workItem from="1717406899533" duration="6110000" />
       <workItem from="1717493296604" duration="9514000" />
       <workItem from="1717593655864" duration="9948000" />
+      <workItem from="1717655493859" duration="1197000" />
+      <workItem from="1717671635987" duration="1917000" />
+      <workItem from="1717751548999" duration="607000" />
+      <workItem from="1717864044154" duration="597000" />
+      <workItem from="1717946904169" duration="3258000" />
+      <workItem from="1717993751343" duration="1842000" />
     </task>
     <servers />
   </component>
