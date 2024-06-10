@@ -11,13 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/UI/WBP_Player_Inventory.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_Rifle_WalkRun.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/BS_MM_WalkRun_HitReact.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Idle_HitReact.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Idle_TEST.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Running_HitReact.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/Rifle/MM_Rifle_Walking_HitReact.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Weapon/GA_ShootNew.uasset" afterDir="false" />
@@ -384,7 +377,7 @@
       <workItem from="1717751548999" duration="607000" />
       <workItem from="1717864044154" duration="597000" />
       <workItem from="1717946904169" duration="3258000" />
-      <workItem from="1717993751343" duration="1842000" />
+      <workItem from="1717993751343" duration="2162000" />
     </task>
     <servers />
   </component>
