@@ -40,7 +40,6 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 		}
 		else
 		{
-			//ProjectileSpawn(PartyCharacter, AttachedWeapon->WeaponData->WeaponData.Projectile, AttachedWeapon->WeaponData, GetAvatarActorFromActorInfo()->GetInstigator());
 			FGameplayTagContainer Tags;
 			GetAbilitySystemComponentFromActorInfo()->GetOwnedGameplayTags(Tags);
 			if(Tags.HasTag(InsaneGameplayTags::GameplayStatus_Aiming))
@@ -49,17 +48,12 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 				UE_LOG(LogTemp, Warning, TEXT("Weapon name: %s"), *AttachedWeapon->GetName());
 				
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
-				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
-				//NO RECOIL   PartyCharacter->IMP_Recoil(0.0f, 0.f, 0.0f, 0.0f);
 			}
 			else
 			{
-				UE_LOG(LogTemp, Warning, TEXT("0"));
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
-				//add recoil in weapon data
 				PartyCharacter->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
-				//NO RECOIL    PartyCharacter->IMP_Recoil(0.0f, 0.f, 0.0f, 0.0f);
 			}
 		}
 	}
@@ -116,7 +110,7 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	}	
 }*/
 
-void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)
+void UInsaneGA_Shoot::SingleFireRelease(float TimeHeld)	
 {
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 }

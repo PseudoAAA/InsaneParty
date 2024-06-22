@@ -175,10 +175,7 @@ FWeaponData UInsaneInventorySystemComponent::GetWeaponDataFromInventory(const in
 	{
 		return InventoryWeapon[SlotIndex];
 	}
-	else
-	{
-		return *new FWeaponData;
-	}
+	return *new FWeaponData;
 }
 
 void UInsaneInventorySystemComponent::SetAttachedWeaponInfoInInventory(AInsaneWeaponBase* Weapon, const int SlotIndex)
@@ -201,10 +198,7 @@ bool UInsaneInventorySystemComponent::DecreaseAmmoInMagazine(AInsaneWeaponBase* 
 		Weapon->MagazineInfo.CurrentAmmoCount -= 1.f;
 		return true;
 	}
-	else
-	{
-		return false;
-	}
+	return false;
 }
 
 

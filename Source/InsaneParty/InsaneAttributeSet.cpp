@@ -8,7 +8,10 @@
 
 
 UInsaneAttributeSet::UInsaneAttributeSet()
-{}
+{
+	MaxHealth = 100;
+	Health = 100;
+}
 
 void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -27,15 +30,6 @@ void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
 {
 	Super::PreAttributeChange(Attribute, NewValue);
-
-	if (Attribute == GetMaxHealthAttribute())
-	{
-		AdjustAttributeForMaxChange(Health, MaxHealth, NewValue, GetHealthAttribute());
-	}
-	/*else if (Attribute == GetMaxMedalsAttribute())
-	{
-		AdjustAttributeForMaxChange(Medals, MaxMedals, NewValue, GetMedalsAttribute());
-	}*/
 }
 
 void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)

@@ -58,7 +58,7 @@ float AInsanePartyCharacterBase::GetHealth() const
 		return AttributeSetBase->GetHealth();
 	}
 
-	return 0.0f;
+	return AttributeSetBase->GetHealth();
 }
 
 float AInsanePartyCharacterBase::GetMaxHealth() const
@@ -135,9 +135,25 @@ bool AInsanePartyCharacterBase::IsAlive()
 
 void AInsanePartyCharacterBase::Die()
 {
-	AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
-	OnCharacterDied.Broadcast(this);
+	RemoveCharacterAbilities();
 	
+	GetCharacterMovement()->GravityScale = 0;
+	GetCharacterMovement()->Velocity = FVector(0);
+	
+	OnCharacterDied.Broadcast(this);
+
+	if (AbilitySystemComponent.IsValid())
+	{
+		AbilitySystemComponent->CancelAllAbilities();
+
+		FGameplayTagContainer EffectTagsToRemove;
+		EffectTagsToRemove.AddTag(EffectRemoveOnDeathTag);
+		int32 NumEffectsRemoved = AbilitySystemComponent->RemoveActiveEffectsWithTags(EffectTagsToRemove);
+
+		AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
+	}
+	
+	FinishDying();
 	/*// Only runs on Server
 	RemoveCharacterAbilities();
 
