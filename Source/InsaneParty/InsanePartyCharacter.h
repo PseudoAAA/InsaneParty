@@ -115,6 +115,8 @@ public:
 	//Send input actions to ASC
 	void SendInputToASC(bool bIsPressed, const EInsaneAbilityInputID AbilityInputID);
 
+	virtual void FinishDying() override;
+
 	//Add recoil for player
 	UFUNCTION(BlueprintImplementableEvent)
 	void IMP_Recoil(float RecoilAmplitude, float SidewaysRecoilAmplitude, float Min, float Max);

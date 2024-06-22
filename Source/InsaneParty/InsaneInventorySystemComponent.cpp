@@ -76,6 +76,28 @@ bool UInsaneInventorySystemComponent::IsValidWeaponDataInSlot(const int SlotInde
 	}
 }
 
+void UInsaneInventorySystemComponent::ClearInventory_Implementation(AActor* Actor)
+{
+	AInsaneWeaponBase* AttachedWeapon = GetAttachedWeapon(Actor, GetActiveSlotIndex());
+	
+	if(IsValid(AttachedWeapon))
+	{
+		AttachedWeapon->Destroy();
+		//DespawnAttachedActor(AttachedWeapon, GetActiveSlotIndex());
+		GEngine->AddOnScreenDebugMessage(0, 3, FColor::Black, TEXT("Destroyed"));
+	}
+	
+	for (int i = 0; i < InventoryWeaponData.Num(); ++i)
+	{
+		InventoryWeaponData[i] = nullptr;
+	}
+
+	TArray<FWeaponData> NewWeaponData;
+	NewWeaponData.SetNum(3);
+	InventoryWeapon = NewWeaponData;
+	SetActiveSlotIndex(-1);
+}
+
 bool UInsaneInventorySystemComponent::IsUniqueWeapon(UInsaneWeaponPrimaryDataAsset* WeaponToCheck)
 {
 	for(auto &Item : InventoryWeapon)

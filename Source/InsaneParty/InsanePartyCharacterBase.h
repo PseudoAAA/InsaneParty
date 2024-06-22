@@ -60,9 +60,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter")
 	virtual bool IsAlive();
-	virtual void Die();
 	
-	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter")
+	virtual void Die();
 	virtual void FinishDying();
 	
 protected:
@@ -74,6 +73,8 @@ protected:
 	TWeakObjectPtr<UInsaneAttributeSet> AttributeSetBase;
 
 	FGameplayTag DeadTag;
+	FGameplayTag WeaponTag;
+	FGameplayTag InventoryTag;
 	FGameplayTag EffectRemoveOnDeathTag;
 	
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter")

@@ -25,12 +25,14 @@ namespace InsaneGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Activation_Fail_Networking, "Activation.Fail.Networking", "")
 
 	//INVENTORY TAGS
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory, "Inventory", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_Slot1, "Inventory.Slot1", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_Slot2, "Inventory.Slot2", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_Slot3, "Inventory.Slot3", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Inventory_DropWeapon, "Inventory.DropWeapon", "")
 
-	//WEAPON TAGS 
+	//WEAPON TAGS
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon, "Weapon", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_SwitchFireMode, "Weapon.SwitchFireMode", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_None, "Weapon.FireMode.None", "")
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Weapon_FireMode_Single, "Weapon.FireMode.Single", "")

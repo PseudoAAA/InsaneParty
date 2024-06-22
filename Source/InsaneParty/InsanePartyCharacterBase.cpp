@@ -21,19 +21,19 @@ AInsanePartyCharacterBase::AInsanePartyCharacterBase(const class FObjectInitiali
 	bUseControllerRotationRoll = false;
 
 	// Configure character movement
-	GetCharacterMovement()->bOrientRotationToMovement = true; // Character moves in the direction of input...	
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f); // ...at this rotation rate
-
+	GetCharacterMovement()->bOrientRotationToMovement = false; // Character moves in the direction of input...	
+	
 	// Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
 	// instead of recompiling to adjust them
 	GetCharacterMovement()->JumpZVelocity = 700.f;
 	GetCharacterMovement()->AirControl = 0.35f;
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
-	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
 	DeadTag = FGameplayTag::RequestGameplayTag("GameplayStatus.IsDead");
+	WeaponTag = FGameplayTag::RequestGameplayTag("Weapon");
+	InventoryTag = FGameplayTag::RequestGameplayTag("Inventory");
 	EffectRemoveOnDeathTag = FGameplayTag::RequestGameplayTag(FName("GameplayStatus.RemoveOnDeath"));
 	
 }
@@ -135,7 +135,9 @@ bool AInsanePartyCharacterBase::IsAlive()
 
 void AInsanePartyCharacterBase::Die()
 {
-	RemoveCharacterAbilities();
+
+	UInsaneInventorySystemComponent* InventorySystemComponent = Cast<AInsanePlayerState>(GetPlayerState())->GetInventorySystemComponent();
+	InventorySystemComponent->ClearInventory(this);
 	
 	GetCharacterMovement()->GravityScale = 0;
 	GetCharacterMovement()->Velocity = FVector(0);
@@ -145,34 +147,18 @@ void AInsanePartyCharacterBase::Die()
 	if (AbilitySystemComponent.IsValid())
 	{
 		AbilitySystemComponent->CancelAllAbilities();
-
+		
 		FGameplayTagContainer EffectTagsToRemove;
 		EffectTagsToRemove.AddTag(EffectRemoveOnDeathTag);
 		int32 NumEffectsRemoved = AbilitySystemComponent->RemoveActiveEffectsWithTags(EffectTagsToRemove);
 
 		AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
+		AbilitySystemComponent->AddLooseGameplayTag(InventoryTag);
+		AbilitySystemComponent->AddLooseGameplayTag(WeaponTag);
 	}
 	
 	FinishDying();
-	/*// Only runs on Server
-	RemoveCharacterAbilities();
-
-	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	GetCharacterMovement()->GravityScale = 0;
-	GetCharacterMovement()->Velocity = FVector(0);
 	
-	OnCharacterDied.Broadcast(this);
-
-	if (AbilitySystemComponent.IsValid())
-	{
-		AbilitySystemComponent->CancelAllAbilities();
-
-		FGameplayTagContainer EffectTagsToRemove;
-		int32 NumEffectsRemoved = AbilitySystemComponent->RemoveActiveEffectsWithTags(EffectTagsToRemove);
-
-		AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
-	}*/
-
 	/*if (DeathMontage)
 	{
 		PlayAnimMontage(DeathMontage);

@@ -46,6 +46,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	bool IsValidWeaponDataInSlot(const int SlotIndex);
 	
+	UFUNCTION(NetMulticast, Reliable, BlueprintCallable,  Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	void ClearInventory(AActor* Actor);
+
+	
+	
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	bool IsUniqueWeapon(UInsaneWeaponPrimaryDataAsset* WeaponToCheck);
 	
@@ -60,8 +65,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	AInsaneWeaponBase* GetAttachedWeapon(AActor* Actor, int ActiveSlotIndexToCheckWeapon);
-	
-	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
+	//NetMulticast, Reliable,
+	UFUNCTION( BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")
 	void DespawnAttachedActor(AActor* Actor, int ActiveSlotIndexToCheckWeapon);
 	
 	UFUNCTION(BlueprintCallable, Category = "InsaneParty|InsanePartyCharacter|Inventory")

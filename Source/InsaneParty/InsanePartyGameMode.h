@@ -11,6 +11,19 @@ class AInsanePartyGameMode : public AGameModeBase
 
 public:
 	AInsanePartyGameMode();
+	
+	void HeroDied(AController* Controller);
+
+protected:
+	float RespawnDelay;
+
+	TSubclassOf<class AGDHeroCharacter> HeroClass;
+
+	AActor* EnemySpawnPoint;
+
+	virtual void BeginPlay() override;
+
+	void RespawnHero(AController* Controller);
 };
 
 

@@ -3,6 +3,7 @@
 
 #include "InsanePartyCharacter.h"
 #include "EnhancedInputComponent.h"
+#include "InsanePartyGameMode.h"
 #include "InteractInterface.h"
 
 
@@ -21,6 +22,10 @@ AInsanePartyCharacter::AInsanePartyCharacter(const class FObjectInitializer& Obj
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	bReplicates = true;
+	NetUpdateFrequency = 66.0f;
+	MinNetUpdateFrequency = 50.0f;
 }
 
 
@@ -363,6 +368,23 @@ void AInsanePartyCharacter::SendInputToASC(bool bIsPressed, const EInsaneAbility
 		AbilitySystemComponent->AbilityLocalInputReleased(static_cast<int32>(AbilityInputID));
 	}
 	
+}
+
+void AInsanePartyCharacter::FinishDying()
+{
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		GetAbilitySystemComponent()->CancelAllAbilities();
+		
+		AInsanePartyGameMode* GM = Cast<AInsanePartyGameMode>(GetWorld()->GetAuthGameMode());
+		
+		if (GM)
+		{
+			GM->HeroDied(GetController());
+		}
+	}
+
+	Super::FinishDying();
 }
 
 
