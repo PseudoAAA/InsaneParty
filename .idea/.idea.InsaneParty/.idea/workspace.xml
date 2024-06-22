@@ -11,31 +11,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d3990e-b48d-4ef8-b3e5-00f82edcf0a4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Maps/Stylized_Egypt/Maps/Egypt.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Maps/TestMap.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Characters/InsanePlayer.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/0/CI/WF4UKPWOFD0820JAUCEB6O.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/0/CN/R1ROPGG7Y4APFWH64KO4CL.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/0/FD/RU1RWBBUN2CMKFLUISKRNU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/0/W4/QI4YSM77QX5G64UH8WD6RR.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/1/20/RB91MHHNY23R2V0P5XA5LN.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/1/J1/5FZFA29IPUV6FBH2M40XHW.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/1/R4/X1A4EY32L876ZDXMH8YITK.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/1/VU/O4DXVD0C37S6P1TMHR5Y4X.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/2/3E/B2SJ8JOA4U0MM7WI4R1BEX.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/2/GK/V7Z2R6GO0GTK36AVNDZXKX.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/3/0U/ZNUIRM2Q81X2K2OB65ICOP.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/3/DZ/8XWM8GE7STBJ4O9ADCGUIK.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/3/E3/61G3CCH5GWVAWYHPEHS5SJ.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/4/G3/91Z75JRVE4J15A065XIKMI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/4/R5/FJQUCNT36B3DQM66Z7Q6YG.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/4/XD/H5KZN2XIMYNHKDV9BC840D.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/4/XO/CZXTPTTETO1H6IJAPSTS3D.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/5/HX/U9TWB1341MBLR1ZAWXG14E.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/5/QF/UW7JTPC4DN4BJPNZAN4HQ8.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/5/RN/KSOU4ZVRCFTYMA4NCMLT18.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/5/VF/W8A8F2AK7KGGJYV04HU6FT.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/6/7T/4NK4Z0JTKFB2ARH4LE7DNU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/6/SM/BU5MLCPBG9I02T8FB3CJRN.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/6/Y7/347783Y9HIU1D0LXADB7DF.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/8/06/Q5MOXKP86DPBY5UDTZF3NN.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/8/7I/04VB9TKDBXYP08G11MBUIK.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/8/TA/38DVMOUXRE6TGJYBWQOAEB.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/8/WS/7KSDJ150IRMP4LSQOIWU42.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/9/8G/82E78D4W31PSM48IOWAWIW.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/9/BL/73E1HOJ2CJMPHLQHF0JXYV.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/9/C5/V6T2M67X4L2218H42WL1KL.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/9/G5/373ACXVK49TYWV6UGLXQFC.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/A/7U/O7AE4B3UYTMDRJYXC5FKEN.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/A/GB/MYEAH7MC47988QDX2BVLAF.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/A/N7/3US4IHA1ZI8XK78HM6UVZ7.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/A/Z0/D4F7PGTL5YBI2Q2V8RBPGY.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/B/H9/TE9SVCET0S7MXC5WXDIGRU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/B/UV/2VFZRV2GYF8M7OD24ALAS7.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/C/9U/2O5J6YRGF5XAU5T2AGZS9N.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/C/OL/ECVECAXY8QA1Q0GKYY41WI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/C/RY/AOQJQE6R9WPLQXCDTKVN6G.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/C/XS/M8C4ZBTE6XD6B7UYFFX7JQ.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/C/Z0/V5M7TGOWROOHLDBU5G57EA.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/D/G7/2M3SL8NNPWV4NWG0601ZWV.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/D/JE/4M1AH30ZDLCVRJSQA1IWPX.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/E/F3/0ZJLSI8YTBHH45W51KUZOS.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Maps/TestMap/E/MS/3JACL7DE250I6AZYPGVXDO.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalObjects__/Maps/TestMap/9/MT/SPLNZCXT8L3VCDK66KIHPI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalObjects__/Maps/TestMap/A/JH/FZ1KQSYBUH8912E9ICZP8M.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalObjects__/Maps/TestMap/C/78/KJ3DIH98K1HL9N57LXORMD.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InsaneParty/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_InsanePartyCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectFirstSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectSecondSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectSecondSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectThirdSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GA_SelectThirdSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GE_SelectFirstSlot.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GE_SelectSecondSlot.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayAbilities/Inventory/GE_SelectThirdSlot.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/Test/GE_Rifle_GiveAbility.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayAbilitySystem/GameplayEffects/Test/GE_Rifle_GiveAbility.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/ABP_InsanePartyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/ABP_InsanePartyCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/BS_MM_WalkRun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Temp/MainCharacter/Animations/BS_MM_WalkRun.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGameplayTags.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGameplayTags.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneGameplayTags.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneGameplayTags.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsaneInventorySystemComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Stylized_Egypt/Maps/Insane_Egypt_Level.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Stylized_Egypt/Maps/Insane_Egypt_Level.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/TestMap_Level.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/TestMap_Level.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/BP_GameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/BP_GameInstance.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/Config/Characters_Table.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/Config/Characters_Table.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/Config/MapNames.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/Config/MapNames.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Characters/Manny.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Characters/Manny.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Home/WB_Home.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Home/WB_Home.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Matches/WB_Matches.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Matches/WB_Matches.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Matches/WB_Matches_Item.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Multiplayer/Widgets/MainMenu/Matches/WB_Matches_Item.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacterBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyCharacterBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePartyGameMode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePlayerController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/InsaneParty/InsanePlayerState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/InsaneParty/InsanePlayerState.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -387,7 +429,7 @@
       <workItem from="1718951381199" duration="607000" />
       <workItem from="1718979782889" duration="2045000" />
       <workItem from="1719047655572" duration="481000" />
-      <workItem from="1719048194355" duration="13812000" />
+      <workItem from="1719048194355" duration="15058000" />
     </task>
     <servers />
   </component>

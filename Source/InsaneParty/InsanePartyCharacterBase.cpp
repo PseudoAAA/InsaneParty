@@ -32,8 +32,6 @@ AInsanePartyCharacterBase::AInsanePartyCharacterBase(const class FObjectInitiali
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 
 	DeadTag = FGameplayTag::RequestGameplayTag("GameplayStatus.IsDead");
-	WeaponTag = FGameplayTag::RequestGameplayTag("Weapon");
-	InventoryTag = FGameplayTag::RequestGameplayTag("Inventory");
 	EffectRemoveOnDeathTag = FGameplayTag::RequestGameplayTag(FName("GameplayStatus.RemoveOnDeath"));
 	
 }
@@ -153,8 +151,7 @@ void AInsanePartyCharacterBase::Die()
 		int32 NumEffectsRemoved = AbilitySystemComponent->RemoveActiveEffectsWithTags(EffectTagsToRemove);
 
 		AbilitySystemComponent->AddLooseGameplayTag(DeadTag);
-		AbilitySystemComponent->AddLooseGameplayTag(InventoryTag);
-		AbilitySystemComponent->AddLooseGameplayTag(WeaponTag);
+
 	}
 	
 	FinishDying();

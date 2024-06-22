@@ -73,8 +73,6 @@ protected:
 	TWeakObjectPtr<UInsaneAttributeSet> AttributeSetBase;
 
 	FGameplayTag DeadTag;
-	FGameplayTag WeaponTag;
-	FGameplayTag InventoryTag;
 	FGameplayTag EffectRemoveOnDeathTag;
 	
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "InsaneParty|InsanePartyCharacter")
