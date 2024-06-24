@@ -48,12 +48,12 @@ void UInsaneGA_Shoot::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 				UE_LOG(LogTemp, Warning, TEXT("Weapon name: %s"), *AttachedWeapon->GetName());
 				
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
-				PartyCharacter->IMP_Recoil(0.5f * 0.7f, 1.5f * 0.5f, 0.5f, 0.8f);
+				PartyCharacter->IMP_Recoil(0.3f * 0.7f, 1.2f * 0.5f, 0.5f, 0.8f);
 			}
 			else
 			{
 				GetWorld()->GetTimerManager().SetTimer(ShootDelay, this, &UInsaneGA_Shoot::OnDelayEnd, AttachedWeapon->WeaponData->WeaponData.Properties.ShootDelay, false);
-				PartyCharacter->IMP_Recoil(0.5f, 1.5f, 0.5f, 0.8f);
+				PartyCharacter->IMP_Recoil(0.3f, 1.2f, 0.5f, 0.8f);
 			}
 		}
 	}

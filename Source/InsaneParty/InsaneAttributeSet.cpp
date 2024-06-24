@@ -11,6 +11,7 @@ UInsaneAttributeSet::UInsaneAttributeSet()
 {
 	MaxHealth = 100;
 	Health = 100;
+	Keys = 8;
 }
 
 void UInsaneAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -34,8 +35,6 @@ void UInsaneAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute
 
 void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
-	Super::PostGameplayEffectExecute(Data);
-	
 	FGameplayEffectContextHandle Context = Data.EffectSpec.GetContext();
 	UAbilitySystemComponent* Source = Context.GetOriginalInstigatorAbilitySystemComponent();
 	const FGameplayTagContainer& SourceTags = *Data.EffectSpec.CapturedSourceTags.GetAggregatedTags();
@@ -157,6 +156,7 @@ void UInsaneAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 			SetKeys(GetKeys());
 		}
 	
+	Super::PostGameplayEffectExecute(Data);
 }
 
 void UInsaneAttributeSet::AdjustAttributeForMaxChange(const FGameplayAttributeData& AffectedAttribute,

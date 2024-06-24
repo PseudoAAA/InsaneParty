@@ -49,7 +49,7 @@ void AInsanePartyGameMode::RespawnHero(AController* Controller)
 	if (Controller->IsPlayerController())
 	{
 		// Respawn player hero
-		AActor* PlayerStart = FindPlayerStart(Controller);
+		AActor* PlayerStart = ChoosePlayerStart(Controller);
 
 		FActorSpawnParameters SpawnParameters;
 		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;

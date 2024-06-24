@@ -109,21 +109,25 @@ void AInsanePartyCharacterBase::RemoveCharacterAbilities()
 
 	// Remove any abilities added from a previous call. This checks to make sure the ability is in the startup 'CharacterAbilities' array.
 	TArray<FGameplayAbilitySpecHandle> AbilitiesToRemove;
-	for (const FGameplayAbilitySpec& Spec : AbilitySystemComponent->GetActivatableAbilities())
+	if(IsValid(AbilitySystemComponent.Get()))
 	{
-		if ((Spec.SourceObject == this) && CharacterAbilities.Contains(Spec.Ability->GetClass()))
+		for (const FGameplayAbilitySpec& Spec : AbilitySystemComponent->GetActivatableAbilities())
 		{
-			AbilitiesToRemove.Add(Spec.Handle);
+			if (Spec.SourceObject == this && CharacterAbilities.Contains(Spec.Ability->GetClass()))
+			{
+				AbilitiesToRemove.Add(Spec.Handle);
+			}
 		}
-	}
 
-	// Do in two passes so the removal happens after we have the full list
-	for (int32 i = 0; i < AbilitiesToRemove.Num(); i++)
-	{
-		AbilitySystemComponent->ClearAbility(AbilitiesToRemove[i]);
-	}
+		// Do in two passes so the removal happens after we have the full list
+		for (int32 i = 0; i < AbilitiesToRemove.Num(); i++)
+		{
+			AbilitySystemComponent->ClearAbility(AbilitiesToRemove[i]);
+		}
 
-	AbilitySystemComponent->bCharacterAbilitiesGiven = false;
+		AbilitySystemComponent->bCharacterAbilitiesGiven = false;
+	}
+	
 }
 
 bool AInsanePartyCharacterBase::IsAlive()
