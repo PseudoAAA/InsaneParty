@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AbilitySystemComponent.h"
+#include "InsaneAbilitySystemComponent.h"
 #include "AttributeSet.h"
 #include "InsaneParty.h"
 #include "InsaneAttributeSet.generated.h"
